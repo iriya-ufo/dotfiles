@@ -1,0 +1,78 @@
+# -*- shell-script -*-
+setopt prompt_subst
+PROMPT=$'%{\e[%(!.01;31.35)m%}%(!..%n@)%m%{\e[m%}> '
+RPROMPT=$'[%{\e[34m%}%(4~,%-1~/.../%2~,%~)%{\e[m%}]'
+
+HISTFILE=$HOME/.zsh_history # 履歴をファイルに保存する
+HISTSIZE=100000             # メモリ内の履歴の数
+SAVEHIST=100000             # 保存される履歴の数
+setopt extended_history     # 履歴ファイルに時刻を記録
+setopt share_history        # 履歴ファイルを逐次保存
+setopt extended_glob
+setopt pushd_ignore_dups
+setopt auto_cd
+setopt auto_pushd
+setopt no_hup
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt always_last_prompt
+setopt pushd_silent
+setopt print_eight_bit
+setopt no_list_beep
+setopt no_list_types
+setopt no_beep
+
+precmd() {
+    case $TERM in
+        (screen|[kx]term*))
+        print -nP "\e]2;%/\a"
+        ;;
+    esac
+}
+
+preexec() {
+    case $TERM in
+        (screen|[kx]term*))
+        emulate -L zsh
+        local -a cmd; cmd=(${(z)1})		# Re-parse the command line
+        print -n "\e]2;$cmd[1]\a"
+        ;;
+    esac
+}
+
+# ls settings
+eval `dircolors -b $HOME/.dir_colors`
+LS_OPTIONS='-v --show-control-chars -h --color=auto'
+#LS_OPTIONS="-G -B"
+alias ls="ls $LS_OPTIONS"
+alias ll="ls -l $LS_OPTIONS"
+alias la="ls -A $LS_OPTIONS"
+alias lla="ls -lA $LS_OPTIONS"
+alias lal='lla'
+
+alias df='df -h'
+alias pd=popd
+alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
+alias lv='lv -c'
+export PAGER=lv
+
+alias -g L="| $PAGER"
+alias -g G="| grep"
+alias -g W='| wc'
+alias -g H='| head'
+alias -g T='| tail'
+alias -g N='| nkf'
+
+alias -s ps=gv
+alias -s eps=gv
+alias -s dvi=dvipdfmx
+alias -s tex=platex
+alias -s pdf=gv
+
+autoload -U compinit
+compinit
+
+zstyle ':completion:*:default' menu select=1
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion::complete:*' use-cache 1
