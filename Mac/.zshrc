@@ -1,4 +1,5 @@
 source $HOME/.zsh_common
+export PATH=/usr/texbin:$PATH
 alias -g LC='|lv|cat'
 alias -g bitread="cat <<EOF | gosh bitcode.scm | nkf -w"
 alias gosh="rlwrap -b '(){}[],#;| ' gosh"
