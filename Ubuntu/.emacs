@@ -71,10 +71,10 @@
 	       '(border-color . "black")
 	       '(mouse-color . "black")
 	       '(cursor-color . "#191970")
-	       '(width . 79)                   ; フレームの幅
-	       '(height . 45)                  ; フレームの高さ
-	       '(top . -20)                    ; Y 表示位置
-	       '(left . 600)                   ; X 表示位置
+	       '(width . 139)                  ; フレームの幅
+	       '(height . 34)                  ; フレームの高さ
+	       '(top . 0)                      ; Y 表示位置
+	       '(left . 0)                     ; X 表示位置
 	       )
 	      initial-frame-alist))
 (setq default-frame-alist initial-frame-alist)
