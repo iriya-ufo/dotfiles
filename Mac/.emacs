@@ -12,7 +12,10 @@
             (add-to-list 'load-path path))
          (mapcar 'expand-file-name paths)))
 ;; 設定ファイルのディレクトリを load-path に追加
-(add-to-load-path "~/.emacs.d")
+(let ((default-directory (expand-file-name "~/.emacs.d")))
+  (add-to-list 'load-path default-directory)
+  (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+      (normal-top-level-add-subdirs-to-load-path)))
 ;;
 ;;===================================
 ;; Language
@@ -361,6 +364,24 @@
 ;(setq slme-lisp-implementations
 ;      '((sbcl ("sbcl") :coding-system utf-8-unix)
 ;        (cmucl ("cmucl") :coding-system iso-latin-1-unix)))
+;;
+;;====================================
+;; ruby-mode
+;;====================================
+(require 'ruby-electric)
+(autoload 'ruby-mode "ruby-mode"
+  "Mode for editing ruby source files" t)
+(setq auto-mode-alist
+      (append '(("\\.rb$" . ruby-mode)) auto-mode-alist))
+(setq interpreter-mode-alist (append '(("ruby" . ruby-mode))
+                                     interpreter-mode-alist))
+(autoload 'run-ruby "inf-ruby"
+  "Run an inferior Ruby process")
+(autoload 'inf-ruby-keys "inf-ruby"
+  "Set local key defs for inf-ruby in ruby-mode")
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+	     (inf-ruby-keys)))
 ;;
 ;;====================================
 ;; AUCTeX
