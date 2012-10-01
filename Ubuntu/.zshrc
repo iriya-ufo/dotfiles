@@ -1,6 +1,5 @@
 source $HOME/.zsh_common
 alias -g LC='|lv|cat'
-alias tgif-ja='LANG=jp_JP.eucJP tgif &'
 alias -g bitread="cat <<EOF | gosh bitcode.scm | nkf -w"
 alias gosh="rlwrap -b '(){}[],#;| ' gosh"
 
