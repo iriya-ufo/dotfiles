@@ -24,3 +24,6 @@ function cdup() {
 }
 
 zle -N cdup
+
+# rbenv
+eval "$(rbenv init -)"
