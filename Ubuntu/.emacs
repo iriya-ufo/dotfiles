@@ -409,6 +409,7 @@
 (setq initial-scratch-message         ; Scratch バッファの表示
 "Welcome to Emacs!"
 )
+(require 'magit)                      ; Git for Emacs
 (cd "~/")			      ; ホームディレクトリより開始
 (put 'narrow-to-region 'disabled nil) ; ナローイングの有効化
 (global-font-lock-mode t) 	      ; 文字の色つけ
