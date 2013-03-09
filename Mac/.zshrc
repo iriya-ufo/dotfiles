@@ -5,6 +5,9 @@ alias -g LC='|lv|cat'
 alias -g bitread="cat <<EOF | gosh bitcode.scm | nkf -w"
 alias gosh="rlwrap -b '(){}[],#;| ' gosh"
 
+keychain ~/.ssh/id_dsa
+. $HOME/.keychain/$HOST-sh
+
 bindkey -e
 
 mcmd() {
@@ -21,3 +24,6 @@ function cdup() {
 }
 
 zle -N cdup
+
+# rbenv
+eval "$(rbenv init -)"

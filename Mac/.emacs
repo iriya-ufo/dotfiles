@@ -401,6 +401,7 @@
 ;;====================================
 ;; 雑多な設定
 ;;====================================
+(require 'magit)                          ; Git を使う
 (setq initial-scratch-message             ; Scratch バッファの表示
 "
 This is Scratch Buffer.
