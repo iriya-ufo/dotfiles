@@ -18,6 +18,16 @@ mcmd() {
         # PATH="/usr/lib/ccache/bin:$PATH" \
 }
 
+# gem function
+function gem() {
+   $HOME/.rbenv/shims/gem $*
+   if [ "$1" = "install" ] || [ "$1" = "i" ] || [ "$1" = "uninstall" ] || [ "$1" = "uni" ]
+   then
+      rbenv rehash
+      rehash
+   fi
+}
+
 function cdup() {
     echo
     cd ..
