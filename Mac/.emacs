@@ -394,8 +394,8 @@
 ;(setq TeX-file-extensions '("tex" "sty" "cls" "ltx" "texi" "texinfo" "dtx"))
 ;(setq kinsoku-limit 10)
 ;(setq LaTeX-indent-level 4)
-;(setq TeX-output-view-style '(("^pdf$" "." "/usr/bin/acroread %o")))
-;(add-to-list 'TeX-output-view-style '("^dvi$" "." "dvipdfmx %d && acroread %s.pdf"))
+;(setq TeX-output-view-style '(("^pdf$" "." "/usr/bin/open -a preview %o")))
+;(add-to-list 'TeX-output-view-style '("^dvi$" "." "dvipdfmx %d && open -a preview %s.pdf"))
 ;(setq LaTeX-clean-intermediate-suffixes '("\\.aux" "\\.log" "\\.out" "\\.toc" "\\.brf" "\\.nav" "\\.snm"))
 ;;
 ;;====================================
