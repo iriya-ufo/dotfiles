@@ -267,4 +267,4 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:$HOME/opt/sbin # opt
 
 # For Rails
-alias cdrails='cd ~/public_html/blog'
+alias cdrails='cd ~/public_html/mysite'
