@@ -38,3 +38,6 @@ zle -N cdup
 
 # rbenv
 eval "$(rbenv init -)"
+
+# PostgreSQL
+export PGDATA=/usr/local/var/postgres
