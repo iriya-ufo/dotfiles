@@ -66,15 +66,21 @@
 (global-set-key "\C-xp" (lambda () (interactive) (other-window -1)))
 ;;
 ;;====================================
-;; Initial フレームサイズ,位置,色,フォントなど
+;; フレームサイズ,位置,色,フォントなど
 ;;====================================
+;; カラーテーマを使う
+(require 'color-theme)
+(color-theme-initialize)
+;; テーマ"molokai"を使う
+(color-theme-molokai)
+
 (setq initial-frame-alist
       (append (list
-	       '(foreground-color . "#333333") ; 文字色
-	       '(background-color . "#ffffff") ; 背景色
-	       '(border-color . "black")
-	       '(mouse-color . "black")
-	       '(cursor-color . "#191970")
+;	       '(foreground-color . "#333333") ; 文字色
+;	       '(background-color . "#ffffff") ; 背景色
+;	       '(border-color . "black")
+;	       '(mouse-color . "black")
+;	       '(cursor-color . "#191970")
 	       '(width . 79)                   ; フレームの幅
 	       '(height . 50)                  ; フレームの高さ
 	       '(top . 0)                      ; Y 表示位置
