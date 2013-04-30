@@ -89,17 +89,16 @@
 	      initial-frame-alist))
 (setq default-frame-alist initial-frame-alist)
 
+;; フォント設定
 ;; 使用可能フォント一覧の見方 (ターミナル上で)
 ;; fc-list
-
-;; Emacs23 用フォント設定
-;(cond (window-system
-;       (set-default-font "VL Gothic-10")
-;       (set-fontset-font (frame-parameter nil 'font)
-;			 'japanese-jisx0208
-;			;'("VL PGothic" . "unicode-bmp"))
-;			 '("IPA モナー P明朝" . "unicode-bmp"))
-;       ))
+(create-fontset-from-ascii-font "Monaco-14:weight=normal:slant=normal" nil "monaco")
+(set-fontset-font "fontset-monaco"
+                  'unicode
+                  (font-spec :family "Hiragino Mincho ProN" :size 16)
+                  nil
+                  'append)
+(add-to-list 'default-frame-alist '(font . "fontset-monaco"))
 ;;
 ;;====================================
 ;; 括弧の色を薄くする
