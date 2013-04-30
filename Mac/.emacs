@@ -389,6 +389,31 @@
 	     (inf-ruby-keys)))
 ;;
 ;;====================================
+;; Ruby on Rails
+;;====================================
+;; rinari
+(require 'rinari nil t)
+;; rhtml-mode
+(when (require 'rhtml-mode nil t)
+  (add-hook 'rhtml-mode-hook
+	    (lambda () (rinari-launch))))
+;; yaml-mode
+(when (require 'yaml-mode nil t)
+  (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode)))
+;; JavaScript
+(when (require 'js2-mode nil t)
+  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode)))
+;; coffee-mode
+(when (require 'coffee-mode nil t)
+  (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+  (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
+  (add-hook 'coffee-mode-hook
+	    '(lambda () (setq tab-width 2))))
+;; flymake-coffee
+(when (require 'flymake-coffee nil t)
+  (add-hook 'coffee-mode-hook 'flymake-coffee-load))
+;;
+;;====================================
 ;; AUCTeX
 ;;====================================
 (require 'tex-site)
