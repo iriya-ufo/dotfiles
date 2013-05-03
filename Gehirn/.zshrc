@@ -266,8 +266,5 @@ preexec () {
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:$HOME/opt/sbin # opt
 
-# For Rails
-alias cdrails='cd ~/public_html/mysite'
-
 # rs2rc
 [[ -s "/usr/local/bin/rs2rc" ]] && source "/usr/local/bin/rs2rc"
