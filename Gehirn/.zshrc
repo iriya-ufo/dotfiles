@@ -264,7 +264,6 @@ preexec () {
 ##====================== 自分用設定 ======================##
 ##========================================================##
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-PATH=$HOME/opt/sbin:$HOME/opt/bin:$PATH # $HOME/opt
 
 # rs2rc
 [[ -s "/usr/local/bin/rs2rc" ]] && source "/usr/local/bin/rs2rc"
