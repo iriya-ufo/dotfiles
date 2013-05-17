@@ -1,0 +1,14 @@
+[user]
+	name = Naoto Inoue
+	email = dorapocket22@gmail.com
+[credencial]
+	helper = osxkeychain
+[color]
+	ui = auto
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+[push]
+	default = simple
