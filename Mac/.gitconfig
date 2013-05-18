@@ -12,3 +12,5 @@
 	br = branch
 [push]
 	default = simple
+[core]
+	pager = lv -c
