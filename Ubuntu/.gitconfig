@@ -1,0 +1,15 @@
+[user]
+	name = Naoto Inoue
+	email = dorapocket22@gmail.com
+[color]
+	ui = auto
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+[core]
+	pager = lv -c
+[github]
+	user = iriya-ufo
+	token = 8ce5169a722b2ff20d1d6819ff4545b9
