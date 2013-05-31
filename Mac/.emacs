@@ -84,7 +84,7 @@
 	       '(width . 90)                   ; フレームの幅
 	       '(height . 50)                  ; フレームの高さ
 	       '(top . 0)                      ; Y 表示位置
-	       '(left . 300)                   ; X 表示位置
+	       '(left . 683)                   ; X 表示位置
 	       )
 	      initial-frame-alist))
 (setq default-frame-alist initial-frame-alist)
