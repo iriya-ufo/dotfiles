@@ -71,7 +71,7 @@
 	       '(border-color . "black")
 	       '(mouse-color . "black")
 	       '(cursor-color . "#191970")
-	       '(width . 79)                   ; フレームの幅
+	       '(width . 140)                  ; フレームの幅
 	       '(height . 40)                  ; フレームの高さ
 	       '(top . 0)                      ; Y 表示位置
 	       '(left . 280)                   ; X 表示位置
