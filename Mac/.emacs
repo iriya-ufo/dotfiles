@@ -462,17 +462,6 @@ This is Scratch Buffer.
 ;;------------------------------------
 ;;
 ;;====================================
-;; バッファの切替えを楽にする
-;;====================================
-(iswitchb-mode t)
-(add-hook 'iswitchb-define-mode-map-hook
-          'iswitchb-my-keys)
-(defun iswitchb-my-keys ()
-  "Add my keybindings for iswitchb."
-  (define-key iswitchb-mode-map " " 'iswitchb-next-match)
-  )
-;;
-;;====================================
 ;; outline-mode, outline-minor-mode
 ;;====================================
 ;; outline-minor-mode のプレフィックス変更
