@@ -82,7 +82,7 @@
 ;; 使用可能フォント一覧の見方 (ターミナル上で)
 ;; fc-list
 
-;; Emacs23 用フォント設定
+;; フォント設定
 (cond (window-system
        (set-default-font "VL Gothic-10")
        (set-fontset-font (frame-parameter nil 'font)
@@ -410,6 +410,9 @@
 "Welcome to Emacs!"
 )
 (require 'magit)                      ; Git for Emacs
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/helm")
+(require 'helm-config)                ; helm
+(helm-mode 1)                         ; helm-mode の有効化
 (cd "~/")			      ; ホームディレクトリより開始
 (put 'narrow-to-region 'disabled nil) ; ナローイングの有効化
 (global-font-lock-mode t) 	      ; 文字の色つけ
