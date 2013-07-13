@@ -142,6 +142,13 @@
 (setq make-backup-files nil)
 ;;
 ;;====================================
+;; auto-complete
+;;====================================
+(require 'auto-complete)
+(require 'auto-complete-config)
+(global-auto-complete-mode t)
+;;
+;;====================================
 ;; C and C++
 ;;====================================
 (require 'cc-mode)
