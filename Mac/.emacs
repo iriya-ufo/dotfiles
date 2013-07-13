@@ -431,6 +431,8 @@
 ;;====================================
 ;; 雑多な設定
 ;;====================================
+(require 'helm-config)                    ; helm (anything.el)
+(helm-mode 1)
 (require 'magit)                          ; Git を使う
 (setq initial-scratch-message             ; Scratch バッファの表示
 "
