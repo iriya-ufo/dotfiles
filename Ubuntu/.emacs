@@ -409,6 +409,9 @@
 (setq initial-scratch-message         ; Scratch バッファの表示
 "Welcome to Emacs!"
 )
+(require 'auto-complete)              ; auto-complete
+(require 'auto-complete-config)       ; auto-complete-config
+(global-auto-complete-mode t)
 (require 'magit)                      ; Git for Emacs
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/helm")
 (require 'helm-config)                ; helm
