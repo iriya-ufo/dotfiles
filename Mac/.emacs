@@ -133,6 +133,14 @@
 	     (add-to-list 'scheme-font-lock-keywords-2 '("#/\\(.\\|\\\\/\\)*/" . font-lock-string-face)))) ; 正規表現 #/.../
 ;;
 ;;====================================
+;; パッケージ管理
+;;====================================
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
+;;
+;;====================================
 ;; auto-save
 ;;====================================
 ;; ~/.emacs.d に auto-save-buffers.el を置く
@@ -439,8 +447,8 @@
 ;; Helm (anything.el)
 ;;====================================
 (require 'helm-config)
-(global-set-key (kbd "C-c h") 'helm-mini)
 (helm-mode 1)
+(global-set-key (kbd "C-c h") 'helm-mini)
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
 ;;
 ;;====================================
