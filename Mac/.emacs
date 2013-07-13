@@ -436,10 +436,16 @@
 ;(setq LaTeX-clean-intermediate-suffixes '("\\.aux" "\\.log" "\\.out" "\\.toc" "\\.brf" "\\.nav" "\\.snm"))
 ;;
 ;;====================================
+;; Helm (anything.el)
+;;====================================
+(require 'helm-config)
+(global-set-key (kbd "C-c h") 'helm-mini)
+(helm-mode 1)
+(global-set-key (kbd "C-x C-r") 'helm-recentf)
+;;
+;;====================================
 ;; 雑多な設定
 ;;====================================
-(require 'helm-config)                    ; helm (anything.el)
-(helm-mode 1)
 (require 'magit)                          ; Git を使う
 (setq initial-scratch-message             ; Scratch バッファの表示
 "
