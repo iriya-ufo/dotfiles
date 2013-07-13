@@ -485,49 +485,6 @@ This is Scratch Buffer.
 ;;------------------------------------
 ;;
 ;;====================================
-;; outline-mode, outline-minor-mode
-;;====================================
-;; outline-minor-mode のプレフィックス変更
-(setq outline-minor-mode-prefix "\C-c\C-n")
-
-;; To use c-outline.el in a c-mode buffer simply type `M-x c-outline RET'.
-;; To turn off outline-minor-mode, do `M-x outline-minor-mode'.
-(autoload 'c-outline "c-outline" nil t)
-(add-hook 'c-mode-hook 'c-outline)
-
-;; Lispファイルを開いたら自動で outline-minor-mode へ移行
-(add-hook 'slime-mode-hook
- 	  (outline-minor-mode t))
-
-;; outline-minor-mode キーバインド一覧
-;;------------------------------------
-;; `outline-minor-mode' Minor Mode Bindings Starting With C-c C-n:
-;; key binding
-;; --- -------
-;; C-c C-n C-a show-all
-;; C-c C-n C-b outline-backward-same-level
-;; C-c C-n C-c hide-entry
-;; C-c C-n C-d hide-subtree
-;; C-c C-n C-e show-entry
-;; C-c C-n C-f outline-forward-same-level
-;; C-c C-n TAB show-children
-;; C-c C-n C-k show-branches
-;; C-c C-n C-l hide-leaves
-;; C-c C-n RET outline-insert-heading
-;; C-c C-n C-n outline-next-visible-heading
-;; C-c C-n C-o hide-other
-;; C-c C-n C-p outline-previous-visible-heading
-;; C-c C-n C-q hide-sublevels
-;; C-c C-n C-s show-subtree
-;; C-c C-n C-t hide-body
-;; C-c C-n C-u outline-up-heading
-;; C-c C-n C-v outline-move-subtree-down
-;; C-c C-n C-^ outline-move-subtree-up
-;; C-c C-n @ outline-mark-subtree
-;; C-c C-n C-< outline-promote
-;; C-c C-n C-> outline-demote
-;;
-;;====================================
 ;; sdic-mode 英和-和英辞書
 ;;====================================
 (autoload 'sdic-describe-word "sdic" "単語の意味を調べる" t nil)
