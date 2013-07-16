@@ -424,6 +424,13 @@
   (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
   (add-hook 'coffee-mode-hook
 	    '(lambda () (setq tab-width 2))))
+;; haml-mode
+(require 'haml-mode)
+;; flymake-easy
+(require 'flymake-easy)
+;; flymake-haml
+(require 'flymake-haml)
+(add-hook 'haml-mode-hook 'flymake-haml-load)
 ;; flymake-coffee
 (when (require 'flymake-coffee nil t)
   (add-hook 'coffee-mode-hook 'flymake-coffee-load))
