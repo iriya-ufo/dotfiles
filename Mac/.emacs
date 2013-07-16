@@ -157,6 +157,8 @@
 (global-auto-complete-mode t)
 ;; 特定のモードで auto-complete を有効にする
 (add-to-list 'ac-modes 'haml-mode)
+;; 4文字以上の際に補完を開始する
+(setq ac-auto-start 4)
 ;;
 ;;====================================
 ;; C and C++
