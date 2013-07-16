@@ -155,6 +155,8 @@
 (require 'auto-complete)
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
+;; 特定のモードで auto-complete を有効にする
+(add-to-list 'ac-modes 'haml-mode)
 ;;
 ;;====================================
 ;; C and C++
