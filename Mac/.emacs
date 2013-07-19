@@ -216,7 +216,6 @@
 ;; "scheme-complete"
 ;; Smart tab completion for Emacs
 ;;------------------------------------
-;; ~/.emacs.d に scheme-complete.el を置く
 (require 'scheme-complete)
 (eval-after-load 'scheme
   ;; キーバインド
