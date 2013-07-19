@@ -5,6 +5,7 @@ fpath=(~/.zsh/functions/Completion /usr/local/share/zsh/functions ${fpath})
 alias -g LC='|lv|cat'
 alias -g bitread="cat <<EOF | gosh bitcode.scm | nkf -w"
 alias gosh="rlwrap -b '(){}[],#;| ' gosh"
+alias updatedb='sudo /usr/libexec/locate.updatedb'
 
 keychain ~/.ssh/id_dsa
 . $HOME/.keychain/$HOST-sh
