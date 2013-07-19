@@ -371,6 +371,9 @@
 (autoload 'ruby-mode "ruby-mode" "Major mode for ruby files" t)
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
+;; 改行時にオートインデント
+(add-hook 'ruby-mode-hook '(lambda ()
+  (define-key ruby-mode-map "\C-m" 'reindent-then-newline-and-indent)))
 ;;
 ;;====================================
 ;; Ruby on Rails
