@@ -1099,9 +1099,14 @@
  (project-local-variables .
 			  [(20080502 1652)
 			   nil "Set project-local variables from a file. [wiki]" single])
+ (processing-snippets .
+		      [(20130718 2052)
+		       ((yasnippet
+			 (0 8 0)))
+		       "Snippets for processing-mode [github]" tar])
  (processing-mode .
-		  [(20130718 1828)
-		   nil "Major mode for Processing 2.0 [github]" tar])
+		  [(20130718 2248)
+		   nil "Major mode for Processing 2.0 [github]" single])
  (proc-net .
 	   [(20130322 12)
 	    nil "network process tools [github]" single])
@@ -1140,14 +1145,14 @@
 	[(20130324 1305)
 	 nil "Visual Popup User Interface [github]" single])
  (pophint .
-	  [(20130711 2216)
+	  [(20130717 1350)
 	   ((popup
 	     (0 5 0))
 	    (log4e
 	     (0 2 0))
 	    (yaxception
 	     (0 1)))
-	   "provide navigation like the Vimperator Hint Mode of Firfox that pop-up tip and do some action for the selected. [github]" tar])
+	   "Provide navigation using pop-up tips, like Firefox's Vimperator Hint Mode [github]" tar])
  (pony-mode .
 	    [(20130628 300)
 	     nil "Minor mode for working with Django Projects [github]" tar])
@@ -1507,6 +1512,11 @@
 	  ((sml-mode
 	    (6 4)))
 	  "org-babel functions for template evaluation [github]" single])
+ (ob-mongo .
+	   [(20130718 1532)
+	    ((org
+	      (8)))
+	    "Execute mongodb queries within org-mode blocks. [github]" single])
  (oauth .
 	[(20130127 1751)
 	 nil "Oauth library. [github]" tar])
@@ -2657,7 +2667,7 @@
 	     [(20121124 22)
 	      nil "an alternative to gnus-posting-styles [wiki]" single])
  (gnuplot-mode .
-	       [(20130717 2010)
+	       [(20130718 1941)
 		nil "Major mode for editing gnuplot scripts [github]" single])
  (gnuplot .
 	  [(20130207 101)
@@ -2837,8 +2847,12 @@
 	    [(20130608 1859)
 	     nil "Non-interactive frame and window functions. [wiki]" single])
  (frame-cmds .
-	     [(20130712 1641)
-	      nil "Frame and window commands (interactive functions). [wiki]" single])
+	     [(20130718 2037)
+	      ((frame-fns
+		(21 1))
+	       (misc-fns
+		(21 0)))
+	      "Frame and window commands (interactive functions). [wiki]" single])
  (foreign-regexp .
 		 [(20130618 1921)
 		  nil "search and replace by foreign regexp. [github]" tar])
@@ -3070,7 +3084,7 @@
 	      (0 3 1)))
 	   "File activity logger [github]" single])
  (f .
-    [(20130713 2113)
+    [(20130718 821)
      ((s
        (1 6 0))
       (dash
@@ -3594,7 +3608,7 @@
 		[(20130328 1119)
 		 nil "make file details hide-able in dired [wiki]" single])
  (dired+ .
-	 [(20130717 2223)
+	 [(20130718 1723)
 	  nil "Extensions to Dired. [wiki]" single])
  (dircmp .
 	 [(20130316 1327)
