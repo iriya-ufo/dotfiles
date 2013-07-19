@@ -366,45 +366,6 @@
      ))
 ;;
 ;;====================================
-;; CommonLisp
-;;====================================
-;; To use SBCL
-;(defun sbcl-start ()
-;  (interactive)
-;  (shell-command "sbcl --load /home/iriya/.slime.lisp &"))
-;; To use SLIM
-;; SLIM: The Superior Lisp Interaction Mode for Emacs
-;(setq inferior-lisp-program "/usr/local/bin/sbcl")
-;(require 'slime)
-;(setq slime-net-coding-system 'utf-8-unix)
-;(add-hook 'lisp-mode-hook (lambda ()
-;                            (slime-mode t)))
-;(add-hook 'slime-mode-hook
-;          (lambda ()
-;            (setq lisp-indent-function 'common-lisp-indent-function)))
-;(add-hook 'inferior-lisp-mode-hook
-;          (lambda ()
-;            (slime-mode t)))
-;; Additional definitions by Pierpaolo Bernardi.
-;(defun cl-indent (sym indent)
-;  (put sym 'common-lisp-indent-function
-;       (if (symbolp indent)
-;           (get indent 'common-lisp-indent-function)
-;	   indent)))
-
-;(cl-indent 'if '1)
-;(cl-indent 'generic-flet 'flet)
-;(cl-indent 'generic-labels 'labels)
-;(cl-indent 'with-accessors 'multiple-value-bind)
-;(cl-indent 'with-added-methods '((1 4 ((&whole 1))) (2 &body)))
-;(cl-indent 'with-condition-restarts '((1 4 ((&whole 1))) (2 &body)))
-;(cl-indent 'with-simple-restart '((1 4 ((&whole 1))) (2 &body)))
-
-;(setq slme-lisp-implementations
-;      '((sbcl ("sbcl") :coding-system utf-8-unix)
-;        (cmucl ("cmucl") :coding-system iso-latin-1-unix)))
-;;
-;;====================================
 ;; ruby-mode
 ;;====================================
 (autoload 'ruby-mode "ruby-mode" "Major mode for ruby files" t)
