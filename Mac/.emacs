@@ -398,7 +398,8 @@
 ;; Ruby on Rails
 ;;====================================
 ;; rinari
-(require 'rinari nil t)
+(require 'rinari)
+(global-rinari-mode)
 ;; rhtml-mode
 (when (require 'rhtml-mode nil t)
   (add-hook 'rhtml-mode-hook
