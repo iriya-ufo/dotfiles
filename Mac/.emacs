@@ -33,26 +33,6 @@
 (set-language-environment "Japanese")
 (setq default-input-method "MacOSX")
 ;;
-;;===================================
-;; Wheel mouse
-;;===================================
-;;(global-set-key [mouse-4] 'scroll-down)
-;;(global-set-key [mouse-5] 'scroll-up)
-(progn
-  (defun scroll-up-half ()
-    "Scroll up half a page."
-    (interactive)
-    (scroll-up (/ (window-height) 2))
-    )
-  (defun scroll-down-half ()
-    "Scroll down half a page."
-    (interactive)
-    (scroll-down (/ (window-height) 2))
-    )
-  (global-set-key [(mouse-5)] 'scroll-up-half)
-  (global-set-key [(mouse-4)] 'scroll-down-half)
-  )
-;;
 ;;====================================
 ;; keyboard
 ;;====================================
