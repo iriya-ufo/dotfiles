@@ -411,7 +411,8 @@
 		 (interactive)
 		 (comint-send-string
 		  (inferior-moz-process)
-		  "BrowserReload();"))
+		  ;; URLのホスト部が localhost:3000 の場合のみリロード
+		  "if (content.location.host == \"localhost:3000\") { BrowserReload(); }"))
 	      'append 'local))
   ;; MozRepl の待ち受けポートを変えた場合に適宜変更
   ;;(setq moz-repl-port 4242)
