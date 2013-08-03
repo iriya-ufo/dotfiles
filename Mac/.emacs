@@ -416,11 +416,11 @@
 	      'append 'local))
   ;; MozRepl の待ち受けポートを変えた場合に適宜変更
   ;;(setq moz-repl-port 4242)
-  (add-hook 'php-mode-hook 'auto-reload-firefox-on-after-save-hook)
-  (add-hook 'html-mode-hook 'auto-reload-firefox-on-after-save-hook)
-  (add-hook 'css-mode-hook 'auto-reload-firefox-on-after-save-hook)
-  (add-hook 'haml-mode-hook 'auto-reload-firefox-on-after-save-hook)
-  (add-hook 'rhtml-mode-hook 'auto-reload-firefox-on-after-save-hook)
+  ;;(add-hook 'php-mode-hook 'auto-reload-firefox-on-after-save-hook)
+  ;;(add-hook 'html-mode-hook 'auto-reload-firefox-on-after-save-hook)
+  ;;(add-hook 'css-mode-hook 'auto-reload-firefox-on-after-save-hook)
+  ;;(add-hook 'haml-mode-hook 'auto-reload-firefox-on-after-save-hook)
+  ;;(add-hook 'rhtml-mode-hook 'auto-reload-firefox-on-after-save-hook)
   )
 ;;
 ;;====================================
