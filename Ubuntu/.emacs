@@ -4,6 +4,20 @@
 ;;--------------------------------------------------
 ;;
 ;;===================================
+;; add-to-load-path
+;;===================================
+;; 引数を load-path へ追加する
+(defun add-to-load-path (&rest paths)
+  (mapc '(lambda (path)
+	   (add-to-list 'load-path path))
+	(mapcar 'expand-file-name paths)))
+;; 設定ファイルのディレクトリを load-path に追加
+(let ((default-directory (expand-file-name "~/.emacs.d")))
+  (add-to-list 'load-path default-directory)
+  (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+      (normal-top-level-add-subdirs-to-load-path)))
+;;
+;;===================================
 ;; Language
 ;;===================================
 (add-hook 'set-language-environment-hook
@@ -78,10 +92,9 @@
 	      initial-frame-alist))
 (setq default-frame-alist initial-frame-alist)
 
+;; フォント設定
 ;; 使用可能フォント一覧の見方 (ターミナル上で)
 ;; fc-list
-
-;; フォント設定
 (cond (window-system
        (set-default-font "VL Gothic-10")
        (set-fontset-font (frame-parameter nil 'font)
@@ -138,6 +151,41 @@
 (run-with-idle-timer 0.5 t 'auto-save-buffers) 
 ;; バックアップファイル(file~)を作らない
 (setq make-backup-files nil)
+;;
+;;====================================
+;; auto-complete
+;;====================================
+(require 'auto-complete)
+(require 'auto-complete-config)
+(global-auto-complete-mode t)
+;; 特定のモードで auto-complete を有効にする
+(add-to-list 'ac-modes 'haml-mode)
+;; 4文字以上の際に補完を開始する
+(setq ac-auto-start 4)
+;;
+;;====================================
+;; Flymake -- syntax checker for Emacs
+;;====================================
+(require 'flymake)
+(require 'flymake-easy)
+;; flymake-ruby
+(require 'flymake-ruby)
+(add-hook 'ruby-mode-hook 'flymake-ruby-load)
+;; flymake-yaml
+(add-hook 'yaml-mode-hook 'flymake-yaml-load)
+;; flymake-haml
+(require 'flymake-haml)
+(add-hook 'haml-mode-hook 'flymake-haml-load)
+;; flymake-coffee
+(when (require 'flymake-coffee nil t)
+  (add-hook 'coffee-mode-hook 'flymake-coffee-load))
+;;
+;;====================================
+;; Mark Down Mode
+;;====================================
+(autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
+(setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
 ;;
 ;;====================================
 ;; C and C++
@@ -396,6 +444,31 @@
 	     ))
 ;;
 ;;====================================
+;; Ruby on Rails
+;;====================================
+;; rinari
+(require 'rinari)
+(global-rinari-mode)
+;; rhtml-mode
+(when (require 'rhtml-mode nil t)
+  (add-hook 'rhtml-mode-hook
+	    (lambda () (rinari-launch))))
+;; yaml-mode
+(when (require 'yaml-mode nil t)
+  (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode)))
+;; JavaScript
+(when (require 'js2-mode nil t)
+  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode)))
+;; coffee-mode
+(when (require 'coffee-mode nil t)
+  (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+  (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
+  (add-hook 'coffee-mode-hook
+	    '(lambda () (setq tab-width 2))))
+;; haml-mode
+(require 'haml-mode)
+;;
+;;====================================
 ;; AUCTeX
 ;;====================================
 (require 'tex-site)
@@ -411,18 +484,21 @@
 (setq LaTeX-clean-intermediate-suffixes '("\\.aux" "\\.log" "\\.out" "\\.toc" "\\.brf" "\\.nav" "\\.snm"))
 ;;
 ;;====================================
+;; Helm (anything.el)
+;;====================================
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/helm")
+(require 'helm-config)
+(helm-mode 1)
+(global-set-key (kbd "C-c h") 'helm-mini)
+(global-set-key (kbd "C-x C-r") 'helm-recentf)
+;;
+;;====================================
 ;; 雑多な設定
 ;;====================================
+(require 'magit)                      ; Git for Emacs
 (setq initial-scratch-message         ; Scratch バッファの表示
 "Welcome to Emacs!"
 )
-(require 'auto-complete)              ; auto-complete
-(require 'auto-complete-config)       ; auto-complete-config
-(global-auto-complete-mode t)
-(require 'magit)                      ; Git for Emacs
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/helm")
-(require 'helm-config)                ; helm
-(helm-mode 1)                         ; helm-mode の有効化
 (cd "~/")			      ; ホームディレクトリより開始
 (put 'narrow-to-region 'disabled nil) ; ナローイングの有効化
 (global-font-lock-mode t) 	      ; 文字の色つけ
