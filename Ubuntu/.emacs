@@ -59,15 +59,17 @@
 (global-set-key "\C-xp" (lambda () (interactive) (other-window -1)))
 ;;
 ;;====================================
-;; Initial フレームサイズ,位置,色,フォントなど
+;; テーマ,位置,フォントなど
 ;;====================================
+;; カスタムテーマは ~/.emacs.d/themes 配下に置く
+(setq custom-theme-directory "~/.emacs.d/themes/")
+;; テーマを読み込む
+;(load-theme 'molokai t)
+(load-theme 'deeper-blue t)
+
+;; 位置調整
 (setq initial-frame-alist
       (append (list
-	       '(foreground-color . "#333333") ; 文字色
-	       '(background-color . "#ffffff") ; 背景色
-	       '(border-color . "black")
-	       '(mouse-color . "black")
-	       '(cursor-color . "#191970")
 	       '(width . 140)                  ; フレームの幅
 	       '(height . 40)                  ; フレームの高さ
 	       '(top . 0)                      ; Y 表示位置
@@ -119,6 +121,14 @@
 	     (add-to-list 'scheme-font-lock-keywords-2 '("#\\\\\\(\\w+\\|.\\)" . font-lock-string-face)) ; 文字 #\x
 	     (add-to-list 'scheme-font-lock-keywords-2 '("#\\[.*?\\]" . font-lock-string-face)) ; 文字集合 #[...]
 	     (add-to-list 'scheme-font-lock-keywords-2 '("#/\\(.\\|\\\\/\\)*/" . font-lock-string-face)))) ; 正規表現 #/.../
+;;
+;;====================================
+;; パッケージ管理
+;;====================================
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
 ;;
 ;;====================================
 ;; auto-save
