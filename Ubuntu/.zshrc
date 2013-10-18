@@ -44,5 +44,8 @@ precmd () {
 }
 RPROMPT="%1(v|%F{green}%1v%f|)"
 
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
 # Android Studio
 export PATH=$PATH:$HOME/Downloads/android-studio/bin
