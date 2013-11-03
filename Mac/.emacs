@@ -8,9 +8,9 @@
 ;;===================================
 ;; 引数を load-path へ追加する
 (defun add-to-load-path (&rest paths)
-   (mapc '(lambda (path)
-            (add-to-list 'load-path path))
-         (mapcar 'expand-file-name paths)))
+  (mapc '(lambda (path)
+	   (add-to-list 'load-path path))
+	(mapcar 'expand-file-name paths)))
 ;; 設定ファイルのディレクトリを load-path に追加
 (let ((default-directory (expand-file-name "~/.emacs.d")))
   (add-to-list 'load-path default-directory)
