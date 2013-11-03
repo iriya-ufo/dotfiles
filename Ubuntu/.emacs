@@ -496,6 +496,7 @@
 ;; MozRepl
 ;;====================================
 ;; ファイルセーブと同時に Firefox をリロード
+;; moz.el を load-path に追加
 (when (require 'moz nil t)
   (defun auto-reload-firefox-on-after-save-hook ()
     (add-hook 'after-save-hook
