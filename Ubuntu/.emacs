@@ -493,6 +493,29 @@
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
 ;;
 ;;====================================
+;; MozRepl
+;;====================================
+;; ファイルセーブと同時に Firefox をリロード
+(when (require 'moz nil t)
+  (defun auto-reload-firefox-on-after-save-hook ()
+    (add-hook 'after-save-hook
+	      '(lambda ()
+		 (interactive)
+		 (comint-send-string
+		  (inferior-moz-process)
+		  ;; URLのホスト部が localhost:3000 の場合のみリロード
+		  "if (content.location.host == \"localhost:3000\") { BrowserReload(); }"))
+	      'append 'local))
+  ;; MozRepl の待ち受けポートを変えた場合に適宜変更
+  ;;(setq moz-repl-port 4242)
+  (add-hook 'php-mode-hook 'auto-reload-firefox-on-after-save-hook)
+  (add-hook 'html-mode-hook 'auto-reload-firefox-on-after-save-hook)
+  (add-hook 'css-mode-hook 'auto-reload-firefox-on-after-save-hook)
+  (add-hook 'haml-mode-hook 'auto-reload-firefox-on-after-save-hook)
+  (add-hook 'rhtml-mode-hook 'auto-reload-firefox-on-after-save-hook)
+  )
+;;
+;;====================================
 ;; 雑多な設定
 ;;====================================
 (require 'magit)                      ; Git for Emacs
