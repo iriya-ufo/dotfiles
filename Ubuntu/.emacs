@@ -84,10 +84,10 @@
 ;; 位置調整
 (setq initial-frame-alist
       (append (list
-	       '(width . 140)                  ; フレームの幅
+	       '(width . 80)                   ; フレームの幅
 	       '(height . 40)                  ; フレームの高さ
 	       '(top . 0)                      ; Y 表示位置
-	       '(left . 280)                   ; X 表示位置
+	       '(left . 480)                   ; X 表示位置
 	       )
 	      initial-frame-alist))
 (setq default-frame-alist initial-frame-alist)
