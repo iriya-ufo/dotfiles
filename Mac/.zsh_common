@@ -51,7 +51,8 @@ preexec() {
 ## alias 
 ##==============================
 # ls settings
-eval `gdircolors -b $HOME/.dir_colors`
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+eval `dircolors -b $HOME/.dir_colors`
 LS_OPTIONS='-v --show-control-chars -h --color=auto'
 #LS_OPTIONS="-G -B"
 alias ls="gls $LS_OPTIONS"
