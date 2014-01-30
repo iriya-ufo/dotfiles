@@ -49,3 +49,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # Android Studio
 export PATH=$PATH:$HOME/Downloads/android-studio/bin
+
+# mikutter
+export PATH=$PATH:$HOME/Downloads/mikutter
