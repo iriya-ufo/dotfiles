@@ -10,6 +10,7 @@
 	ci = commit
 	st = status
 	br = branch
+	log-graph = log --oneline --graph --decorate --branches
 [push]
 	default = simple
 [core]
