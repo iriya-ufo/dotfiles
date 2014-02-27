@@ -19,6 +19,10 @@ mcmd() {
         # PATH="/usr/lib/ccache/bin:$PATH" \
 }
 
+# git-escape-magic (cf. https://github.com/knu/zsh-git-escape-magic)
+autoload -Uz git-escape-magic
+git-escape-magic
+
 # gem function
 function gem() {
    $HOME/.rbenv/shims/gem $*
