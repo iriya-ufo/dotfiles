@@ -441,6 +441,8 @@
 ;; 雑多な設定
 ;;====================================
 (require 'magit)                          ; Git を使う
+(require 'uniquify)                       ; バッファの同一ファイル名を区別する
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (setq initial-scratch-message             ; Scratch バッファの表示
 "
 This is Scratch Buffer.
