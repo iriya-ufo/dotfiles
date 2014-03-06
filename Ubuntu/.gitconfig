@@ -12,6 +12,7 @@
 [core]
 	pager = lv -c
 	excludesfile = /home/iriya/.global_ignore
+	editor = vim -c \"set fenc=utf-8\"
 [github]
 	user = iriya-ufo
 	token = 8ce5169a722b2ff20d1d6819ff4545b9
