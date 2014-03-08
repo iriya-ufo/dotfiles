@@ -52,3 +52,7 @@ export PATH=$PATH:$HOME/Downloads/android-studio/bin
 
 # mikutter
 export PATH=$PATH:$HOME/Downloads/mikutter
+
+# nvm
+source ~/.nvm/nvm.sh
+nvm use 0.11 >/dev/null
