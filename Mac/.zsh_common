@@ -54,7 +54,6 @@ preexec() {
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 eval `dircolors -b $HOME/.dir_colors`
 LS_OPTIONS='-v --show-control-chars -h --color=auto'
-#LS_OPTIONS="-G -B"
 alias ls="gls $LS_OPTIONS"
 alias ll="gls -l $LS_OPTIONS"
 alias la="gls -A $LS_OPTIONS"
@@ -66,8 +65,6 @@ alias df='df -h'
 alias du='du -h'
 alias pd=popd
 alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
-alias lv='lv -c'
-export PAGER=lv
 
 alias -g L="| $PAGER"
 alias -g G="| grep"
@@ -81,6 +78,10 @@ alias -s eps=gv
 alias -s dvi=dvipdfmx
 alias -s tex=platex
 alias -s pdf=gv
+
+alias lv='lv -c'
+export PAGER=lv
+export LV='-z -la -Ou8 -c'
 
 ##==============================
 ## 補完
