@@ -32,6 +32,7 @@
 	      (set-buffer-file-coding-system 'utf-8))))
 (set-language-environment "Japanese")
 (setq default-input-method "MacOSX")
+(prefer-coding-system 'utf-8)
 ;;
 ;;====================================
 ;; keyboard
