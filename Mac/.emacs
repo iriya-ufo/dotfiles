@@ -371,6 +371,7 @@
 (global-rinari-mode)
 ;; rhtml-mode
 (when (require 'rhtml-mode nil t)
+  (add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
   (add-hook 'rhtml-mode-hook
 	    (lambda () (rinari-launch))))
 ;; yaml-mode
