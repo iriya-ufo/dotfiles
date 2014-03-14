@@ -1,6 +1,7 @@
 set nocompatible
 filetype off
 syntax on
+colo desert
 
 " 日本語の設定
 set enc=utf8
