@@ -2,6 +2,7 @@
 " 色の設定
 " -------------------
 syntax on
+colo desert
 
 " 全角スペースを視覚化
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=white
