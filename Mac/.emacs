@@ -214,7 +214,7 @@
 ;;====================================
 ;; Scheme
 ;;====================================
-(setq scheme-program-name "gosh")
+(setq scheme-program-name "/usr/local/bin/gosh -i")
 (require 'cmuscheme)
 
 (defun scheme-other-window ()
