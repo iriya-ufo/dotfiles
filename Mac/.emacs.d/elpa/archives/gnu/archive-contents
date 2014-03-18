@@ -6,9 +6,9 @@
 		   ("tools" "processes" "convenience"))
 	(:url . "https://github.com/leoliu/ack-el"))])
  (ada-mode .
-	   [(5 1 0)
+	   [(5 1 1)
 	    ((wisi
-	      (1 0 1))
+	      (1 0 2))
 	     (cl-lib
 	      (0 4))
 	     (emacs
@@ -54,7 +54,7 @@
 		(:keywords quote
 			   ("coffeescript" "major" "mode")))])
  (company .
-	  [(0 7)
+	  [(0 7 1)
 	   nil "Modular in-buffer completion framework" tar
 	   ((:keywords quote
 		       ("abbrev" "convenience" "matching"))
@@ -259,7 +259,7 @@
 	    ((:url . "http://elpa.gnu.org/packages/omn-mode.html")
 	     (:keywords quote nil))])
  (org .
-      [(20140310)
+      [(20140317)
        nil "Outline-based notes management and organizer" tar nil])
  (quarter-plane .
 		[(0 1)
@@ -388,7 +388,7 @@
 	       (:keywords quote
 			  ("window")))])
  (wisi .
-       [(1 0 1)
+       [(1 0 2)
 	((cl-lib
 	  (0 4))
 	 (emacs

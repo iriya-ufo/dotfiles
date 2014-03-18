@@ -16,6 +16,12 @@
   (add-to-list 'load-path default-directory)
   (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
       (normal-top-level-add-subdirs-to-load-path)))
+;; exec-path が GUI で正しく引き継がれない問題を解決
+(let ((path-str
+       (replace-regexp-in-string
+	"\n+$" "" (shell-command-to-string "echo $PATH"))))
+  (setenv "PATH" path-str)
+  (setq exec-path (nconc (split-string path-str ":") exec-path)))
 ;;
 ;;===================================
 ;; Language
@@ -479,6 +485,26 @@
 ;; auto-complete と衝突するので無効にする
 ;(require 'yasnippet)
 ;(yas-global-mode 1)
+;;
+;;====================================
+;; cmigemo
+;;====================================
+;; 日本語のインクリメンタル検索
+(require 'migemo)
+(setq migemo-command "cmigemo")
+(setq migemo-options '("-q" "--emacs"))
+(setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
+(setq migemo-user-dictionary nil)
+(setq migemo-regex-dictionary nil)
+(setq migemo-coding-system 'utf-8-unix)
+(load-library "migemo")
+(migemo-init)
+;; emacs 起動時は英数モードから始める
+(add-hook 'after-init-hook 'mac-change-language-to-us)
+;; minibuffer 内は英数モードにする
+(add-hook 'minibuffer-setup-hook 'mac-change-language-to-us)
+;; [migemo]isearch のとき IME を英数モードにする
+(add-hook 'isearch-mode-hook 'mac-change-language-to-us)
 ;;
 ;;====================================
 ;; MozRepl
