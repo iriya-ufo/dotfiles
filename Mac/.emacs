@@ -549,20 +549,15 @@ This is Scratch Buffer.
 (setq frame-title-format  	          ; フレームのタイトル指定
       (concat "%b - emacs@" system-name))
 (show-paren-mode 1) 	  	          ; 対応する括弧を光らせる
+(electric-pair-mode t)                    ; 括弧の自動入力
 (global-set-key "\C-cc" 'compile)         ; C-c cでコンパイル
 (transient-mark-mode t)		          ; リージョンの色つけ
 (setq-default truncate-lines t)           ; 行を折り返さない
 (set-scroll-bar-mode 'right)	          ; スクロールバーを右にセット
 (mouse-avoidance-mode 'exile)             ; カーソルが近付いたとき右上隅に移動,その後復帰
 (setq inhibit-startup-message t)          ; 起動時にロゴ非表示
-;;------------------------------------
 (menu-bar-mode 0)                         ; メニューバーを消す
 (tool-bar-mode 0)                         ; ツールバーを消す
-;; 起動中に表示の ON OFF を切り替えるには,それぞれ
-;; M-x menu-bar-mode
-;; M-x tool-bar-mode
-;; と打てばよい
-;;------------------------------------
 ;;
 ;;====================================
 ;; sdic-mode 英和-和英辞書
