@@ -543,7 +543,8 @@ This is Scratch Buffer.
 (put 'narrow-to-region 'disabled nil)     ; ナローイングの有効化
 (global-font-lock-mode t) 	          ; 文字の色つけ
 (display-time)            	          ; 時計を表示
-(setq line-number-mode t) 	          ; カーソルのある行番号を表示
+(global-linum-mode t)                     ; 全体の行番号を表示
+(line-number-mode t) 	                  ; カーソルのある行番号を表示
 (column-number-mode t)	 	          ; カーソルのある桁番号を表示
 (auto-compression-mode t) 	          ; 日本語infoの文字化け防止
 (setq frame-title-format  	          ; フレームのタイトル指定
