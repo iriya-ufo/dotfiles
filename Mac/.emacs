@@ -545,6 +545,8 @@ This is Scratch Buffer.
 (put 'narrow-to-region 'disabled nil)     ; ナローイングの有効化
 (global-font-lock-mode t) 	          ; 文字の色つけ
 (setq-default show-trailing-whitespace t) ; 行末の空白を表示
+(setq-default tab-width 2)                ; タブ文字の幅を設定
+(setq-default indent-tabs-mode nil)       ; インデント文字をタブではなく空白に設定
 (display-time)            	          ; 時計を表示
 (global-linum-mode t)                     ; 全体の行番号を表示
 (line-number-mode t) 	                  ; カーソルのある行番号を表示
