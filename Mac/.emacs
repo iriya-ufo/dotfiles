@@ -128,7 +128,7 @@
 ;;====================================
 ;; ~/.emacs.d に auto-save-buffers.el を置く
 (require 'auto-save-buffers)
-(run-with-idle-timer 0.5 t 'auto-save-buffers) 
+(run-with-idle-timer 0.5 t 'auto-save-buffers)
 ;; バックアップファイル(file~)を作らない
 (setq make-backup-files nil)
 ;;
@@ -544,6 +544,7 @@ This is Scratch Buffer.
 (cd "~/")                                 ; ホームディレクトリより開始
 (put 'narrow-to-region 'disabled nil)     ; ナローイングの有効化
 (global-font-lock-mode t) 	          ; 文字の色つけ
+(setq-default show-trailing-whitespace t) ; 行末の空白を表示
 (display-time)            	          ; 時計を表示
 (global-linum-mode t)                     ; 全体の行番号を表示
 (line-number-mode t) 	                  ; カーソルのある行番号を表示
