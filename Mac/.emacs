@@ -478,6 +478,9 @@
 ;;====================================
 (require 'helm-config)
 (helm-mode 1)
+;; Disable helm in some functions
+(add-to-list 'helm-completing-read-handlers-alist '(find-alternate-file . nil))
+(add-to-list 'helm-completing-read-handlers-alist '(find-file . nil))
 ;; Key define
 (global-set-key (kbd "C-c h") 'helm-mini)
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
