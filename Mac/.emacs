@@ -505,6 +505,34 @@
   "Execute command only if CANDIDATE exists"
   (when (file-exists-p candidate)
     ad-do-it))
+;; Transform the pattern to reflect my intention
+(defadvice helm-ff-transform-fname-for-completion (around my-transform activate)
+  "Transform the pattern to reflect my intention"
+  (let* ((pattern (ad-get-arg 0))
+         (input-pattern (file-name-nondirectory pattern))
+         (dirname (file-name-directory pattern)))
+    (setq input-pattern (replace-regexp-in-string "\\." "\\\\." input-pattern))
+    (setq ad-return-value
+          (concat dirname
+                  (if (string-match "^\\^" input-pattern)
+                      ;; '^' is a pattern for basename
+                      ;; and not required because the directory name is prepended
+                      (substring input-pattern 1)
+                    (concat ".*" input-pattern))))))
+;; Escape '.' to match '.' instead of an arbitrary character
+(defun helm-buffers-list-pattern-transformer (pattern)
+  (if (equal pattern "")
+      pattern
+    (setq pattern (replace-regexp-in-string "\\." "\\\\." pattern))
+    (let ((first-char (substring pattern 0 1)))
+      (cond ((equal first-char "*")
+             (concat " " pattern))
+            ((equal first-char "=")
+             (concat "*" (substring pattern 1)))
+            (t
+             pattern)))))
+(add-to-list 'helm-source-buffers-list
+             '(pattern-transformer helm-buffers-list-pattern-transformer))
 ;;
 ;;====================================
 ;; Yasnippet
