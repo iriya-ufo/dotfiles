@@ -3,9 +3,10 @@
 
 (setq mc/cmds-to-run-for-all
       '(
-	kill-region
-	))
+        helm-confirm-and-exit-minibuffer
+        kill-region
+        ))
 
 (setq mc/cmds-to-run-once
       '(
-	))
+        ))
