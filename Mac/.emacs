@@ -552,6 +552,19 @@
              pattern)))))
 (add-to-list 'helm-source-buffers-list
              '(pattern-transformer helm-buffers-list-pattern-transformer))
+;; 選択範囲を isearch
+(defadvice isearch-mode (around isearch-mode-default-string (forward &optional regexp op-fun recursive-edit word-p) activate)
+  (if (and transient-mark-mode mark-active (not (eq (mark) (point))))
+      (progn
+        (isearch-update-ring (buffer-substring-no-properties (mark) (point)))
+        (deactivate-mark)
+        ad-do-it
+        (if (not forward)
+            (isearch-repeat-backward)
+          (goto-char (mark))
+          (isearch-repeat-forward)))
+    ad-do-it))
+(define-key isearch-mode-map (kbd "C-o") 'helm-occur-from-isearch)
 ;;
 ;;====================================
 ;; Yasnippet
@@ -615,23 +628,23 @@ This is Scratch Buffer.
 ")
 (cd "~/")                                 ; ホームディレクトリより開始
 (put 'narrow-to-region 'disabled nil)     ; ナローイングの有効化
-(global-font-lock-mode t) 	          ; 文字の色つけ
+(global-font-lock-mode t) 	              ; 文字の色つけ
 (setq-default show-trailing-whitespace t) ; 行末の空白を表示
 (setq-default tab-width 2)                ; タブ文字の幅を設定
 (setq-default indent-tabs-mode nil)       ; インデント文字をタブではなく空白に設定
-(display-time)            	          ; 時計を表示
+(display-time)            	              ; 時計を表示
 (global-linum-mode t)                     ; 全体の行番号を表示
-(line-number-mode t) 	                  ; カーソルのある行番号を表示
-(column-number-mode t)	 	          ; カーソルのある桁番号を表示
-(auto-compression-mode t) 	          ; 日本語infoの文字化け防止
-(setq frame-title-format  	          ; フレームのタイトル指定
+(line-number-mode t) 	                    ; カーソルのある行番号を表示
+(column-number-mode t)	 	                ; カーソルのある桁番号を表示
+(auto-compression-mode t) 	              ; 日本語infoの文字化け防止
+(setq frame-title-format  	              ; フレームのタイトル指定
       (concat "%b - emacs@" system-name))
-(show-paren-mode 1) 	  	          ; 対応する括弧を光らせる
+(show-paren-mode 1) 	  	                ; 対応する括弧を光らせる
 (electric-pair-mode t)                    ; 括弧の自動入力
 (global-set-key "\C-cc" 'compile)         ; C-c cでコンパイル
-(transient-mark-mode t)		          ; リージョンの色つけ
+(transient-mark-mode t)		                ; リージョンの色つけ
 (setq-default truncate-lines t)           ; 行を折り返さない
-(set-scroll-bar-mode 'right)	          ; スクロールバーを右にセット
+(set-scroll-bar-mode 'right)	            ; スクロールバーを右にセット
 (mouse-avoidance-mode 'exile)             ; カーソルが近付いたとき右上隅に移動,その後復帰
 (setq inhibit-startup-message t)          ; 起動時にロゴ非表示
 (menu-bar-mode 0)                         ; メニューバーを消す
