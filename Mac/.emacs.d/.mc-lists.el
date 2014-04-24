@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        dabbrev-expand
         helm-confirm-and-exit-minibuffer
         kill-region
         ))
