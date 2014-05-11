@@ -1,6 +1,6 @@
 source $HOME/.zsh_common
 export PATH=/usr/local/bin:/usr/texbin:$PATH
-fpath=(~/.zsh/functions/Completion /usr/local/share/zsh/functions ${fpath})
+fpath=(~/.zsh/functions/Completion(N-/) /usr/local/share/zsh/functions ${fpath})
 
 alias -g LC='|lv|cat'
 alias -g bitread="cat <<EOF | gosh bitcode.scm | nkf -w"
