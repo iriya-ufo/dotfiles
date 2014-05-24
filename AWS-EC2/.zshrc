@@ -1,5 +1,5 @@
 source $HOME/.zsh_common
-fpath=(~/.zsh/functions/Completion(N-/) /usr/local/share/zsh/functions ${fpath})
+fpath=(~/.zsh/functions/Completion(N-/) ${fpath})
 
 alias -g LC='|lv|cat'
 
@@ -16,16 +16,6 @@ mcmd() {
 autoload -Uz git-escape-magic
 git-escape-magic
 
-# gem function
-function gem() {
-   $HOME/.rbenv/shims/gem $*
-   if [ "$1" = "install" ] || [ "$1" = "i" ] || [ "$1" = "uninstall" ] || [ "$1" = "uni" ]
-   then
-      rbenv rehash
-      rehash
-   fi
-}
-
 function cdup() {
     echo
     cd ..
@@ -33,9 +23,6 @@ function cdup() {
 }
 
 zle -N cdup
-
-# rbenv
-eval "$(rbenv init -)"
 
 # VCS Setting 
 autoload -Uz vcs_info
