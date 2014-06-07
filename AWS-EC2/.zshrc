@@ -1,4 +1,5 @@
 source $HOME/.zsh_common
+source ~/.profile
 fpath=(~/.zsh/functions/Completion(N-/) ${fpath})
 
 alias -g LC='|lv|cat'
@@ -32,3 +33,5 @@ precmd () {
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 RPROMPT="%1(v|%F{green}%1v%f|)"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
