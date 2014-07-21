@@ -1,6 +1,9 @@
 source $HOME/.zsh_common
-export PATH=/usr/local/bin:/usr/texbin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/texbin:$PATH
 fpath=(~/.zsh/functions/Completion(N-/) /usr/local/share/zsh/functions ${fpath})
+
+# 重複した PATH の削除
+typeset -U path PATH
 
 alias -g LC='|lv|cat'
 alias -g bitread="cat <<EOF | gosh bitcode.scm | nkf -w"
