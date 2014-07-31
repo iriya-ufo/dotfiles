@@ -1,4 +1,5 @@
 source $HOME/.zsh_common
+source $HOME/.zsh/functions/Completion/zsh-bundle-exec/zsh-bundle-exec.zsh
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/texbin:$PATH
 fpath=(~/.zsh/functions/Completion(N-/) /usr/local/share/zsh/functions ${fpath})
 # 重複した PATH の削除
