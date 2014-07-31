@@ -10,6 +10,7 @@ alias gosh="rlwrap -b '(){}[],#;| ' gosh"
 alias updatedb='sudo /usr/libexec/locate.updatedb'
 alias diff='colordiff -u'
 alias swift='xcrun /Applications/Xcode6-Beta4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift'
+alias be='bundle exec'
 
 keychain ~/.ssh/id_dsa
 . $HOME/.keychain/$HOST-sh
