@@ -21,6 +21,7 @@ set incsearch
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/
 
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
 set number
 set backspace=eol,start
 set history=200
