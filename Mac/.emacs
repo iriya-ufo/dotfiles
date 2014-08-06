@@ -69,7 +69,7 @@
 (setq initial-frame-alist
       (append (list
 	       '(width . 175)                  ; フレームの幅
-	       '(height . 47)                  ; フレームの高さ
+	       '(height . 49)                  ; フレームの高さ
 	       '(top . 0)                      ; Y 表示位置
 	       '(left . 0)                     ; X 表示位置
 	       )
@@ -79,10 +79,10 @@
 ;; フォント設定
 ;; 使用可能フォント一覧の見方 (ターミナル上で)
 ;; fc-list
-(create-fontset-from-ascii-font "Monaco-14:weight=normal:slant=normal" nil "monaco")
+(create-fontset-from-ascii-font "Monaco-13:weight=normal:slant=normal" nil "monaco")
 (set-fontset-font "fontset-monaco"
                   'unicode
-                  (font-spec :family "Hiragino Mincho ProN" :size 16)
+                  (font-spec :family "Hiragino Mincho ProN" :size 14)
                   nil
                   'append)
 (add-to-list 'default-frame-alist '(font . "fontset-monaco"))
