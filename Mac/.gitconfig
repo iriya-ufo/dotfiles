@@ -17,3 +17,4 @@
 	pager = lv -c
 	excludesfile = /Users/iriya/.global_ignore
 	precomposeunicode = true
+	editor = vim
