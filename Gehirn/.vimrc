@@ -45,5 +45,6 @@ set listchars=tab:\ \ ,extends:<,trail:\
 set laststatus=2
 set directory=/tmp
 set wildmode=full:list
+set number
 
 set statusline=[%L]\ %t\ %y%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%r%m%=%c:%l/%L
