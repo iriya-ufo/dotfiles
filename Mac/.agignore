@@ -1,0 +1,7 @@
+*.swp
+*.sql
+*.tags*
+*.tmp*
+*.old
+*.pdf
+*.log
