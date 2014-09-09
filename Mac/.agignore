@@ -1,3 +1,4 @@
+*~
 *.swp
 *.sql
 *.tags*
@@ -5,3 +6,8 @@
 *.old
 *.pdf
 *.log
+.git
+.svn
+jquery-*.js
+jquery.js
+zsh-completions
