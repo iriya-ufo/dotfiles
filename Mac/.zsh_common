@@ -85,7 +85,7 @@ export LV='-z -la -Ou8 -c'
 ##==============================
 ## 補完
 ##==============================
-autoload -U compinit ; compinit
+autoload -U compinit ; compinit -u
 
 zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
