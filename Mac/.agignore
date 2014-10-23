@@ -11,3 +11,4 @@
 jquery-*.js
 jquery.js
 zsh-completions
+vendor/bundle
