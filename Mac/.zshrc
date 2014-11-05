@@ -12,7 +12,7 @@ alias diff='colordiff -u'
 alias swift='xcrun /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift'
 alias be='bundle exec'
 
-keychain ~/.ssh/id_dsa
+keychain ~/.ssh/id_dsa ~/.ssh/id_rsa
 . $HOME/.keychain/$HOST-sh
 
 bindkey -e
