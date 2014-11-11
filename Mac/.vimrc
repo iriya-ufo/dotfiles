@@ -3,11 +3,9 @@ filetype off
 syntax on
 colo desert
 
-" 日本語の設定
-set enc=utf8
+" 文字コードの設定
 set encoding=utf8
-set fileencoding=utf-8
-set fileencodings=utf-8
+set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
 set termencoding=utf-8
 
 " 検索文字列が小文字の場合は大文字小文字を区別なく検索する(noignorecase)
