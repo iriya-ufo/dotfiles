@@ -422,8 +422,8 @@
 (when (require 'yaml-mode nil t)
   (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode)))
 ;; JavaScript
-(when (require 'js2-mode nil t)
-  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode)))
+(when (require 'js3-mode nil t)
+  (add-to-list 'auto-mode-alist '("\\.js$" . js3-mode)))
 ;; coffee-mode
 (when (require 'coffee-mode nil t)
   (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
