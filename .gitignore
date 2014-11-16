@@ -1,2 +1,3 @@
 # ignore files
 Mac/.emacs.d/.mc-lists.el
+Mac/.emacs.d/elpa/archives/
