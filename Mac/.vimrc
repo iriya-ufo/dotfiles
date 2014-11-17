@@ -5,7 +5,7 @@ colo desert
 
 " 文字コードの設定
 set encoding=utf8
-set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
+set fileencodings=utf-8,ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
 set termencoding=utf-8
 
 " 検索文字列が小文字の場合は大文字小文字を区別なく検索する(noignorecase)
