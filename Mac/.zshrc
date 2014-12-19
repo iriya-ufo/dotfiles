@@ -11,6 +11,7 @@ alias updatedb='sudo /usr/libexec/locate.updatedb'
 alias diff='colordiff -u'
 alias swift='xcrun /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift'
 alias be='bundle exec'
+alias man='env LANG=C man'
 
 keychain ~/.ssh/id_dsa ~/.ssh/id_rsa
 . $HOME/.keychain/$HOST-sh
