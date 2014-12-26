@@ -3,6 +3,7 @@ fpath=(~/.zsh/functions/Completion(N-/) /usr/local/share/zsh-completions /usr/lo
 # 重複した PATH の削除
 typeset -U path PATH
 source $HOME/.zsh_common
+autoload -Uz cd-gitroot
 
 alias -g LC='|lv|cat'
 alias -g bitread="cat <<EOF | gosh bitcode.scm | nkf -w"
