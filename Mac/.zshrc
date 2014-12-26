@@ -39,14 +39,6 @@ function gem() {
    fi
 }
 
-function cdup() {
-    echo
-    cd ..
-    zle reset-prompt
-}
-
-zle -N cdup
-
 # rbenv
 eval "$(rbenv init -)"
 
