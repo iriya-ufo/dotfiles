@@ -13,6 +13,7 @@ alias diff='colordiff -u'
 alias swift='xcrun /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift'
 alias be='bundle exec'
 alias man='env LANG=C man'
+alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
 
 keychain ~/.ssh/id_dsa ~/.ssh/id_rsa
 . $HOME/.keychain/$HOST-sh
