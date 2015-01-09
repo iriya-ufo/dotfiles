@@ -48,3 +48,40 @@ if has("autocmd")
         \   exe "normal g`\"" |
         \ endif
 endif
+
+" Markdown モードの設定
+if has("autocmd")
+  augroup MyAutoCmd
+    autocmd!
+    " md 等の拡張子を Markdown と判断させるための設定
+    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+    " イタリックフォントを無効にする設定
+    autocmd FileType markdown hi! def link markdownItalic Normal
+  augroup END
+endif
+
+" ソースコードをハイライトするための設定
+" 設定例：
+" ```erb
+" <%= @movie.title %>
+" ```
+" ```ruby
+" class MyClass
+" end
+" ```
+"
+let g:markdown_fenced_languages = [
+\  'coffee',
+\  'css',
+\  'erb=eruby',
+\  'javascript',
+\  'js=javascript',
+\  'json=javascript',
+\  'ruby',
+\  'xml',
+\  'zsh',
+\  'scala',
+\  'java',
+\  'c',
+\  'php'
+\]
