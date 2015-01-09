@@ -53,11 +53,9 @@
 ;; 改行キーでオートインデントさせる
 (global-set-key "\C-m" 'newline-and-indent)
 (global-set-key "\C-j" 'newline)
-;; C-x p で逆向きへのウィンドウ移動
-(global-set-key "\C-xp" (lambda () (interactive) (other-window -1)))
 ;;
 ;;====================================
-;; テーマ,位置,フォントなど
+;; テーマ・位置・ウィンドウ・フォント
 ;;====================================
 ;; カスタムテーマは ~/.emacs.d/themes 配下に置く
 (setq custom-theme-directory "~/.emacs.d/themes/")
@@ -75,6 +73,32 @@
 	       )
 	      initial-frame-alist))
 (setq default-frame-alist initial-frame-alist)
+
+;; ウィンドウ分割を賢くする
+(defun split-window-vertically-n (num_wins)
+  (interactive "p")
+  (if (= num_wins 2)
+      (split-window-vertically)
+    (progn
+      (split-window-vertically
+       (- (window-height) (/ (window-height) num_wins)))
+      (split-window-vertically-n (- num_wins 1)))))
+(defun split-window-horizontally-n (num_wins)
+  (interactive "p")
+  (if (= num_wins 2)
+      (split-window-horizontally)
+    (progn
+      (split-window-horizontally
+       (- (window-width) (/ (window-width) num_wins)))
+      (split-window-horizontally-n (- num_wins 1)))))
+(defun other-window-or-split ()
+  (interactive)
+  (when (one-window-p)
+    (if (>= (window-body-width) 270)
+        (split-window-horizontally-n 3)
+      (split-window-horizontally)))
+  (other-window 1))
+(global-set-key (kbd "C-t") 'other-window-or-split)
 
 ;; フォント設定
 ;; 使用可能フォント一覧の見方 (ターミナル上で)
