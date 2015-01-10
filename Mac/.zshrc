@@ -1,5 +1,5 @@
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-export PATH=/usr/local/texlive/2011/bin/x86_64-darwin:/usr/texbin:$PATH
+export PATH=/usr/local/texlive/2014/bin/x86_64-darwin:/usr/texbin:$PATH
 fpath=(~/.zsh/functions/Completion(N-/) /usr/local/share/zsh-completions /usr/local/share/zsh/functions ${fpath})
 # 重複した PATH の削除
 typeset -U path PATH
