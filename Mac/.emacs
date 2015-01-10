@@ -513,34 +513,24 @@
 ;;====================================
 ;; AUCTeX
 ;;====================================
+(auctex-latexmk-setup)
 (setq TeX-default-mode 'japanese-latex-mode)
 (setq japanese-LaTeX-command-default "pLaTeX")
 (setq japanese-LaTeX-default-style "jsarticle")
-(setq TeX-output-view-style '(("^dvi$" "." "xdvi '%d'")))
-(setq preview-image-type 'dvipng)
 (setq TeX-file-extensions '("tex" "sty" "cls" "ltx" "texi" "texinfo" "dtx"))
-(setq LaTeX-clean-intermediate-suffixes '("\\.aux" "\\.log" "\\.out" "\\.toc" "\\.brf" "\\.nav" "\\.snm"))
-(setq TeX-view-program-list '(("TeXShop" "open -a TeXShop.app %o")
-                              ("open" "open %o")
-                              ))
-(setq TeX-view-program-selection '((output-pdf "TeXShop")
-                                   (output-html "open")
-                                   ))
+(setq LaTeX-clean-intermediate-suffixes '("\\.aux" "\\.log" "\\.out" "\\.toc" "\\.brf"
+                                          "\\.nav" "\\.snm" "\\.fls" "\\.fdb_latexmk"))
 (add-hook 'LaTeX-mode-hook (function (lambda ()
   (add-to-list 'TeX-command-list
-    '("pLaTeX" "%(PDF)platex %`%S%(PDFout)%(mode)%' %t"
-     TeX-run-TeX nil (latex-mode) :help "Run ASCII pLaTeX"))
-  (add-to-list 'TeX-command-list
-    '("dvi" "dvipdfmx -V 4 '%s' " TeX-run-command t nil))
-  (add-to-list 'TeX-command-list
-    '("pdf" "open -a TeXShop.app '%s.pdf' " TeX-run-command t nil))
-)))
+    '("pdf" "open -a preview '%s.pdf' " TeX-run-command t nil)))))
 (setq kinsoku-limit 10)
 (setq LaTeX-indent-level 4)
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq preview-image-type 'dvipng)
 (setq reftex-plug-into-AUCTeX t)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (add-hook 'LaTeX-mode-hook 'visual-line-mode)
 (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+(add-hook 'LaTeX-mode-hook 'flyspell-mode)
 ;;
 ;;====================================
 ;; Helm (anything.el)
