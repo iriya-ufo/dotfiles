@@ -170,6 +170,7 @@
 (add-to-list 'ac-modes 'haml-mode)
 (add-to-list 'ac-modes 'swift-mode)
 (add-to-list 'ac-modes 'web-mode)
+(add-to-list 'ac-modes 'latex-mode)
 ;; 4文字以上の際に補完を開始する
 (setq ac-auto-start 4)
 ;;
