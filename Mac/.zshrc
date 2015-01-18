@@ -6,6 +6,11 @@ typeset -U path PATH
 source $HOME/.zsh_common
 autoload -Uz cd-gitroot
 
+if [[ $(uname) = "Darwin" ]]; then
+   alias ldd="echo ldd is not on OSX. use otool -L."
+   alias strace="echo strace is not on OSX. use dtruss"
+fi
+
 alias -g LC='|lv|cat'
 alias -g bitread="cat <<EOF | gosh bitcode.scm | nkf -w"
 alias gosh="rlwrap -b '(){}[],#;| ' gosh"
