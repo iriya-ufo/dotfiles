@@ -520,7 +520,8 @@
 (setq japanese-LaTeX-default-style "jsarticle")
 (setq TeX-file-extensions '("tex" "sty" "cls" "ltx" "texi" "texinfo" "dtx"))
 (setq LaTeX-clean-intermediate-suffixes '("\\.aux" "\\.log" "\\.out" "\\.toc" "\\.brf"
-                                          "\\.nav" "\\.snm" "\\.fls" "\\.fdb_latexmk"))
+                                          "\\.nav" "\\.snm" "\\.fls" "\\.fdb_latexmk"
+                                          "\\.idx" "\\.ilg" "\\.ind"))
 (add-hook 'LaTeX-mode-hook (function (lambda ()
   (add-to-list 'TeX-command-list
     '("pdf" "open -a preview '%s.pdf' " TeX-run-command t nil)))))
