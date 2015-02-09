@@ -256,7 +256,20 @@
 (setq interpreter-mode-alist (cons '("python" . python-mode)
 				   interpreter-mode-alist))
 (autoload 'python-mode "python-mode" "Python editing mode." t)
-;; F1 m でヘルプ参照
+;;
+;;====================================
+;; Common Lisp
+;;====================================
+;; デフォルト処理系の設定
+(setq inferior-lisp-program "/usr/local/ccl/dx86cl64")
+;; slime の設定
+(require 'slime)
+(slime-setup '(slime-repl slime-fancy slime-banner slime-indentation))
+(setq slime-net-coding-system 'utf-8-unix)
+;; slime の補完
+(require 'ac-slime)
+(add-hook 'slime-mode-hook 'set-up-slime-ac)
+(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 ;;
 ;;====================================
 ;; Scheme
