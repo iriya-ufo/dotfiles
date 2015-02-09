@@ -22,6 +22,7 @@ alias man='env LANG=C man'
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
 alias top='htop'
 alias sbcl='rlwrap sbcl'
+alias ccl='rlwrap /usr/local/ccl/dx86cl64'
 
 keychain ~/.ssh/id_dsa ~/.ssh/id_rsa
 . $HOME/.keychain/$HOST-sh
