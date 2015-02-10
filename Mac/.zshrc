@@ -4,6 +4,10 @@ fpath=(~/.zsh/functions/Completion(N-/) /usr/local/share/zsh-completions /usr/lo
 # 重複した PATH の削除
 typeset -U path PATH
 source $HOME/.zsh_common
+
+# 環境変数
+export RLWRAP_HOME='/Users/iriya/.rlwrap'
+
 autoload -Uz cd-gitroot
 
 if [[ $(uname) = "Darwin" ]]; then
