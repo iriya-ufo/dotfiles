@@ -267,9 +267,9 @@
 (slime-setup '(slime-repl slime-fancy slime-banner slime-indentation))
 (setq slime-net-coding-system 'utf-8-unix)
 ;; slime の補完
-;; (require 'ac-slime)
-;; (add-hook 'slime-mode-hook 'set-up-slime-ac)
-;; (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+(require 'ac-slime)
+(add-hook 'slime-mode-hook 'set-up-slime-ac)
+(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 ;;
 ;;====================================
 ;; Scheme
