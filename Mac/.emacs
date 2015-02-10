@@ -630,8 +630,8 @@
 ;;====================================
 ;; Yasnippet
 ;;====================================
-(require 'yasnippet)
-(yas-global-mode 1)
+;(require 'yasnippet)
+;(yas-global-mode 1)
 ;;
 ;;====================================
 ;; cmigemo
