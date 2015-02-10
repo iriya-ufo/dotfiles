@@ -16,8 +16,10 @@ if [[ $(uname) = "Darwin" ]]; then
 fi
 
 alias -g LC='|lv|cat'
-alias -g bitread="cat <<EOF | gosh bitcode.scm | nkf -w"
 alias gosh="rlwrap -b '(){}[],#;| ' gosh"
+alias -g bitread="cat <<EOF | gosh bitcode.scm | nkf -w"
+alias sbcl="rlwrap -b '(){}[].,#@;| ' sbcl"
+alias ccl="rlwrap -b '(){}[].,#@;| ' /usr/local/ccl/dx86cl64"
 alias updatedb='sudo /usr/libexec/locate.updatedb'
 alias diff='colordiff -u'
 alias swift='xcrun /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift'
@@ -25,8 +27,6 @@ alias be='bundle exec'
 alias man='env LANG=C man'
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
 alias top='htop'
-alias sbcl='rlwrap sbcl'
-alias ccl='rlwrap /usr/local/ccl/dx86cl64'
 
 keychain ~/.ssh/id_dsa ~/.ssh/id_rsa
 . $HOME/.keychain/$HOST-sh
