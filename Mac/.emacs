@@ -112,6 +112,25 @@
 (add-to-list 'default-frame-alist '(font . "fontset-monaco"))
 ;;
 ;;====================================
+;; popwin
+;;====================================
+(require 'popwin)
+(popwin-mode 1)
+;; M-x dired-jump-other-window
+(push '(dired-mode :position top) popwin:special-display-config)
+;; M-x compile
+(push '(compilation-mode :noselect t) popwin:special-display-config)
+;; slime
+(push "*slime-apropos*" popwin:special-display-config)
+(push "*slime-macroexpansion*" popwin:special-display-config)
+(push "*slime-description*" popwin:special-display-config)
+(push '("*slime-compilation*" :noselect t) popwin:special-display-config)
+(push "*slime-xref*" popwin:special-display-config)
+(push '(sldb-mode :stick t) popwin:special-display-config)
+(push 'slime-repl-mode popwin:special-display-config)
+(push 'slime-connection-list-mode popwin:special-display-config)
+;;
+;;====================================
 ;; 括弧の色を薄くする
 ;;====================================
 ;; 小括弧 () の色を定義
