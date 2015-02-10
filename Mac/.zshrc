@@ -7,6 +7,7 @@ source $HOME/.zsh_common
 
 # 環境変数
 export RLWRAP_HOME='/Users/iriya/.rlwrap'
+export BREAK_CHARS="\"#'(),;\`\\|!?[]{}"
 
 autoload -Uz cd-gitroot
 
@@ -18,8 +19,8 @@ fi
 alias -g LC='|lv|cat'
 alias gosh="rlwrap -b '(){}[],#;| ' gosh"
 alias -g bitread="cat <<EOF | gosh bitcode.scm | nkf -w"
-alias sbcl="rlwrap -b '(){}[].,#@;| ' sbcl"
-alias ccl="rlwrap -b '(){}[].,#@;| ' /usr/local/ccl/dx86cl64"
+alias sbcl="rlwrap -b \$BREAK_CHARS sbcl"
+alias ccl="rlwrap -b \$BREAK_CHARS /usr/local/ccl/dx86cl64"
 alias updatedb='sudo /usr/libexec/locate.updatedb'
 alias diff='colordiff -u'
 alias swift='xcrun /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift'
