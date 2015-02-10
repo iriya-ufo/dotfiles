@@ -630,9 +630,8 @@
 ;;====================================
 ;; Yasnippet
 ;;====================================
-;; auto-complete と衝突するので無効にする
-;(require 'yasnippet)
-;(yas-global-mode 1)
+(require 'yasnippet)
+(yas-global-mode 1)
 ;;
 ;;====================================
 ;; cmigemo
