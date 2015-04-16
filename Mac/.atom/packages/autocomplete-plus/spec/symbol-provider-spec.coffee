@@ -2,152 +2,294 @@
 {triggerAutocompletion, buildIMECompositionEvent, buildTextInputEvent} = require './spec-helper'
 _ = require 'underscore-plus'
 
-indexOfWord = (suggestionList, word) ->
-  for suggestion, i in suggestionList
-    return i if suggestion.text is word
-  -1
-
 suggestionForWord = (suggestionList, word) ->
-  for suggestion in suggestionList
-    return suggestion if suggestion.text is word
-  null
+  suggestionList.getSymbol(word)
+
+suggestionsForPrefix = (provider, editor, prefix, options) ->
+  bufferPosition = editor.getCursorBufferPosition()
+  scopeDescriptor = editor.getLastCursor().getScopeDescriptor()
+  suggestions = provider.findSuggestionsForWord({editor, bufferPosition, prefix, scopeDescriptor})
+  if options?.raw
+    suggestions
+  else
+    (sug.text for sug in suggestions)
 
 describe 'SymbolProvider', ->
-  [completionDelay, editorView, editor, mainModule, autocompleteManager] = []
+  [completionDelay, editorView, editor, mainModule, autocompleteManager, provider] = []
 
   beforeEach ->
+    # Set to live completion
+    atom.config.set('autocomplete-plus.enableAutoActivation', true)
+    atom.config.set('autocomplete-plus.defaultProvider', 'Symbol')
+
+    # Set the completion delay
+    completionDelay = 100
+    atom.config.set('autocomplete-plus.autoActivationDelay', completionDelay)
+    completionDelay += 100 # Rendering delaya\
+
+    workspaceElement = atom.views.getView(atom.workspace)
+    jasmine.attachToDOM(workspaceElement)
+
+    waitsForPromise ->
+      Promise.all [
+        atom.workspace.open("sample.js").then (e) -> editor = e
+        atom.packages.activatePackage("language-javascript")
+        atom.packages.activatePackage("autocomplete-plus").then (a) -> mainModule = a.mainModule
+      ]
+
     runs ->
-      # Set to live completion
-      atom.config.set('autocomplete-plus.enableAutoActivation', true)
-      atom.config.set('autocomplete-plus.defaultProvider', 'Symbol')
+      autocompleteManager = mainModule.autocompleteManager
+      advanceClock 1
+      editorView = atom.views.getView(editor)
+      provider = autocompleteManager.providerManager.fuzzyProvider
 
-      # Set the completion delay
-      completionDelay = 100
-      atom.config.set('autocomplete-plus.autoActivationDelay', completionDelay)
-      completionDelay += 100 # Rendering delaya\
+  it "runs a completion ", ->
+    expect(suggestionForWord(provider.symbolStore, 'quicksort')).toBeTruthy()
 
-      workspaceElement = atom.views.getView(atom.workspace)
-      jasmine.attachToDOM(workspaceElement)
+  it "adds words to the symbol list after they have been written", ->
+    expect(suggestionsForPrefix(provider, editor, 'anew')).not.toContain 'aNewFunction'
 
+    editor.insertText('function aNewFunction(){};')
+    editor.insertText(' ')
+    advanceClock provider.changeUpdateDelay
 
-  afterEach ->
-    atom.config.set('autocomplete-plus.defaultProvider', 'Fuzzy')
+    expect(suggestionsForPrefix(provider, editor, 'anew')).toContain 'aNewFunction'
 
-  describe "when completing with the default configuration", ->
+  it "adds words after they have been added to a scope that is not a direct match for the selector", ->
+    expect(suggestionsForPrefix(provider, editor, 'some')).not.toContain 'somestring'
+
+    editor.insertText('abc = "somestring"')
+    editor.insertText(' ')
+    advanceClock provider.changeUpdateDelay
+
+    expect(suggestionsForPrefix(provider, editor, 'some')).toContain 'somestring'
+
+  it "removes words from the symbol list when they do not exist in the buffer", ->
+    editor.moveToBottom()
+    editor.moveToBeginningOfLine()
+
+    expect(suggestionsForPrefix(provider, editor, 'anew')).not.toContain 'aNewFunction'
+
+    editor.insertText('function aNewFunction(){};')
+    advanceClock provider.changeUpdateDelay
+    expect(suggestionsForPrefix(provider, editor, 'anew')).toContain 'aNewFunction'
+
+    editor.setCursorBufferPosition([13, 21])
+    editor.backspace()
+    advanceClock provider.changeUpdateDelay
+
+    expect(suggestionsForPrefix(provider, editor, 'anew')).toContain 'aNewFunctio'
+    expect(suggestionsForPrefix(provider, editor, 'anew')).not.toContain 'aNewFunction'
+
+  it "does not return the word under the cursor when there is only a prefix", ->
+    editor.moveToBottom()
+    editor.insertText('qu')
+    expect(suggestionsForPrefix(provider, editor, 'qu')).not.toContain 'qu'
+
+    editor.insertText(' qu')
+    expect(suggestionsForPrefix(provider, editor, 'qu')).toContain 'qu'
+
+  it "does not return the word under the cursor when there is a suffix only one instance of the word", ->
+    editor.moveToBottom()
+    editor.insertText('catscats')
+    editor.moveToBeginningOfLine()
+    editor.insertText('omg')
+    expect(suggestionsForPrefix(provider, editor, 'omg')).not.toContain 'omg'
+    expect(suggestionsForPrefix(provider, editor, 'omg')).not.toContain 'omgcatscats'
+
+  it "returns the word under the cursor when there is a suffix and there are multiple instances of the word", ->
+    editor.moveToBottom()
+    editor.insertText('icksort')
+    editor.moveToBeginningOfLine()
+    editor.insertText('qu')
+    expect(suggestionsForPrefix(provider, editor, 'qu')).not.toContain 'qu'
+    expect(suggestionsForPrefix(provider, editor, 'qu')).toContain 'quicksort'
+
+  it "correctly tracks the buffer row associated with symbols as they change", ->
+    editor.setText('')
+    advanceClock(provider.changeUpdateDelay)
+
+    editor.setText('function abc(){}\nfunction abc(){}')
+    advanceClock(provider.changeUpdateDelay)
+    suggestion = suggestionForWord(provider.symbolStore, 'abc')
+    expect(suggestion.bufferRowsForEditorPath(editor.getPath())).toEqual [0, 1]
+
+    editor.setCursorBufferPosition([2, 100])
+    editor.insertText('\n\nfunction omg(){}; function omg(){}')
+    advanceClock(provider.changeUpdateDelay)
+    suggestion = suggestionForWord(provider.symbolStore, 'omg')
+    expect(suggestion.bufferRowsForEditorPath(editor.getPath())).toEqual [3, 3]
+
+    editor.selectLeft(16)
+    editor.backspace()
+    advanceClock(provider.changeUpdateDelay)
+    suggestion = suggestionForWord(provider.symbolStore, 'omg')
+    expect(suggestion.bufferRowsForEditorPath(editor.getPath())).toEqual [3]
+
+    editor.insertText('\nfunction omg(){}')
+    advanceClock(provider.changeUpdateDelay)
+    suggestion = suggestionForWord(provider.symbolStore, 'omg')
+    expect(suggestion.bufferRowsForEditorPath(editor.getPath())).toEqual [3, 4]
+
+    editor.setText('')
+    advanceClock(provider.changeUpdateDelay)
+
+    expect(suggestionForWord(provider.symbolStore, 'abc')).toBeUndefined()
+    expect(suggestionForWord(provider.symbolStore, 'omg')).toBeUndefined()
+
+    editor.setText('function abc(){}\nfunction abc(){}')
+    editor.setCursorBufferPosition([0, 0])
+    editor.insertText('\n')
+    editor.setCursorBufferPosition([2, 100])
+    editor.insertText('\nfunction abc(){}')
+    advanceClock(provider.changeUpdateDelay)
+
+    # This is kind of a mess right now. it does not correctly track buffer
+    # rows when there are several changes before the change delay is
+    # triggered. So we're just making sure the row is in there.
+    suggestion = suggestionForWord(provider.symbolStore, 'abc')
+    expect(suggestion.bufferRowsForEditorPath(editor.getPath())).toContain 3
+
+  it "does not output suggestions from the other buffer", ->
+    [results, coffeeEditor] = []
+
+    waitsForPromise ->
+      Promise.all [
+        atom.packages.activatePackage("language-coffee-script")
+        atom.workspace.open("sample.coffee").then (e) -> coffeeEditor = e
+      ]
+
+    runs ->
+      advanceClock 1 # build the new wordlist
+      expect(suggestionsForPrefix(provider, coffeeEditor, 'item')).toHaveLength 0
+
+  describe "when includeCompletionsFromAllBuffers is enabled", ->
     beforeEach ->
-      runs -> atom.config.set "autocomplete-plus.enableAutoActivation", true
+      atom.config.set('autocomplete-plus.includeCompletionsFromAllBuffers', true)
 
-      waitsForPromise -> atom.workspace.open("sample.coffee").then (e) ->
-        editor = e
-
-      # Activate the package
       waitsForPromise ->
-        atom.packages.activatePackage("language-coffee-script").then ->
-          atom.packages.activatePackage("autocomplete-plus").then (a) ->
-            mainModule = a.mainModule
+        Promise.all [
+          atom.packages.activatePackage("language-coffee-script")
+          atom.workspace.open("sample.coffee").then (e) -> editor = e
+        ]
 
-      waitsFor ->
-        mainModule.autocompleteManager?.ready
+      runs -> advanceClock 1
 
-      runs ->
-        autocompleteManager = mainModule.autocompleteManager
+    afterEach ->
+      atom.config.set('autocomplete-plus.includeCompletionsFromAllBuffers', false)
 
-      runs ->
-        advanceClock 1
-        editorView = atom.views.getView(editor)
+    it "outputs unique suggestions", ->
+      editor.setCursorBufferPosition([7, 0])
+      results = suggestionsForPrefix(provider, editor, 'qu')
+      expect(results).toHaveLength 1
 
-    it "properly swaps a lower priority type for a higher priority type", ->
-      provider = autocompleteManager.providerManager.fuzzyProvider
-      suggestion = suggestionForWord(provider.symbolList, 'SomeModule')
-      expect(suggestion.type).toEqual 'class'
+    it "outputs suggestions from the other buffer", ->
+      editor.setCursorBufferPosition([7, 0])
+      results = suggestionsForPrefix(provider, editor, 'item')
+      expect(results[0]).toBe 'items'
 
-    it "does not output suggestions from the other buffer", ->
-      provider = autocompleteManager.providerManager.fuzzyProvider
-      results = null
-      waitsForPromise ->
-        promise = provider.getSuggestions({editor, prefix: 'item', bufferPosition: new Point(7, 0)})
-        advanceClock 1
-        promise.then (r) -> results = r
-
-      runs ->
-        expect(results).toHaveLength 0
-
-  describe "when auto-activation is enabled", ->
+  describe "when the completions changes between scopes", ->
     beforeEach ->
-      runs ->
-        atom.config.set('autocomplete-plus.enableAutoActivation', true)
+      editor.setText '''
+        // in-a-comment
+        invar = "in-a-string"
+      '''
 
-      waitsForPromise -> atom.workspace.open('sample.js').then (e) ->
-        editor = e
+      commentConfig =
+        incomment:
+          selector: '.comment'
 
-      # Activate the package
-      waitsForPromise ->
-        atom.packages.activatePackage("language-javascript").then ->
-          atom.packages.activatePackage("autocomplete-plus").then (a) ->
-            mainModule = a.mainModule
+      stringConfig =
+        instring:
+          selector: '.string'
 
-      waitsFor ->
-        mainModule.autocompleteManager?.ready
+      atom.config.set('editor.completions', commentConfig, scopeSelector: '.source.js .comment')
+      atom.config.set('editor.completions', stringConfig, scopeSelector: '.source.js .string')
 
-      runs ->
-        autocompleteManager = mainModule.autocompleteManager
+    it "uses the config for the scope under the cursor", ->
+      # Using the comment config
+      editor.setCursorBufferPosition([0, 2])
+      suggestions = suggestionsForPrefix(provider, editor, 'in', raw: true)
+      expect(suggestions).toHaveLength 1
+      expect(suggestions[0].text).toBe 'in-a-comment'
+      expect(suggestions[0].type).toBe 'incomment'
 
-      runs ->
-        advanceClock 1
-        editorView = atom.views.getView(editor)
+      # Using the string config
+      editor.setCursorBufferPosition([1, 20])
+      suggestions = suggestionsForPrefix(provider, editor, 'in', raw: true)
+      expect(suggestions).toHaveLength 1
+      expect(suggestions[0].text).toBe 'in-a-string'
+      expect(suggestions[0].type).toBe 'instring'
 
-    it "runs a completion ", ->
-      provider = autocompleteManager.providerManager.fuzzyProvider
-      expect(indexOfWord(provider.symbolList, 'quicksort')).not.toEqual(-1)
+      # Using the default config
+      editor.setCursorBufferPosition([1, 5])
+      suggestions = suggestionsForPrefix(provider, editor, 'in', raw: true)
+      expect(suggestions).toHaveLength 3
+      expect(suggestions[0].text).toBe 'invar'
+      expect(suggestions[0].type).toBe '' # the js grammar sucks :(
 
-    it "adds words to the symbol list after they have been written", ->
-      provider = autocompleteManager.providerManager.fuzzyProvider
+  describe "when the completions contains a list of suggestion strings", ->
+    beforeEach ->
+      editor.setText '// abcomment'
+      commentConfig =
+        comment: selector: '.comment'
+        builtin:
+          suggestions: ['abcd', 'abcde', 'abcdef']
 
-      expect(indexOfWord(provider.symbolList, 'aNewFunction')).toEqual(-1)
-      editor.insertText('function aNewFunction(){};')
-      editor.insertText(' ')
-      advanceClock provider.changeUpdateDelay
-      expect(indexOfWord(provider.symbolList, 'aNewFunction')).not.toEqual(-1)
+      atom.config.set('editor.completions', commentConfig, scopeSelector: '.source.js .comment')
 
-    describe "when includeCompletionsFromAllBuffers is enabled", ->
-      beforeEach ->
-        atom.config.set('autocomplete-plus.includeCompletionsFromAllBuffers', true)
+    it "adds the suggestions to the results", ->
+      # Using the comment config
+      editor.setCursorBufferPosition([0, 2])
+      suggestions = suggestionsForPrefix(provider, editor, 'ab', raw: true)
+      expect(suggestions).toHaveLength 4
+      expect(suggestions[0].text).toBe 'abcomment'
+      expect(suggestions[0].type).toBe 'comment'
+      expect(suggestions[1].text).toBe 'abcd'
+      expect(suggestions[1].type).toBe 'builtin'
 
-        waitsForPromise ->
-          atom.packages.activatePackage("language-coffee-script").then ->
-            atom.workspace.open("sample.coffee").then (e) ->
-              editor = e
+  describe "when the completions contains a list of suggestion objects", ->
+    beforeEach ->
+      editor.setText '// abcomment'
+      commentConfig =
+        comment: selector: '.comment'
+        builtin:
+          suggestions: [
+            {nope: 'nope1', rightLabel: 'will not be added to the suggestions'}
+            {text: 'abcd', rightLabel: 'one', type: 'function'}
+            []
+          ]
+      atom.config.set('editor.completions', commentConfig, scopeSelector: '.source.js .comment')
 
-      afterEach ->
-        atom.config.set('autocomplete-plus.includeCompletionsFromAllBuffers', false)
+    it "adds the suggestion objects to the results", ->
+      # Using the comment config
+      editor.setCursorBufferPosition([0, 2])
+      suggestions = suggestionsForPrefix(provider, editor, 'ab', raw: true)
+      expect(suggestions).toHaveLength 2
+      expect(suggestions[0].text).toBe 'abcomment'
+      expect(suggestions[0].type).toBe 'comment'
+      expect(suggestions[1].text).toBe 'abcd'
+      expect(suggestions[1].type).toBe 'function'
+      expect(suggestions[1].rightLabel).toBe 'one'
 
-      it "outputs unique suggestions", ->
-        provider = autocompleteManager.providerManager.fuzzyProvider
-        results = null
-        waitsForPromise ->
-          promise = provider.getSuggestions({editor, prefix: 'qu', bufferPosition: new Point(7, 0)})
-          advanceClock 1
-          promise.then (r) -> results = r
+  describe "when the legacy completions array is used", ->
+    beforeEach ->
+      editor.setText '// abcomment'
+      atom.config.set('editor.completions', ['abcd', 'abcde', 'abcdef'], scopeSelector: '.source.js .comment')
 
-        runs ->
-          expect(results).toHaveLength 1
+    it "uses the config for the scope under the cursor", ->
+      # Using the comment config
+      editor.setCursorBufferPosition([0, 2])
+      suggestions = suggestionsForPrefix(provider, editor, 'ab', raw: true)
+      expect(suggestions).toHaveLength 4
+      expect(suggestions[0].text).toBe 'abcomment'
+      expect(suggestions[0].type).toBe ''
+      expect(suggestions[1].text).toBe 'abcd'
+      expect(suggestions[1].type).toBe 'builtin'
 
-      it "outputs suggestions from the other buffer", ->
-        provider = autocompleteManager.providerManager.fuzzyProvider
-        results = null
-        waitsForPromise ->
-          promise = provider.getSuggestions({editor, prefix: 'item', bufferPosition: new Point(7, 0)})
-          advanceClock 1
-          promise.then (r) -> results = r
-
-        runs ->
-          expect(results[0].text).toBe 'items'
-
-    # Fixing This Fixes #76
-    xit 'adds words to the wordlist with unicode characters', ->
-      provider = autocompleteManager.providerManager.fuzzyProvider
-
-      expect(provider.symbolList.indexOf('somēthingNew')).toEqual(-1)
-      editor.insertText('somēthingNew')
-      editor.insertText(' ')
-      expect(provider.symbolList.indexOf('somēthingNew')).not.toEqual(-1)
+  # Fixing This Fixes #76
+  xit 'adds words to the wordlist with unicode characters', ->
+    expect(provider.symbolStore.indexOf('somēthingNew')).toBeFalsy()
+    editor.insertText('somēthingNew')
+    editor.insertText(' ')
+    expect(provider.symbolStore.indexOf('somēthingNew')).toBeTruthy()

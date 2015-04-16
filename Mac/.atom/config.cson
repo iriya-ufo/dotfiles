@@ -13,6 +13,7 @@
     userId: "4d0c93ce-ebb6-34dd-65cf-677dc1b8a988"
   welcome:
     showOnStartup: false
-  "autocomplete-plus": {}
+  "autocomplete-plus":
+    navigateCompletions: "ctrl-p,ctrl-n"
   "japanese-wrap":
     characterWidth: {}

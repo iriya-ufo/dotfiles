@@ -1,6 +1,34 @@
 {CompositeDisposable} = require 'atom'
 _ = require 'underscore-plus'
 
+ItemTemplate = """
+  <span class="icon-container"></span>
+  <span class="left-label"></span>
+  <span class="word-container">
+    <span class="word"></span>
+    <span class="right-label"></span>
+  </span>
+"""
+
+ListTemplate = """
+  <div class="suggestion-list-scroller">
+    <ol class="list-group"></ol>
+  </div>
+  <div class="suggestion-description">
+    <span class="suggestion-description-content"></span>
+    <a class="suggestion-description-more-link" href="#">More..</a>
+  </div>
+"""
+
+IconTemplate = '<i class="icon"></i>'
+
+DefaultSuggestionTypeIconHTML =
+  'snippet': '<i class="icon-move-right"></i>'
+  'import': '<i class="icon-package"></i>'
+  'require': '<i class="icon-package"></i>'
+  'module': '<i class="icon-package"></i>'
+  'package': '<i class="icon-package"></i>'
+
 class SuggestionListElement extends HTMLElement
   maxItems: 200
   snippetRegex: /\$\{[0-9]+:([^}]+)\}/g
@@ -25,11 +53,14 @@ class SuggestionListElement extends HTMLElement
 
   initialize: (@model) ->
     return unless model?
-    @subscriptions.add(@model.onDidChangeItems(@itemsChanged.bind(this)))
-    @subscriptions.add(@model.onDidSelectNext(@moveSelectionDown.bind(this)))
-    @subscriptions.add(@model.onDidSelectPrevious(@moveSelectionUp.bind(this)))
-    @subscriptions.add(@model.onDidConfirmSelection(@confirmSelection.bind(this)))
-    @subscriptions.add(@model.onDidDispose(@dispose.bind(this)))
+    @subscriptions.add @model.onDidChangeItems(@itemsChanged.bind(this))
+    @subscriptions.add @model.onDidSelectNext(@moveSelectionDown.bind(this))
+    @subscriptions.add @model.onDidSelectPrevious(@moveSelectionUp.bind(this))
+    @subscriptions.add @model.onDidConfirmSelection(@confirmSelection.bind(this))
+    @subscriptions.add @model.onDidDispose(@dispose.bind(this))
+
+    @subscriptions.add atom.config.observe 'autocomplete-plus.suggestionListFollows', (@suggestionListFollows) =>
+    @subscriptions.add atom.config.observe 'autocomplete-plus.maxVisibleSuggestions', (@maxVisibleSuggestions) =>
     this
 
   # This should be unnecessary but the events we need to override
@@ -38,18 +69,42 @@ class SuggestionListElement extends HTMLElement
   registerMouseHandling: ->
     @onmousewheel = (event) -> event.stopPropagation()
     @onmousedown = (event) ->
-      item = event.target
-      item = item.parentNode while not (item.dataset?.index) and item isnt this
-      @selectedIndex = item.dataset?.index
-      event.stopPropagation()
+      item = @findItem(event)
+      if item?.dataset.index?
+        @selectedIndex = item.dataset.index
+        event.stopPropagation()
 
     @onmouseup = (event) ->
-      event.stopPropagation()
-      @confirmSelection()
+      item = @findItem(event)
+      if item?.dataset.index?
+        event.stopPropagation()
+        @confirmSelection()
+
+  findItem: (event) ->
+    item = event.target
+    item = item.parentNode while item.tagName isnt 'LI' and item isnt this
+    item if item.tagName is 'LI'
+
+  updateDescription: ->
+    item = @visibleItems()[@selectedIndex]
+    if item.description? and item.description.length > 0
+      @descriptionContainer.style.display = 'block'
+      @descriptionContent.textContent = item.description
+      if item.descriptionMoreURL? and item.descriptionMoreURL.length?
+        @descriptionMoreLink.style.display = 'inline'
+        @descriptionMoreLink.setAttribute('href', item.descriptionMoreURL)
+      else
+        @descriptionMoreLink.style.display = 'none'
+        @descriptionMoreLink.setAttribute('href', '#')
+    else
+      @descriptionContainer.style.display = 'none'
 
   itemsChanged: ->
     @selectedIndex = 0
-    @renderItems()
+    atom.views.pollAfterNextUpdate?()
+    atom.views.updateDocument =>
+      @renderItems()
+      @updateDescription()
 
   addActiveClassToEditor: ->
     editorElement = atom.views.getView(atom.workspace.getActiveTextEditor())
@@ -74,6 +129,7 @@ class SuggestionListElement extends HTMLElement
   setSelectedIndex: (index) ->
     @selectedIndex = index
     @renderItems()
+    @updateDescription()
 
   visibleItems: ->
     @model?.items?.slice(0, @maxItems)
@@ -95,17 +151,20 @@ class SuggestionListElement extends HTMLElement
       @model.cancel()
 
   renderList: ->
-    @ol = document.createElement('ol')
-    @appendChild(@ol)
-    @ol.className = 'list-group'
+    @innerHTML = ListTemplate
+    @ol = @querySelector('.list-group')
+    @scroller = @querySelector('.suggestion-list-scroller')
+    @descriptionContainer = @querySelector('.suggestion-description')
+    @descriptionContent = @querySelector('.suggestion-description-content')
+    @descriptionMoreLink = @querySelector('.suggestion-description-more-link')
 
   calculateMaxListHeight: ->
-    maxVisibleItems = atom.config.get('autocomplete-plus.maxVisibleSuggestions')
     li = document.createElement('li')
     li.textContent = 'test'
     @ol.appendChild(li)
     itemHeight = li.offsetHeight
-    @ol.style['max-height'] = "#{maxVisibleItems * itemHeight}px"
+    paddingHeight = parseInt(getComputedStyle(this)['padding-top']) + parseInt(getComputedStyle(this)['padding-bottom']) ? 0
+    @scroller.style['max-height'] = "#{@maxVisibleSuggestions * itemHeight + paddingHeight}px"
     li.remove()
 
   renderItems: ->
@@ -114,40 +173,57 @@ class SuggestionListElement extends HTMLElement
     li.remove() while li = @ol.childNodes[items.length]
     @selectedLi?.scrollIntoView(false)
 
-  renderItem: ({snippet, text, rightLabel, rightLabelHTML, className, replacementPrefix}, index) ->
+    if @suggestionListFollows is 'Word'
+      firstChild = @ol.childNodes[0]
+      wordContainer = firstChild?.querySelector('.word-container')
+      marginLeft = 0
+      marginLeft = -wordContainer.offsetLeft if wordContainer?
+      @style['margin-left'] = "#{marginLeft}px"
+
+  renderItem: ({iconHTML, type, snippet, text, className, replacementPrefix, leftLabel, leftLabelHTML, rightLabel, rightLabelHTML}, index) ->
     li = @ol.childNodes[index]
     unless li
       li = document.createElement('li')
-      @ol.appendChild(li)
+      li.innerHTML = ItemTemplate
       li.dataset.index = index
+      @ol.appendChild(li)
 
     li.className = ''
     li.classList.add(className) if className
     li.classList.add('selected') if index is @selectedIndex
     @selectedLi = li if index is @selectedIndex
 
-    wordSpan = li.childNodes[0]
-    unless wordSpan
-      wordSpan = document.createElement('span')
-      li.appendChild(wordSpan)
-      wordSpan.className = 'word'
+    typeIconContainer = li.querySelector('.icon-container')
+    typeIconContainer.innerHTML = ''
 
+    sanitizedType = if _.isString(type) then type else ''
+    sanitizedIconHTML = if _.isString(iconHTML) then iconHTML else undefined
+    defaultLetterIconHTML = if sanitizedType then "<span class=\"icon-letter\">#{sanitizedType[0]}</span>" else ''
+    defaultIconHTML = DefaultSuggestionTypeIconHTML[sanitizedType] ? defaultLetterIconHTML
+    if (sanitizedIconHTML or defaultIconHTML) and iconHTML isnt false
+      typeIconContainer.innerHTML = IconTemplate
+      typeIcon = typeIconContainer.childNodes[0]
+      typeIcon.innerHTML = sanitizedIconHTML ? defaultIconHTML
+      typeIcon.classList.add(type) if type
+
+    wordSpan = li.querySelector('.word')
     wordSpan.innerHTML = @getHighlightedHTML(text, snippet, replacementPrefix)
 
-    labelSpan = li.childNodes[1]
-    hasRightLabel = rightLabel or rightLabelHTML
-    if hasRightLabel
-      unless labelSpan
-        labelSpan = document.createElement('span')
-        li.appendChild(labelSpan) if hasRightLabel
-        labelSpan.className = 'completion-label text-smaller text-subtle'
-
-      if rightLabelHTML?
-        labelSpan.innerHTML = rightLabelHTML
-      else
-        labelSpan.textContent = rightLabel
+    leftLabelSpan = li.querySelector('.left-label')
+    if leftLabelHTML?
+      leftLabelSpan.innerHTML = leftLabelHTML
+    else if leftLabel?
+      leftLabelSpan.textContent = leftLabel
     else
-      labelSpan?.remove()
+      leftLabelSpan.textContent = ''
+
+    rightLabelSpan = li.querySelector('.right-label')
+    if rightLabelHTML?
+      rightLabelSpan.innerHTML = rightLabelHTML
+    else if rightLabel?
+      rightLabelSpan.textContent = rightLabel
+    else
+      rightLabelSpan.textContent = ''
 
   getHighlightedHTML: (text, snippet, replacementPrefix) ->
     # 1. Pull the snippets out, replacing with placeholder
