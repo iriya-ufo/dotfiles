@@ -177,6 +177,9 @@ class JapaneseWrapManager
 
   # Japanese Wrap Column
   findJapaneseWrapColumn: (line, softWrapColumn) ->
+    # for debug
+    # console.log("#{softWrapColumn}:#{line}")
+    return if !(softWrapColumn?) or softWrapColumn < 1
     size = 0
     for wrapColumn in [0...line.length]
       if @zeroWidthCharRegexp.test(line[wrapColumn])

@@ -76,6 +76,11 @@ module.exports =
       command: if GrammarUtils.OperatingSystem.isWindows() then "fsi" else "fsharpi"
       args: (context) -> ['--exec', context.filepath]
 
+  Forth:
+    "File Based":
+      command: "gforth"
+      args: (context) -> [context.filepath]
+
   Gherkin:
     "File Based":
       command: "cucumber"
@@ -229,6 +234,14 @@ module.exports =
   R:
     "File Based":
       command: "Rscript"
+      args: (context) -> [context.filepath]
+
+  Racket:
+    "Selection Based":
+      command: "racket"
+      args: (context) -> ['-e', context.getCode()]
+    "File Based":
+      command: "racket"
       args: (context) -> [context.filepath]
 
   RSpec:

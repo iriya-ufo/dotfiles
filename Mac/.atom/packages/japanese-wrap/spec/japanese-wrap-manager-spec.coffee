@@ -491,3 +491,51 @@ describe "JapaneseWrapManager", ->
       expect(jwm.findJapaneseWrapColumn(text, 31)).toEqual(18)
       expect(jwm.findJapaneseWrapColumn(text, 32)).toEqual(19)
       expect(jwm.findJapaneseWrapColumn(text, 80)).toEqual(undefined)
+
+  describe "issues 5", ->
+    # invalid column: -1, 0 , 0.9, null , undefined
+    it "  ・", ->
+      text = "  ・"
+      expect(jwm.findJapaneseWrapColumn(text, -1)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, 0)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, 0.9)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, null)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, undefined)).toEqual(undefined)
+    it "  」", ->
+      text = "  ・"
+      expect(jwm.findJapaneseWrapColumn(text, -1)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, 0)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, 0.9)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, null)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, undefined)).toEqual(undefined)
+    it "\t・", ->
+      text = "\t・"
+      expect(jwm.findJapaneseWrapColumn(text, -1)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, 0)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, 0.9)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, null)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, undefined)).toEqual(undefined)
+    it "  ・ not lprj", ->
+      atom.config.set('japanese-wrap.lineBreakingRule.japanese', false)
+      text = "  ・"
+      expect(jwm.findJapaneseWrapColumn(text, -1)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, 0)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, 0.9)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, null)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, undefined)).toEqual(undefined)
+    it "  」 not lprj", ->
+      atom.config.set('japanese-wrap.lineBreakingRule.japanese', false)
+      text = "  ・"
+      expect(jwm.findJapaneseWrapColumn(text, -1)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, 0)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, 0.9)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, null)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, undefined)).toEqual(undefined)
+    it "\t・ not lprj", ->
+      atom.config.set('japanese-wrap.lineBreakingRule.japanese', false)
+      text = "\t・"
+      expect(jwm.findJapaneseWrapColumn(text, -1)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, 0)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, 0.9)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, null)).toEqual(undefined)
+      expect(jwm.findJapaneseWrapColumn(text, undefined)).toEqual(undefined)

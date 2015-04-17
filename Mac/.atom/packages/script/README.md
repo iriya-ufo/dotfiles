@@ -19,6 +19,7 @@ Currently supported grammars are:
   * Elixir
   * Erlang <sup>[†](#dagger)</sup>
   * F# <sup>[*](#asterisk)</sup>
+  * Forth (via GForth)
   * Go <sup>[*](#asterisk)</sup>
   * Groovy
   * Haskell
@@ -38,6 +39,7 @@ Currently supported grammars are:
   * PHP
   * Python
   * RSpec
+  * Racket
   * Ruby
   * Ruby on Rails
   * Rust
