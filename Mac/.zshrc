@@ -8,6 +8,7 @@ source $HOME/.zsh_common
 # 環境変数
 export RLWRAP_HOME='/Users/iriya/.rlwrap'
 export BREAK_CHARS="\"#'(),;\`\\|!?[]{}"
+export HOMEBREW_EDITOR='vim'
 
 autoload -Uz cd-gitroot
 
