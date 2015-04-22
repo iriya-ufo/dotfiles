@@ -14,6 +14,9 @@ set ignorecase
 set smartcase
 " インクリメンタルサーチ
 set incsearch
+" n, N キーで「次の（前の）検索候補」を画面の中心に表示する
+nnoremap n nzz
+nnoremap N Nzz
 
 " 全角スペースを視覚化
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
