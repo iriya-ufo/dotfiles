@@ -4,13 +4,13 @@
 (source marmalade)
 
 ;; misc
+(depends-on "migemo")
 (depends-on "helm")
 (depends-on "helm-ag")
 (depends-on "highlight-symbol")
 (depends-on "auto-complete")
 (depends-on "ag")
 (depends-on "browse-kill-ring")
-(depends-on "color-theme")
 (depends-on "flycheck")
 (depends-on "flymake")
 (depends-on "flymake-easy")

@@ -17,7 +17,7 @@
 	   (add-to-list 'load-path path))
 	(mapcar 'expand-file-name paths)))
 ;; 設定ファイルのディレクトリを load-path に追加
-(let ((default-directory (expand-file-name "~/.emacs.d")))
+(let ((default-directory (expand-file-name "~/.emacs.d/lisp")))
   (add-to-list 'load-path default-directory)
   (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
       (normal-top-level-add-subdirs-to-load-path)))
@@ -44,10 +44,11 @@
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8)
 ;; IME 設定
-(setq default-input-method "MacOSX")
-(mac-set-input-method-parameter "com.google.inputmethod.Japanese.base" `title "あ")
-(mac-set-input-method-parameter "com.google.inputmethod.Japanese.base" `cursor-color "blue")
-(mac-set-input-method-parameter "com.google.inputmethod.Japanese.Roman" `cursor-color "green")
+;; インラインパッチを当てないと使用できない
+;(setq default-input-method "MacOSX")
+;(mac-set-input-method-parameter "com.google.inputmethod.Japanese.base" `title "あ")
+;(mac-set-input-method-parameter "com.google.inputmethod.Japanese.base" `cursor-color "blue")
+;(mac-set-input-method-parameter "com.google.inputmethod.Japanese.Roman" `cursor-color "green")
 ;;
 ;;================================================================
 ;; キーバインド
@@ -63,19 +64,24 @@
 ;; カスタムテーマは ~/.emacs.d/themes 配下に置く
 (setq custom-theme-directory "~/.emacs.d/themes/")
 ;; テーマを読み込む
-;(load-theme 'molokai t)
-(load-theme 'deeper-blue t)
+(load-theme 'molokai t)
+;(load-theme 'deeper-blue t)
 
 ;; 位置調整
 (setq initial-frame-alist
       (append (list
-	       '(width . 175)                  ; フレームの幅
-	       '(height . 49)                  ; フレームの高さ
-	       '(top . 0)                      ; Y 表示位置
-	       '(left . 0)                     ; X 表示位置
-	       )
-	      initial-frame-alist))
+               '(width . 175)                  ; フレームの幅
+               '(height . 46)                  ; フレームの高さ
+               '(top . 0)                      ; Y 表示位置
+               '(left . 0)                     ; X 表示位置
+               )
+              initial-frame-alist))
 (setq default-frame-alist initial-frame-alist)
+
+;; 半透明
+(if window-system
+    (progn
+      (set-frame-parameter nil 'alpha 90)))
 
 ;; ウィンドウ分割を賢くする
 (defun split-window-vertically-n (num_wins)
@@ -104,15 +110,13 @@
 (global-set-key (kbd "C-t") 'other-window-or-split)
 
 ;; フォント設定
-;; 使用可能フォント一覧の見方 (ターミナル上で)
-;; fc-list
-;(create-fontset-from-ascii-font "Monaco-13:weight=normal:slant=normal" nil "monaco")
-;(set-fontset-font "fontset-monaco"
-;                  'unicode
-;                  (font-spec :family "Hiragino Mincho ProN" :size 14)
-;                  nil
-;                  'append)
-;(add-to-list 'default-frame-alist '(font . "fontset-monaco"))
+(create-fontset-from-ascii-font "Monaco-12:weight=normal:slant=normal" nil "monaco")
+(set-fontset-font "fontset-monaco"
+                  'unicode
+                  (font-spec :family "Hiragino Marugo ProN" :size 12)
+                  nil
+                  'append)
+(add-to-list 'default-frame-alist '(font . "fontset-monaco"))
 ;;
 ;;================================================================
 ;; popwin
@@ -127,7 +131,6 @@
 ;;================================================================
 ;; auto-save
 ;;================================================================
-;; ~/.emacs.d に auto-save-buffers.el を置く
 (require 'auto-save-buffers)
 (run-with-idle-timer 0.5 t 'auto-save-buffers)
 ;; バックアップファイル(file~)を作らない
@@ -242,6 +245,8 @@
 ;; cmigemo
 ;;================================================================
 ;; 日本語のインクリメンタル検索
+;; インストール
+;; $ brew install cmigemo
 (require 'migemo)
 (setq migemo-command "cmigemo")
 (setq migemo-options '("-q" "--emacs"))
@@ -251,12 +256,6 @@
 (setq migemo-coding-system 'utf-8-unix)
 (load-library "migemo")
 (migemo-init)
-;; emacs 起動時は英数モードから始める
-(add-hook 'after-init-hook 'mac-change-language-to-us)
-;; minibuffer 内は英数モードにする
-(add-hook 'minibuffer-setup-hook 'mac-change-language-to-us)
-;; [migemo]isearch のとき IME を英数モードにする
-(add-hook 'isearch-mode-hook 'mac-change-language-to-us)
 ;;
 ;;================================================================
 ;; 雑多な設定

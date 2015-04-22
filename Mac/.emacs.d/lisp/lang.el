@@ -261,6 +261,8 @@
 	    '(lambda () (setq tab-width 2))))
 ;; haml-mode
 (require 'haml-mode)
+;; slim-mode
+(require 'slim-mode)
 ;; scss-mode
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
