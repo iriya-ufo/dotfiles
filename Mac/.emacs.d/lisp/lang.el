@@ -69,6 +69,14 @@
 (autoload 'python-mode "python-mode" "Python editing mode." t)
 ;;
 ;;================================================================
+;; ParEdit
+;;================================================================
+;; Lisp 系言語の入力支援
+(require 'paredit)
+(add-hook 'scheme-mode-hook 'paredit-mode)
+(add-hook 'clojure-mode-hook 'paredit-mode)
+;;
+;;================================================================
 ;; Scheme
 ;;================================================================
 (setq scheme-program-name "/usr/local/bin/gosh -i")
@@ -215,6 +223,12 @@
       :mode 'inferior-scheme-mode
       :other-modes '(scheme-mode))
      ))
+;;
+;;================================================================
+;; Clojure
+;;================================================================
+(require 'clojure-mode)
+(require 'clojurescript-mode)
 ;;
 ;;================================================================
 ;; ruby-mode
