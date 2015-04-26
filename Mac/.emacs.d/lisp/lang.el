@@ -20,16 +20,6 @@
   (add-hook 'coffee-mode-hook 'flymake-coffee-load))
 ;;
 ;;================================================================
-;; highlight-symbol
-;;================================================================
-(require 'highlight-symbol)
-;; 使いたい色を設定、repeat してくれる
-(setq highlight-symbol-colors '("DarkOrange" "DodgerBlue1" "DeepPink1"))
-;; キーバインドの設定
-(global-set-key (kbd "C-o") 'highlight-symbol-at-point)
-(global-set-key (kbd "M-C-o") 'highlight-symbol-remove-all)
-;;
-;;================================================================
 ;; Mark Down Mode
 ;;================================================================
 (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)

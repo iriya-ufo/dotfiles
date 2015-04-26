@@ -184,7 +184,6 @@
 (define-key global-map (kbd "C-x C-f") 'helm-find-files)
 (define-key global-map (kbd "M-y")     'helm-show-kill-ring)
 (define-key global-map (kbd "C-c i")   'helm-imenu)
-(define-key global-map (kbd "C-x b")   'helm-buffers-list)
 (define-key helm-map (kbd "C-h") 'delete-backward-char)
 (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
 (define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
@@ -239,7 +238,6 @@
           (goto-char (mark))
           (isearch-repeat-forward)))
     ad-do-it))
-(define-key isearch-mode-map (kbd "C-o") 'helm-occur-from-isearch)
 ;;
 ;;================================================================
 ;; cmigemo
@@ -256,6 +254,16 @@
 (setq migemo-coding-system 'utf-8-unix)
 (load-library "migemo")
 (migemo-init)
+;;
+;;================================================================
+;; highlight-symbol
+;;================================================================
+(require 'highlight-symbol)
+;; 使いたい色を設定、repeat してくれる
+(setq highlight-symbol-colors '("DarkOrange" "DodgerBlue1" "DeepPink1"))
+;; キーバインドの設定
+(global-set-key (kbd "C-o") 'highlight-symbol-at-point)
+(global-set-key (kbd "M-C-o") 'highlight-symbol-remove-all)
 ;;
 ;;================================================================
 ;; 雑多な設定
