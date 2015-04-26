@@ -10,6 +10,11 @@ export RLWRAP_HOME='/Users/iriya/.rlwrap'
 export BREAK_CHARS="\"#'(),;\`\\|!?[]{}"
 export HOMEBREW_EDITOR='vim'
 
+# Docker
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/iriya/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
+
 autoload -Uz cd-gitroot
 
 if [[ $(uname) = "Darwin" ]]; then
@@ -71,5 +76,5 @@ precmd () {
 }
 RPROMPT="%1(v|%F{green}%1v%f|)"
 
-### Added by the Heroku Toolbelt
+# Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
