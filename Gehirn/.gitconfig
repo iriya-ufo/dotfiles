@@ -8,3 +8,5 @@
 	ci = commit
 	st = status
 	br = branch
+[push]
+	default = matching
