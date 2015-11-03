@@ -1,4 +1,4 @@
-# プロンプトの設定
+# Prompt
 Pry.config.prompt = [
   proc {|target_self, nest_level, pry|
     nested = (nest_level.zero?) ? '' : ":#{nest_level}"
@@ -10,30 +10,30 @@ Pry.config.prompt = [
   }
 ]
 
-# Hirb の設定
-begin
-  require 'hirb'
-rescue LoadError
-  # Missing goodies, bummer
+# refs: https://github.com/pry/pry/wiki/FAQ#wiki-hirb
+if defined? Hirb
+ Hirb::View.instance_eval do
+   def enable_output_method
+     @output_method = true
+     @old_print = Pry.config.print
+     Pry.config.print = proc do |output, value|
+       Hirb::View.view_or_page_output(value) || @old_print.call(output, value)
+     end
+   end
+
+   def disable_output_method
+     Pry.config.print = @old_print
+     @output_method = nil
+   end
+ end
+
+ Hirb.enable
 end
 
-if defined? Hirb
-  Pry.config.pager = false # Pager のバグ対応 (ver 0.10.x では less しか対応していない模様)
-  # Slightly dirty hack to fully support in-session Hirb.disable/enable toggling
-  Hirb::View.instance_eval do
-    def enable_output_method
-      @output_method = true
-      @old_print = Pry.config.print
-      Pry.config.print = proc do |output, value|
-        Hirb::View.view_or_page_output(value) || @old_print.call(output, value)
-      end
-    end
-
-    def disable_output_method
-      Pry.config.print = @old_print
-      @output_method = nil
-    end
-  end
-
-  Hirb.enable
+# refs: https://github.com/deivid-rodriguez/pry-byebug#matching-byebug-behaviour
+if defined?(PryByebug)
+  Pry.commands.alias_command 'c', 'continue'
+  Pry.commands.alias_command 's', 'step'
+  Pry.commands.alias_command 'n', 'next'
+  Pry.commands.alias_command 'f', 'finish'
 end
