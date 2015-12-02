@@ -45,6 +45,7 @@
 (depends-on "scheme-complete")
 (depends-on "web-mode")
 (depends-on "yaml-mode")
+(depends-on "swift-mode")
 (depends-on "paredit")
 (depends-on "rainbow-delimiters")
 (depends-on "clojure-mode")
