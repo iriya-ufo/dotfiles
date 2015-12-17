@@ -73,3 +73,4 @@
                       (fset 'makefile-warn-suspicious-lines 'ignore))))
 
 (provide 'auto-save-buffers)
+
