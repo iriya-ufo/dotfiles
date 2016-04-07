@@ -1,6 +1,7 @@
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=/usr/local/texlive/2014/bin/x86_64-darwin:/usr/texbin:$PATH
 fpath=(~/.zsh/functions/Completion(N-/) /usr/local/share/zsh-completions /usr/local/share/zsh/functions ${fpath})
+
 # 重複した PATH の削除
 typeset -U path PATH
 source $HOME/.zsh_common
@@ -17,6 +18,9 @@ eval "$(docker-machine env docker-vm)"
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh
+
+# Nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 autoload -Uz cd-gitroot
 
