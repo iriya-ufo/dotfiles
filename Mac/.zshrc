@@ -100,3 +100,6 @@ if exists percol; then
     zle -N percol_select_history
     bindkey '^R' percol_select_history
 fi
+
+# AWS CLI Completion
+source /usr/local/share/zsh/site-functions/_aws
