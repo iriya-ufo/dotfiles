@@ -64,8 +64,8 @@
 ;; カスタムテーマは ~/.emacs.d/themes 配下に置く
 (setq custom-theme-directory "~/.emacs.d/themes/")
 ;; テーマを読み込む
-(load-theme 'molokai t)
-;(load-theme 'deeper-blue t)
+;(load-theme 'molokai t)
+(load-theme 'deeper-blue t)
 
 ;; 位置調整
 (setq initial-frame-alist
