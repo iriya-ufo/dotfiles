@@ -12,7 +12,7 @@ export BREAK_CHARS="\"#'(),;\`\\|!?[]{}"
 export HOMEBREW_EDITOR='vim'
 
 # Docker
-eval "$(docker-machine env docker-vm)"
+eval "$(docker-machine env default)"
 
 # Python
 export WORKON_HOME=$HOME/.virtualenvs
