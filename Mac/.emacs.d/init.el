@@ -43,12 +43,6 @@
 	      (set-buffer-file-coding-system 'utf-8))))
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8)
-;; IME 設定
-;; インラインパッチを当てないと使用できない
-;(setq default-input-method "MacOSX")
-;(mac-set-input-method-parameter "com.google.inputmethod.Japanese.base" `title "あ")
-;(mac-set-input-method-parameter "com.google.inputmethod.Japanese.base" `cursor-color "blue")
-;(mac-set-input-method-parameter "com.google.inputmethod.Japanese.Roman" `cursor-color "green")
 ;;
 ;;================================================================
 ;; キーバインド
