@@ -27,6 +27,8 @@
 	"\n+$" "" (shell-command-to-string "echo $PATH"))))
   (setenv "PATH" path-str)
   (setq exec-path (nconc (split-string path-str ":") exec-path)))
+;; 読み込まれないパスを設定
+(add-to-list 'exec-path "/usr/local/bin")
 ;;
 ;;================================================================
 ;; Language
@@ -240,7 +242,7 @@
 ;; インストール
 ;; $ brew install cmigemo
 (require 'migemo)
-(setq migemo-command "/usr/local/bin/cmigemo")
+(setq migemo-command "cmigemo")
 (setq migemo-options '("-q" "--emacs"))
 (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
 (setq migemo-user-dictionary nil)
