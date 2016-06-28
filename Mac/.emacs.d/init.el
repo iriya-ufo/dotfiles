@@ -66,8 +66,8 @@
 ;; 位置調整
 (setq initial-frame-alist
       (append (list
-               '(width . 200)                  ; フレームの幅
-               '(height . 51)                  ; フレームの高さ
+               '(width . 233)                  ; フレームの幅
+               '(height . 65)                  ; フレームの高さ
                '(top . 0)                      ; Y 表示位置
                '(left . 0)                     ; X 表示位置
                )
@@ -106,10 +106,10 @@
 (global-set-key (kbd "C-t") 'other-window-or-split)
 
 ;; フォント設定
-(create-fontset-from-ascii-font "Monaco-12:weight=normal:slant=normal" nil "monaco")
+(create-fontset-from-ascii-font "Monaco-10:weight=normal:slant=normal" nil "monaco")
 (set-fontset-font "fontset-monaco"
                   'unicode
-                  (font-spec :family "Hiragino Marugo ProN" :size 12)
+                  (font-spec :family "Hiragino Marugo ProN" :size 10)
                   nil
                   'append)
 (add-to-list 'default-frame-alist '(font . "fontset-monaco"))
