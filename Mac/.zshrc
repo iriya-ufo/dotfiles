@@ -11,8 +11,14 @@ export RLWRAP_HOME='/Users/iriya/.rlwrap'
 export BREAK_CHARS="\"#'(),;\`\\|!?[]{}"
 export HOMEBREW_EDITOR='vim'
 
-# Docker
-eval "$(docker-machine env default)"
+# Docker Toolbox
+# eval "$(docker-machine env default)"
+
+# Docker for Mac
+unset DOCKER_CERT_PATH
+unset DOCKER_HOST
+unset DOCKER_MACHINE_NAME
+unset DOCKER_TLS_VERIFY
 
 # Python
 export WORKON_HOME=$HOME/.virtualenvs
@@ -74,7 +80,7 @@ eval "$(rbenv init -)"
 # PostgreSQL
 export PGDATA=/usr/local/var/postgres
 
-# VCS Setting 
+# VCS Setting
 autoload -Uz vcs_info
 precmd () {
     psvar=()
