@@ -80,15 +80,6 @@ eval "$(rbenv init -)"
 # PostgreSQL
 export PGDATA=/usr/local/var/postgres
 
-# VCS Setting
-autoload -Uz vcs_info
-precmd () {
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-}
-RPROMPT="%1(v|%F{green}%1v%f|)"
-
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
