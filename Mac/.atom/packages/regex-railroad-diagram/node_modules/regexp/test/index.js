@@ -17,7 +17,14 @@ var failed = false
 expressions.forEach(function (expression) {
   console.log()
 
-  var exp = /^\/(.*)\/$/.exec(expression[0].toString())[1]
+  var exp = null;
+  if (expression[0] instanceof RegExp) {
+    exp = /^\/(.*)\/$/.exec(expression[0].toString())[1]
+  }
+  else {
+    exp = expression[0]
+  }
+
   var parsed = regex(exp)
   try {
     assert.deepEqual(parsed, expression[1])
