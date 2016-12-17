@@ -16,6 +16,7 @@ brew cask install insync
 brew cask install docker
 brew cask install cmd-eikana
 brew cask install shiftit
+brew cask install ngrok
 
 brew install ansible
 brew install asciinema
