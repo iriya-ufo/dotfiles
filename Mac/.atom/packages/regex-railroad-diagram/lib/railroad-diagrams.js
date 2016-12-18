@@ -30,6 +30,16 @@ var options = {
 		INTERNAL_ALIGNMENT: 'center',
 }
 
+	function textWidth(text) {
+		var m;
+		var narrow = (m = text.match(/[jiIl]/g)) ? m.length : 0;
+		var small = (m = text.match(/(?![jil])[a-z]/g)) ? m.length : 0;
+		var big = (m = text.match(/(?![MW])[A-Z]/g)) ? m.length : 0;
+		var large = text.length - narrow - small - big;
+
+		return narrow * 4 + small * 6 + big * 8 + large * 9;
+	}
+
 	function subclassOf(baseClass, superClass) {
 		baseClass.prototype = Object.create(superClass.prototype);
 		baseClass.prototype.$super = superClass.prototype;
@@ -49,8 +59,8 @@ var options = {
 		}
 	}
 
-	function wrapString(value) {
-		return ((typeof value) == 'string') ? new Terminal(value) : value;
+	function wrapString(value, attrs) {
+		return ((typeof value) == 'string') ? new Terminal(value, attrs) : value;
 	}
 
 
@@ -331,21 +341,32 @@ var options = {
 			throw "Unknown value for Optional()'s 'skip' argument.";
 	}
 
-	function Group(item, caption) {
-		if(!(this instanceof Group)) return new Group(item, caption);
-		FakeSVG.call(this, 'g');
+	function Group(item, caption, options) {
+		if(!(this instanceof Group)) return new Group(item, caption, options);
+		options = options || {};
+
+		FakeSVG.call(this, 'g', options.attrs || {});
 		caption = caption || (new Skip);
 		this.item = wrapString(item);
 		this.caption = caption;
-		this.width = this.item.width;
+
+		this.padding = 10;
+
+		this.width = this.item.width + 2*this.padding;
+
+		if (options.minWidth) {
+			if (this.width < options.minWidth)
+				this.width = options.minWidth;
+		}
+
 		var height = this.item.up + this.item.down;
 		if (caption)
 		{
-			height += Diagram.VERTICAL_SEPARATION+this.caption.up + this.caption.down;
+			height += Diagram.VERTICAL_SEPARATION + this.caption.up + this.caption.down;
 		}
 
-		this.up = this.item.up + 5;
-		this.down = height-this.up + 5;
+		this.up = this.item.up + this.padding;
+		this.down = height-this.up + this.padding;
 	}
 	subclassOf(Group, FakeSVG);
 	Group.prototype.needsSpace = true;
@@ -358,12 +379,14 @@ var options = {
 
 		FakeSVG('rect', {
 			x:x, y:y-this.up,
-			width:this.width, height:this.up+this.down, "class": "group"}).addTo(this);
+			width:this.width, height:this.up+this.down,
+			rx: 5, ry: 5
+			}).addTo(this);
 
 		this.item.format(x, y, this.width).addTo(this);
 
 		if (this.caption) {
-			var caption_y = y+this.item.down+Diagram.VERTICAL_SEPARATION+this.caption.up - 5;
+			var caption_y = y+this.item.down+Diagram.VERTICAL_SEPARATION+this.caption.up;
 			var caption_x = x + (this.width - this.caption.width)/2;
 			this.caption.format(caption_x, caption_y, this.caption.width).addTo(this);
 		}
@@ -435,11 +458,11 @@ var options = {
 		return this;
 	}
 
-	function Terminal(text) {
-		if(!(this instanceof Terminal)) return new Terminal(text);
-		FakeSVG.call(this, 'g');
+	function Terminal(text, attrs) {
+		if(!(this instanceof Terminal)) return new Terminal(text, attrs);
+		FakeSVG.call(this, 'g', attrs);
 		this.text = text;
-		this.width = text.length * 8 + 20; /* Assume that each char is .5em, and that the em is 16px */
+		this.width = textWidth(text) + 20; /* Assume that each char is .5em, and that the em is 16px */
 		this.up = 11;
 		this.down = 11;
 	}
@@ -449,6 +472,7 @@ var options = {
 		// Hook up the two sides if this is narrower than its stated width.
 		var gaps = determineGaps(width, this.width);
 		Path(x,y).h(gaps[0]).addTo(this);
+
 		Path(x+gaps[0]+this.width,y).h(gaps[1]).addTo(this);
 		x += gaps[0];
 
@@ -457,11 +481,11 @@ var options = {
 		return this;
 	}
 
-	function NonTerminal(text) {
-		if(!(this instanceof NonTerminal)) return new NonTerminal(text);
-		FakeSVG.call(this, 'g');
+	function NonTerminal(text, attrs) {
+		if(!(this instanceof NonTerminal)) return new NonTerminal(text, attrs);
+		FakeSVG.call(this, 'g', attrs);
 		this.text = text;
-		this.width = text.length * 8 + 20;
+		this.width = textWidth(text) + 12;
 		this.up = 11;
 		this.down = 11;
 	}
@@ -475,15 +499,24 @@ var options = {
 		x += gaps[0];
 
 		FakeSVG('rect', {x:x, y:y-11, width:this.width, height:this.up+this.down}).addTo(this);
-		FakeSVG('text', {x:x+this.width/2, y:y+4}, this.text).addTo(this);
+		attrs = {x:x+this.width/2, y:y+4}
+		// if (this.title) {
+		// 	debugger
+		// 	attrs['title'] = this.title;
+		// }
+
+		FakeSVG('text', attrs, this.text).addTo(this);
 		return this;
 	}
 
-	function Comment(text) {
-		if(!(this instanceof Comment)) return new Comment(text);
-		FakeSVG.call(this, 'g');
+	function Comment(text, attrs) {
+		if(!(this instanceof Comment)) return new Comment(text, attrs);
+		FakeSVG.call(this, 'g', attrs);
 		this.text = text;
-		this.width = text.length * 7 + 10;
+		this.paddingH = 2
+		this.paddingV = 5
+		this.width = textWidth(text) + this.paddingH*2;
+		//this.attrs = attrs || {};
 		this.up = 11;
 		this.down = 11;
 	}
@@ -495,8 +528,7 @@ var options = {
 		Path(x,y).h(gaps[0]).addTo(this);
 		Path(x+gaps[0]+this.width,y).h(gaps[1]).addTo(this);
 		x += gaps[0];
-
-		FakeSVG('text', {x:x+this.width/2, y:y+5, class:'comment'}, this.text).addTo(this);
+		FakeSVG('text', {x: x+this.width/2, y: y+this.paddingV}, this.text).addTo(this);
 		return this;
 	}
 

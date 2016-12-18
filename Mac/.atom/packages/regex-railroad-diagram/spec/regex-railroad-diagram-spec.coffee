@@ -13,14 +13,44 @@ describe "RegexRailroadDiagram", ->
   activationPromise = null
 
   beforeEach ->
-    atom.workspaceView = new WorkspaceView
+    workspaceElement = atom.views.getView(atom.workspace)
     activationPromise = atom.packages.activatePackage('regex-railroad-diagram')
+
+    waitsForPromise ->
+      activationPromise
+    runs ->
+      debugger
 
   describe "regex-to-railroad diagram converter", ->
 
     it "parses a regex with alternatives", ->
       r = ParseRegex /a|b|c/
-      expect(r).toEqual {}
+      expect(r.toString()).toEqual  {
+        type: 'alternate', offset: 0, text : 'a|b|c', left : {
+          type : 'match', offset : 0, text : 'a', body : [
+            {
+              type : 'literal', offset : 0,
+              text : 'a', body : 'a', escaped : false
+            }
+          ]
+        }, right : {
+          type : 'alternate', offset : 2, text : 'b|c', left : {
+            type : 'match', offset : 2, text : 'b', body : [
+              {
+                type : 'literal', offset : 2,
+                text : 'b', body : 'b', escaped : false
+              }
+            ]
+          }, right : {
+            type : 'match', offset : 4, text : 'c', body : [
+              {
+                type : 'literal', offset : 4, text : 'c',
+                body : 'c', escaped : false
+              }
+            ]
+          }
+        }
+      }.toString()
 
     it "parses a regex", ->
       r = Regex2RailRoadDiagram /foo*/, null

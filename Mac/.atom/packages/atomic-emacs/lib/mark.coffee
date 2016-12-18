@@ -1,9 +1,10 @@
-{Point} = require('atom')
+{CompositeDisposable, Point} = require 'atom'
+State = require './state'
 
 # Represents an Emacs-style mark.
 #
-# Get the mark for a cursor with Mark.for(cursor). If the cursor has no mark
-# yet, one will be created, and set to the cursor's position.
+# Each cursor may have a Mark. On construction, the mark is at the cursor's
+# position.
 #
 # The can then be set() at any time, which will move to where the cursor is.
 #
@@ -12,6 +13,13 @@
 # cursor is moved. If the buffer is edited, the mark is automatically
 # deactivated.
 class Mark
+  @deactivatable = []
+
+  @deactivatePending: ->
+    for mark in @deactivatable
+      mark.deactivate()
+    @deactivatable.length = 0
+
   constructor: (cursor) ->
     @cursor = cursor
     @editor = cursor.editor
@@ -19,12 +27,14 @@ class Mark
     @active = false
     @updating = false
 
-    @cursorDestroyedCallback = (event) => @_destroy()
-    @cursor.onDidDestroy @cursorDestroyedCallback
+  destroy: ->
+    @deactivate() if @active
+    @marker.destroy()
 
-  set: ->
+  set: (point=@cursor.getBufferPosition()) ->
     @deactivate()
-    @marker.setHeadBufferPosition(@cursor.getBufferPosition())
+    @marker.setHeadBufferPosition(point)
+    @_updateSelection()
     @
 
   getBufferPosition: ->
@@ -32,21 +42,32 @@ class Mark
 
   activate: ->
     if not @active
-      @movedCallback ?= (event) => @_updateSelection(event)
-      @modifiedCallback ?= (event) =>
-        return if @_isIndent(event) or @_isOutdent(event)
-        @deactivate()
-      @cursor.onDidChangePosition @movedCallback
-      @editor.getBuffer().onDidChange @modifiedCallback
+      @activeSubscriptions = new CompositeDisposable
+      @activeSubscriptions.add @cursor.onDidChangePosition (event) =>
+        @_updateSelection(event)
+      # Cursor movement commands like cursor.moveDown deactivate the selection
+      # unconditionally, but don't trigger onDidChangePosition if the position
+      # doesn't change (e.g. at EOF). So we also update the selection after any
+      # command.
+      @activeSubscriptions.add atom.commands.onDidDispatch (event) =>
+        @_updateSelection(event)
+      @activeSubscriptions.add @editor.getBuffer().onDidChange (event) =>
+        unless @_isIndent(event) or @_isOutdent(event)
+          # If we're in a command (as opposed to a simple character insert),
+          # delay the deactivation until the end of the command. Otherwise
+          # updating one selection may prematurely deactivate the mark and clear
+          # a second selection before it has a chance to be updated.
+          if State.isDuringCommand
+            Mark.deactivatable.push(this)
+          else
+            @deactivate()
       @active = true
 
   deactivate: ->
     if @active
-      @cursor.off 'moved', @movedCallback
-      @editor.getBuffer().onDidChange @modifiedCallback
+      @activeSubscriptions.dispose()
       @active = false
     @cursor.clearSelection()
-    @cursor.selection.screenRangeChanged(@marker)  # force redraw of selection
 
   isActive: ->
     @active
@@ -56,26 +77,24 @@ class Mark
     @set().activate()
     @cursor.setBufferPosition(position)
 
-  _destroy: ->
-    @deactivate() if @active
-    @marker.destroy()
-    @cursor.off 'destroyed', @cursorDestroyedCallback
-    delete @cursor._atomicEmacsMark
-
   _updateSelection: (event) ->
     # Updating the selection updates the cursor marker, so guard against the
     # nested invocation.
     if !@updating
       @updating = true
       try
-        a = @marker.getHeadBufferPosition()
-        b = @cursor.getBufferPosition()
-        @cursor.selection.setBufferRange([a, b], reversed: Point.min(a, b) is b)
+        head = @cursor.getBufferPosition()
+        tail = @marker.getHeadBufferPosition()
+        @setSelectionRange(head, tail)
       finally
         @updating = false
 
-  Mark.for = (cursor) ->
-   cursor._atomicEmacsMark ?= new Mark(cursor)
+  getSelectionRange: ->
+    @cursor.selection.getBufferRange()
+
+  setSelectionRange: (head, tail) ->
+    reversed = Point.min(head, tail) is head
+    @cursor.selection.setBufferRange([head, tail], reversed: reversed)
 
   _isIndent: (event)->
     @_isIndentOutdent(event.newRange, event.newText)

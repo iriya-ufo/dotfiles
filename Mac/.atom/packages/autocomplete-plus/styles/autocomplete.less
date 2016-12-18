@@ -1,3 +1,6 @@
+// TODO: remove this fallback when 193 is out for a while
+.attr-syntax-color() { @syntax-color-attribute: #888; } .attr-syntax-color();
+
 @import "ui-variables";
 @import "syntax-variables";
 
@@ -16,8 +19,10 @@ autocomplete-suggestion-list.select-list.popover-list {
   width: auto;
   display: inline-block;
   min-width: 200px;
+  max-width: 800px;
   padding: 0;
-  max-width: 700px;
+  overflow: hidden;
+  color: @text-color;
 
   .suggestion-list-scroller {
     overflow-y: auto;
@@ -54,6 +59,7 @@ autocomplete-suggestion-list.select-list.popover-list {
     margin-top: 0;
     display: table;
     width: 100%;
+    margin-right: 10px; // Needed to prevent horizontal scrolling when right label is too long
 
     li {
       display: table-row;
@@ -133,32 +139,26 @@ autocomplete-suggestion-list {
     color: @text-color-subtle;
 
     &:empty {
-      padding: 0;
+      padding-right: 0;
     }
   }
 
   .right-label {
-    float: right;
-    padding-left: @item-padding;
-    padding-right: @item-side-padding;
-
+    padding-right: @item-padding;
     font-size: @font-size-small;
     color: @text-color-subtle;
 
     &:empty {
-      width: @item-side-padding;
-      padding: 0;
+      padding-right: 0;
     }
   }
 
+  .word-container {
+    padding-right: @item-padding;
+  }
+
   .word {
-    // TODO: The 600px is arbitrary. We need to make it butt up against the
-    // right of the window.
     float: left;
-    max-width: 600px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   .character-match {
@@ -170,27 +170,59 @@ autocomplete-suggestion-list {
     color: @text-color-subtle;
   }
 
-  .make-type-icon(variable, @syntax-color-variable);
-  .make-type-icon(constant, @syntax-color-constant);
-  .make-type-icon(property, @syntax-color-property);
-  .make-type-icon(value, @syntax-color-value);
-  .make-type-icon(method, @syntax-color-method);
-  .make-type-icon(function, @syntax-color-function);
-  .make-type-icon(class, @syntax-color-class);
-  .make-type-icon(type, @syntax-color-class);
-  .make-type-icon(keyword, @syntax-color-keyword);
+  // Here we set the max width of the popup
+  .word, .left-label, .right-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .left-label {
+    max-width: 150px;
+  }
+
+  .right-label {
+    max-width: 150px;
+  }
+
+  .word {
+    max-width: 430px; // magic number to also fit the icon-container + scrollbar in the 800px max-width
+  }
+
+  .make-type-icon(attribute, @syntax-color-attribute);
   .make-type-icon(builtin, @syntax-color-keyword);
-  .make-type-icon(tag, @syntax-color-tag);
+  .make-type-icon(class, @syntax-color-class);
+  .make-type-icon(constant, @syntax-color-constant);
+  .make-type-icon(function, @syntax-color-function);
   .make-type-icon(import, @syntax-color-import);
-  .make-type-icon(require, @syntax-color-import);
+  .make-type-icon(keyword, @syntax-color-keyword);
+  .make-type-icon(method, @syntax-color-method);
   .make-type-icon(module, @syntax-color-import);
+  .make-type-icon(mixin, @syntax-color-class);
   .make-type-icon(package, @syntax-color-import);
+  .make-type-icon(property, @syntax-color-property);
+  .make-type-icon(require, @syntax-color-import);
   .make-type-icon(snippet, @syntax-color-snippet);
+  .make-type-icon(tag, @syntax-color-tag);
+  .make-type-icon(type, @syntax-color-class);
+  .make-type-icon(value, @syntax-color-value);
+  .make-type-icon(variable, @syntax-color-variable);
+  .make-type-icon(selector, @syntax-color-attribute);
+  .make-type-icon(pseudo-selector, @syntax-color-attribute);
 }
 
 .make-type-icon(@type, @color) {
   .icon.@{type} {
     color: @color;
     background: fadeout(@color, 80%)
+  }
+}
+.make-type-icon(@type, @color)
+  when (hsvvalue(@color) - hsvvalue(@overlay-background-color) > -20)
+  and (hsvvalue(@color) - hsvvalue(@overlay-background-color) < 20) {
+  .icon.@{type} {
+    @corrected-color: contrast(@overlay-background-color, darken(@color, 30%), lighten(@color, 30%));
+    color: @corrected-color;
+    background: fadeout(@corrected-color, 80%);
   }
 }

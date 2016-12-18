@@ -1,20 +1,19 @@
 "*":
-  editor:
-    invisibles: {}
-    softWrap: true
-    showInvisibles: true
-    fontSize: 14
+  "autoclose-html": {}
+  "autocomplete-plus":
+    navigateCompletions: "ctrl-p,ctrl-n"
   core:
     themes: [
       "seti-ui"
       "seti-monokai"
     ]
+  editor:
+    invisibles: {}
+    showInvisibles: true
+    softWrap: true
   "exception-reporting":
     userId: "4d0c93ce-ebb6-34dd-65cf-677dc1b8a988"
-  welcome:
-    showOnStartup: false
-  "autocomplete-plus":
-    navigateCompletions: "ctrl-p,ctrl-n"
   "japanese-wrap":
     characterWidth: {}
-  "autoclose-html": {}
+  welcome:
+    showOnStartup: false

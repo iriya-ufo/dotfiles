@@ -1,12 +1,12 @@
 {
   "name": "atom-alignment",
   "main": "./lib/atom-alignment",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "private": true,
   "description": "A simple key-binding for aligning multi-line and multiple selections in Atom (Based on the sublime text plugin)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Freyskeyd/atom-alignment"
+    "url": "git+https://github.com/Freyskeyd/atom-alignment.git"
   },
   "license": "MIT",
   "engines": {
@@ -20,17 +20,17 @@
   "bugs": {
     "url": "https://github.com/Freyskeyd/atom-alignment/issues"
   },
-  "homepage": "https://github.com/Freyskeyd/atom-alignment",
-  "_id": "atom-alignment@0.12.0",
-  "_shasum": "1fc901d8f79b4ee3a64eab8d4d615c4ae2a23999",
-  "_resolved": "file:../d-115316-36655-8i08sp/package.tgz",
-  "_from": "../d-115316-36655-8i08sp/package.tgz",
+  "homepage": "https://github.com/Freyskeyd/atom-alignment#readme",
+  "_id": "atom-alignment@0.12.1",
+  "_shasum": "bac0234dda7c9dee2f52433470da21af01ea5b84",
+  "_resolved": "file:../d-1161116-8244-p05a48/package.tgz",
+  "_from": "../d-1161116-8244-p05a48/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
       {
         "name": "lodash",
-        "version": "2.4.1",
+        "version": "2.4.2",
         "path": "node_modules/lodash/dist/lodash.js"
       }
     ],
