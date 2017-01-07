@@ -62,29 +62,3 @@ if has("autocmd")
     autocmd FileType markdown hi! def link markdownItalic Normal
   augroup END
 endif
-
-" ソースコードをハイライトするための設定
-" 設定例：
-" ```erb
-" <%= @movie.title %>
-" ```
-" ```ruby
-" class MyClass
-" end
-" ```
-"
-let g:markdown_fenced_languages = [
-\  'coffee',
-\  'css',
-\  'erb=eruby',
-\  'javascript',
-\  'js=javascript',
-\  'json=javascript',
-\  'ruby',
-\  'xml',
-\  'zsh',
-\  'scala',
-\  'java',
-\  'c',
-\  'php'
-\]
