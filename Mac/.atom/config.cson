@@ -1,19 +1,7 @@
 "*":
-  "autoclose-html": {}
-  "autocomplete-plus":
-    navigateCompletions: "ctrl-p,ctrl-n"
+  autosave:
+    enabled: true
   core:
-    themes: [
-      "seti-ui"
-      "seti-monokai"
-    ]
-  editor:
-    invisibles: {}
-    showInvisibles: true
-    softWrap: true
+    telemetryConsent: "no"
   "exception-reporting":
-    userId: "4d0c93ce-ebb6-34dd-65cf-677dc1b8a988"
-  "japanese-wrap":
-    characterWidth: {}
-  welcome:
-    showOnStartup: false
+    userId: "56879991-c5e3-4054-675b-9a4581be6a84"
