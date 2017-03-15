@@ -26,6 +26,7 @@ alias updatedb='sudo /usr/libexec/locate.updatedb'
 alias diff='colordiff -u'
 alias be='bundle exec'
 alias man='env LANG=C man'
+alias fig='docker-compose'
 
 keychain ~/.ssh/id_dsa ~/.ssh/id_rsa
 . $HOME/.keychain/$HOST-sh
