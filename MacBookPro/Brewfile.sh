@@ -20,6 +20,7 @@ brew cask install ngrok
 
 brew install ansible
 brew install asciinema
+brew install awscli
 brew install colordiff
 brew install coreutils
 brew install gauche

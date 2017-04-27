@@ -1,5 +1,4 @@
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-export PATH=/usr/local/texlive/2014/bin/x86_64-darwin:/usr/texbin:$PATH
 fpath=(~/.zsh/functions/Completion(N-/) /usr/local/share/zsh-completions /usr/local/share/zsh/functions ${fpath})
 
 # 重複した PATH の削除
@@ -10,23 +9,13 @@ source $HOME/.zsh_common
 export RLWRAP_HOME='/Users/iriya/.rlwrap'
 export BREAK_CHARS="\"#'(),;\`\\|!?[]{}"
 export HOMEBREW_EDITOR='vim'
-
-# Docker Toolbox
-# eval "$(docker-machine env default)"
+export HOMEBREW_CASK_OPTS='--appdir=/Applications'
 
 # Docker for Mac
 unset DOCKER_CERT_PATH
 unset DOCKER_HOST
 unset DOCKER_MACHINE_NAME
 unset DOCKER_TLS_VERIFY
-
-# Python
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-source /usr/local/bin/virtualenvwrapper.sh
-
-# Nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 autoload -Uz cd-gitroot
 
@@ -42,10 +31,8 @@ alias sbcl="rlwrap -b \$BREAK_CHARS sbcl"
 alias ccl="rlwrap -b \$BREAK_CHARS /usr/local/ccl/dx86cl64"
 alias updatedb='sudo /usr/libexec/locate.updatedb'
 alias diff='colordiff -u'
-alias swift='xcrun /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift'
 alias be='bundle exec'
 alias man='env LANG=C man'
-alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
 alias top='htop'
 alias fig='docker-compose'
 
@@ -80,9 +67,6 @@ eval "$(rbenv init -)"
 
 # PostgreSQL
 export PGDATA=/usr/local/var/postgres
-
-# Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
 # zsh history search by percol
 function exists { which $1 &> /dev/null }
