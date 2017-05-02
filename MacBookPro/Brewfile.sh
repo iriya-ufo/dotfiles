@@ -26,6 +26,7 @@ brew install gauche
 brew install git
 brew install git-secrets
 brew install graphviz
+brew install grip
 brew install httperf
 brew install imagemagick
 brew install keychain
