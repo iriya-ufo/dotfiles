@@ -1,7 +1,7 @@
 # ignore files
-Mac/.emacs.d/.mc-lists.el
-Mac/.emacs.d/ac-comphist.dat
-Mac/.emacs.d/.cask
-Mac/.lein/repl-history
-Mac/.atom/blob-store
+MacBookPro/.emacs.d/.mc-lists.el
+MacBookPro/.emacs.d/ac-comphist.dat
+MacBookPro/.emacs.d/.cask
+MacBookPro/.lein/repl-history
+MacBookPro/.atom/blob-store
 MacBook/.atom/blob-store
