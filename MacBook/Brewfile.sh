@@ -22,6 +22,7 @@ brew cask install skype
 brew install ansible
 brew install asciinema
 brew install awscli
+brew install awsebcli
 brew install colordiff
 brew install coreutils
 brew install gauche
