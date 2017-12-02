@@ -31,6 +31,7 @@ brew install git-secrets
 brew install graphviz
 brew install grip
 brew install imagemagick
+brew install jq
 brew install keychain
 brew install lv
 brew install nkf
