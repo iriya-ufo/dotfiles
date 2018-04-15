@@ -540,10 +540,6 @@ This is Scratch Buffer.
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
-;; 対応関係のハイライト
-(require 'ruby-block)
-(ruby-block-mode t)
-(setq ruby-block-highlight-toggle t)
 ;; 改行時にオートインデント
 (add-hook 'ruby-mode-hook
 	  '(lambda ()
