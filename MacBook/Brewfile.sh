@@ -21,6 +21,8 @@ brew cask install skype
 
 brew install ansible
 brew install asciinema
+brew install awscli
+brew install awsebcli
 brew install colordiff
 brew install coreutils
 brew install gauche
@@ -29,6 +31,7 @@ brew install git-secrets
 brew install graphviz
 brew install grip
 brew install imagemagick
+brew install jq
 brew install keychain
 brew install lv
 brew install nkf
