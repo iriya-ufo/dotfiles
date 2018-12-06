@@ -50,3 +50,11 @@ brew install mysql
 brew install zsh
 brew install zsh-completions
 brew install doxygen
+
+# Go
+brew install go
+GOPATH=$HOME/.go go get github.com/rogpeppe/godef               # 関数定義等の参照パッケージ
+GOPATH=$HOME/.go go get -u github.com/nsf/gocode                # 補完パッケージ
+GOPATH=$HOME/.go go get -v github.com/uudashr/gopkgs/cmd/gopkgs # Go パッケージ
+GOPATH=$HOME/.go go get github.com/golang/lint/golint           # flycheckでシンタックスエラーを検知
+GOPATH=$HOME/.go go get github.com/kisielk/errcheck             # flycheckでシンタックスエラーを検知

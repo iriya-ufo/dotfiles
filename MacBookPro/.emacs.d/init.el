@@ -637,3 +637,20 @@ This is Scratch Buffer.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages (quote (package-build shut-up epl git commander f dash s))))
+;;
+;;================================================================
+;; Go
+;;================================================================
+(when (and (locate-library "exec-path-from-shell") (locate-library "go-mode"))
+  (require 'exec-path-from-shell)
+  (let ((envs '("PATH" "GOPATH")))
+    (exec-path-from-shell-copy-envs envs))
+  (require 'go-autocomplete)
+  (add-hook 'go-mode-hook
+            (lambda ()
+              (setq indent-tabs-mode t)
+              (go-eldoc-setup)
+              (setq gofmt-command "goimports")
+              (add-hook 'before-save-hook 'gofmt-before-save)
+              ))
+  )

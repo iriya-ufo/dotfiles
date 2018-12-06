@@ -1,4 +1,7 @@
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+# Go PATH
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
 fpath=(~/.zsh/functions/Completion(N-/) /usr/local/share/zsh-completions /usr/local/share/zsh/functions ${fpath})
 
 # 重複した PATH の削除
