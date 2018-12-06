@@ -23,6 +23,7 @@
 (depends-on "multiple-cursors")
 (depends-on "expand-region")
 (depends-on "smartrep")
+(depends-on "elscreen")
 
 ;; programming
 (depends-on "cc-mode")

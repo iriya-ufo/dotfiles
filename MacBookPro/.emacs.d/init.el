@@ -122,6 +122,15 @@
 (add-to-list 'default-frame-alist '(font . "fontset-monaco"))
 ;;
 ;;================================================================
+;; ElScreen
+;;================================================================
+(setq elscreen-tab-display-kill-screen nil)
+(setq elscreen-tab-display-control nil)
+(global-set-key (kbd "C-<tab>")   'elscreen-next)
+(global-set-key (kbd "C-S-<tab>") 'elscreen-previous)
+(elscreen-start)
+;;
+;;================================================================
 ;; popwin
 ;;================================================================
 (require 'popwin)
