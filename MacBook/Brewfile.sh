@@ -47,6 +47,7 @@ brew install tig
 brew install tmux
 brew install wget
 brew install mysql
+brew install yarn
 brew install zsh
 brew install zsh-completions
 brew install doxygen
