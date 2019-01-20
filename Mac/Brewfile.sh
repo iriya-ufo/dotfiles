@@ -25,6 +25,7 @@ brew install awscli
 brew install awsebcli
 brew install colordiff
 brew install coreutils
+brew install fzf
 brew install gauche
 brew install git
 brew install git-secrets

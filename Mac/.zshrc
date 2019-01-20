@@ -1,8 +1,28 @@
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-# Go PATH
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
-fpath=(~/.zsh/functions/Completion(N-/) /usr/local/share/zsh-completions /usr/local/share/zsh/functions ${fpath})
+fpath=(/usr/local/share/zsh-completions /usr/local/share/zsh/functions ${fpath})
+fpath=(~/.zsh/completions ~/.zsh/functions ${fpath})
+
+# autoload completions
+autoload -Uz cd-gitroot
+autoload -Uz git-escape-magic
+git-escape-magic
+
+# autoload fzf functions
+for widget_name in ~/.zsh/functions/*; do
+  local function_name="${widget_name:t}"
+  zle -N "${function_name}"
+  autoload -Uz "${function_name}"
+done
+
+bindkey -e     # emacs-like
+bindkey '^r'   fh
+bindkey '^xf'  cdf
+bindkey '^xd'  fd
+bindkey '^xk'  fkill
+bindkey '^xgs' fshow
+bindkey '^xs'  fssh
 
 # 重複した PATH の削除
 typeset -U path PATH
@@ -19,8 +39,6 @@ unset DOCKER_CERT_PATH
 unset DOCKER_HOST
 unset DOCKER_MACHINE_NAME
 unset DOCKER_TLS_VERIFY
-
-autoload -Uz cd-gitroot
 
 if [[ $(uname) = "Darwin" ]]; then
    alias ldd="echo ldd is not on OSX. use otool -L."
@@ -41,12 +59,6 @@ alias fig='docker-compose'
 
 keychain ~/.ssh/id_dsa ~/.ssh/id_rsa
 . $HOME/.keychain/$HOST-sh
-
-bindkey -e
-
-# git-escape-magic (cf. https://github.com/knu/zsh-git-escape-magic)
-autoload -Uz git-escape-magic
-git-escape-magic
 
 # gem function
 function gem() {
