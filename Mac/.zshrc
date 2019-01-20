@@ -44,13 +44,6 @@ keychain ~/.ssh/id_dsa ~/.ssh/id_rsa
 
 bindkey -e
 
-mcmd() {
-    local cflags="-mcpu=7450 -O3 -pipe -fomit-frame-pointer -fsigned-char -maltivec"
-    env CFLAGS="${cflags}" \
-        CXXFLAGS="${cflags}" $@
-        # PATH="/usr/lib/ccache/bin:$PATH" \
-}
-
 # git-escape-magic (cf. https://github.com/knu/zsh-git-escape-magic)
 autoload -Uz git-escape-magic
 git-escape-magic
