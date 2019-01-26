@@ -78,3 +78,6 @@ export PGDATA=/usr/local/var/postgres
 
 # AWS CLI Completion
 source /usr/local/share/zsh/site-functions/_aws
+
+# zsh-syntax-highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

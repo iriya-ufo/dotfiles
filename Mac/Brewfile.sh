@@ -47,6 +47,7 @@ brew install tmux
 brew install wget
 brew install zsh
 brew install zsh-completions
+brew install zsh-syntax-highlighting
 
 # Go
 brew install go
