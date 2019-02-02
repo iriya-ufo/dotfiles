@@ -1,17 +1,9 @@
 # Ignore files
 
 # Emacs
-MacBookPro/.emacs.d/.mc-lists.el
-MacBookPro/.emacs.d/ac-comphist.dat
-MacBookPro/.emacs.d/.cask
 Mac/.emacs.d/.mc-lists.el
 Mac/.emacs.d/ac-comphist.dat
 Mac/.emacs.d/.cask
 
 # Clojure
-MacBookPro/.lein/repl-history
 Mac/.lein/repl-history
-
-# Atom
-MacBookPro/.atom/blob-store
-MacBook/.atom/blob-store
