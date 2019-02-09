@@ -16,6 +16,7 @@ brew cask install docker
 brew cask install cmd-eikana
 brew cask install shiftit
 brew cask install ngrok
+brew cask install postman
 brew cask install skype
 brew cask install visual-studio-code
 
