@@ -19,6 +19,7 @@ brew cask install ngrok
 brew cask install postman
 brew cask install skype
 brew cask install visual-studio-code
+brew cask install vlc
 
 brew install ansible
 brew install asciinema
