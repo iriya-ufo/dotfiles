@@ -25,6 +25,9 @@ brew cask install dbeaver-community
 # Java
 brew tap homebrew/cask-versions
 brew cask install java8
+# If you want to use another Java Version
+# $ export JAVA_HOME=`/usr/libexec/java_home -v "1.8"`
+# $ PATH=${JAVA_HOME}/bin:${PATH}
 
 brew install ansible
 brew install asciinema
