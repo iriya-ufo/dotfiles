@@ -56,6 +56,7 @@ alias be='bundle exec'
 alias man='env LANG=C man'
 alias top='htop'
 alias fig='docker-compose'
+alias lg='lazygit'
 
 keychain ~/.ssh/id_dsa ~/.ssh/id_rsa
 . $HOME/.keychain/$HOST-sh
