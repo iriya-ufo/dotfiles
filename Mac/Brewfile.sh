@@ -22,6 +22,10 @@ brew cask install visual-studio-code
 brew cask install vlc
 brew cask install dbeaver-community
 
+# Java
+brew tap homebrew/cask-versions
+brew cask install java8
+
 brew install ansible
 brew install asciinema
 brew install awscli
