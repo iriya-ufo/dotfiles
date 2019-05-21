@@ -31,6 +31,7 @@ source $HOME/.zsh_common
 # 環境変数
 export RLWRAP_HOME='/Users/iriya/.rlwrap'
 export BREAK_CHARS="\"#'(),;\`\\|!?[]{}"
+export WORDCHARS="*?_-.[]~=&!#$%^(){}<>"
 export HOMEBREW_EDITOR='vim'
 export HOMEBREW_CASK_OPTS='--appdir=/Applications'
 
