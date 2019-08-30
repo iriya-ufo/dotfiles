@@ -1,5 +1,5 @@
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-export GOPATH=$HOME/.go
+export GOPATH=$HOME/project/go
 export PATH=$PATH:$GOPATH/bin
 fpath=(/usr/local/share/zsh-completions /usr/local/share/zsh/functions ${fpath})
 fpath=(~/.zsh/completions ~/.zsh/functions ${fpath})
