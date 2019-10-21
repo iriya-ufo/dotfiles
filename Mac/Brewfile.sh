@@ -1,6 +1,6 @@
 #!/bin/bash
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-brew tap caskroom/cask
+
+# Cask app installed into /usr/local/Caskroom
 brew cask install iterm2
 brew cask install google-chrome
 brew cask install dropbox
@@ -23,8 +23,7 @@ brew cask install vlc
 brew cask install dbeaver-community
 
 # Java
-brew tap homebrew/cask-versions
-brew cask install java8
+brew cask install adoptopenjdk
 # If you want to use another Java Version
 # $ export JAVA_HOME=`/usr/libexec/java_home -v "1.8"`
 # $ PATH=${JAVA_HOME}/bin:${PATH}
