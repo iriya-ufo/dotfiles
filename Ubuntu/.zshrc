@@ -1,58 +1,37 @@
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+export GOPATH=$HOME/project/go
+export PATH=$PATH:$GOPATH/bin
+
+bindkey -e     # emacs-like
+
+# 重複した PATH の削除
+typeset -U path PATH
 source $HOME/.zsh_common
+
+# 環境変数
+export RLWRAP_HOME='/Users/iriya/.rlwrap'
+export BREAK_CHARS="\"#'(),;\`\\|!?[]{}"
+export WORDCHARS="*?_-.[]~=&!#$%^(){}<>"
+
 alias -g LC='|lv|cat'
-alias -g bitread="cat <<EOF | gosh bitcode.scm | nkf -w"
 alias gosh="rlwrap -b '(){}[],#;| ' gosh"
-
-bindkey -e
-
-mcmd() {
-    local cflags="-mcpu=7450 -O3 -pipe -fomit-frame-pointer -fsigned-char -maltivec"
-    env CFLAGS="${cflags}" \
-        CXXFLAGS="${cflags}" $@
-        # PATH="/usr/lib/ccache/bin:$PATH" \
-}
-
-function cdup() {
-    echo
-    cd ..
-    zle reset-prompt
-}
-
-zle -N cdup
-
-# rbenv
-export PATH=$HOME/.rbenv/bin:$PATH
-export PATH=$HOME/.rbenv/shims:$PATH
-eval "$(rbenv init -)"
+alias -g bitread="cat <<EOF | gosh bitcode.scm | nkf -w"
+alias sbcl="rlwrap -b \$BREAK_CHARS sbcl"
+alias ccl="rlwrap -b \$BREAK_CHARS /usr/local/ccl/dx86cl64"
+alias diff='colordiff -u'
+alias be='bundle exec'
+alias man='env LANG=C man'
+alias fig='docker-compose'
 
 # gem function
 function gem() {
-    $HOME/.rbenv/shims/gem $*
-    if [ "$1" = "install" ] || [ "$1" = "i" ] || [ "$1" = "uninstall" ] || [ "$1" = "uni" ]
-    then
-	rbenv rehash
-	rehash
-    fi
+   $HOME/.rbenv/shims/gem $*
+   if [ "$1" = "install" ] || [ "$1" = "i" ] || [ "$1" = "uninstall" ] || [ "$1" = "uni" ]
+   then
+      rbenv rehash
+      rehash
+   fi
 }
 
-# VCS Setting
-autoload -Uz vcs_info
-precmd () {
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-}
-RPROMPT="%1(v|%F{green}%1v%f|)"
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-# Android Studio
-export PATH=$PATH:$HOME/Downloads/android-studio/bin
-
-# mikutter
-export PATH=$PATH:$HOME/Downloads/mikutter
-
-# nvm
-source ~/.nvm/nvm.sh
-nvm use 0.11 >/dev/null
+# rbenv
+eval "$(rbenv init -)"
