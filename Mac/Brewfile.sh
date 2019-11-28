@@ -36,6 +36,7 @@ brew install colordiff
 brew install coreutils
 brew install fzf
 brew install gauche
+brew install ghq
 brew install git
 brew install git-secrets
 brew install grip
