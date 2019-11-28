@@ -1,0 +1,6 @@
+# frepo - cd into the ghq management dir
+frepo() {
+  local dir
+  dir=$(ghq list > /dev/null | fzf-tmux --reverse +m) &&
+    cd $(ghq root)/$dir
+}
