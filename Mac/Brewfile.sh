@@ -57,6 +57,7 @@ brew install rlwrap
 brew install the_silver_searcher
 brew install tig
 brew install tmux
+brew install tree
 brew install wget
 brew install zsh
 brew install zsh-completions
