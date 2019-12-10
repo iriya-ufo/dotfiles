@@ -65,11 +65,17 @@ brew install zsh-syntax-highlighting
 
 # Go
 brew install go
-GOPATH=$HOME/.go go get github.com/rogpeppe/godef               # 関数定義等の参照パッケージ
-GOPATH=$HOME/.go go get -u github.com/nsf/gocode                # 補完パッケージ
-GOPATH=$HOME/.go go get -v github.com/uudashr/gopkgs/cmd/gopkgs # Go パッケージ
-GOPATH=$HOME/.go go get github.com/golang/lint/golint           # flycheckでシンタックスエラーを検知
-GOPATH=$HOME/.go go get github.com/kisielk/errcheck             # flycheckでシンタックスエラーを検知
+GOPATH=$HOME/.go go get -u github.com/motemen/gore/cmd/gore
+GOPATH=$HOME/.go go get github.com/uudashr/gopkgs/cmd/gopkgs@latest
+GOPATH=$HOME/.go go get -u golang.org/x/lint/golint
+GOPATH=$HOME/.go go get -u github.com/kisielk/errcheck
+GOPATH=$HOME/.go go get golang.org/x/tools/gopls@latest
+GOPATH=$HOME/.go go get -u github.com/spf13/cobra/cobra
+GOPATH=$HOME/.go go get github.com/mdempsky/gocode
+GOPATH=$HOME/.go go get github.com/ramya-rao-a/go-outline
+GOPATH=$HOME/.go go get github.com/stamblerre/gocode
+GOPATH=$HOME/.go go get github.com/rogpeppe/godef
+GOPATH=$HOME/.go go get github.com/sqs/goreturns
 
 brew install hugo
 
