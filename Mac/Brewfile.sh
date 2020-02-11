@@ -49,6 +49,7 @@ brew install lazygit
 brew install lv
 brew install nkf
 brew install nmap
+brew install nodenv
 brew install pstree
 brew install rbenv
 brew install rbenv-gemset

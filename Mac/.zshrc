@@ -1,6 +1,7 @@
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
+export PATH=$HOME/.nodenv/bin:$PATH
 fpath=(/usr/local/share/zsh-completions /usr/local/share/zsh/functions ${fpath})
 fpath=(~/.zsh/completions ~/.zsh/functions ${fpath})
 
@@ -75,6 +76,9 @@ function gem() {
 
 # rbenv
 eval "$(rbenv init -)"
+
+# nodenv
+eval "$(nodenv init -)"
 
 # PostgreSQL
 export PGDATA=/usr/local/var/postgres
