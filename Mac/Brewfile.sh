@@ -18,6 +18,7 @@ brew cask install shiftit
 brew cask install ngrok
 brew cask install postman
 brew cask install skype
+brew cask install toggl
 brew cask install visual-studio-code
 brew cask install vlc
 brew cask install dbeaver-community
