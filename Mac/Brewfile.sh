@@ -12,6 +12,7 @@ brew cask install thunderbird
 brew cask install alfred
 brew cask install google-photos-backup-and-sync
 brew cask install insync
+brew cask install discord
 brew cask install docker
 brew cask install cmd-eikana
 brew cask install shiftit
