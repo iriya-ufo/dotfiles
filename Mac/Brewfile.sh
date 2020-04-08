@@ -53,6 +53,7 @@ brew install nkf
 brew install nmap
 brew install nodenv
 brew install pstree
+brew install pyenv
 brew install rbenv
 brew install rbenv-gemset
 brew install reattach-to-user-namespace
