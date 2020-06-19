@@ -24,6 +24,8 @@
 	precommit = diff --cached -w --word-diff=color --word-diff-regex='[^[:space:]<>]+'
 [push]
 	default = simple
+[pull]
+	rebase = true
 [core]
 	pager = nkf -w | LESSCHARSET=utf-8 less
 	excludesfile = /Users/iriya/.global_ignore
