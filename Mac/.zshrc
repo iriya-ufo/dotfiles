@@ -65,8 +65,12 @@ alias diff='colordiff -u'
 alias be='bundle exec'
 alias man='env LANG=C man'
 alias top='htop'
-alias fig='docker-compose'
 alias lg='lazygit'
+alias fig='docker-compose'
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+alias dvls='docker volume ls'
+alias dimg='docker images'
 
 keychain ~/.ssh/id_dsa ~/.ssh/id_rsa
 . $HOME/.keychain/$HOST-sh
