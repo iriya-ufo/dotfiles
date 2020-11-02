@@ -74,6 +74,7 @@ alias -g W='| wc'
 alias -g H='| head'
 alias -g T='| tail'
 alias -g N='| nkf'
+alias -g S='| sort'
 
 alias -s ps=gv
 alias -s eps=gv
