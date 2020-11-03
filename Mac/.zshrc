@@ -57,6 +57,7 @@ fi
 
 alias -g LC='|lv|cat'
 alias -g bitread="cat <<EOF | gosh bitcode.scm | nkf -w"
+alias g="git"
 alias gosh="rlwrap -b '(){}[],#;| ' gosh"
 alias sbcl="rlwrap -b \$BREAK_CHARS sbcl"
 alias ccl="rlwrap -b \$BREAK_CHARS /usr/local/ccl/dx86cl64"
