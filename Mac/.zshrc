@@ -72,6 +72,7 @@ alias dps='docker ps'
 alias dpsa='docker ps -a'
 alias dvls='docker volume ls'
 alias dimg='docker images'
+alias drmi='docker rmi'
 
 keychain ~/.ssh/id_dsa ~/.ssh/id_rsa
 . $HOME/.keychain/$HOST-sh
