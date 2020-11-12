@@ -4,7 +4,6 @@
 brew cask install iterm2
 brew cask install google-chrome
 brew cask install dropbox
-brew cask install evernote
 brew cask install google-japanese-ime
 brew cask install gyazo
 brew cask install slack
