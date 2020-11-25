@@ -14,7 +14,6 @@ brew cask install insync
 brew cask install karabiner-elements
 brew cask install discord
 brew cask install docker
-brew cask install shiftit
 brew cask install ngrok
 brew cask install postman
 brew cask install toggl
