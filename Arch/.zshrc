@@ -9,6 +9,8 @@ export PATH=$HOME/.nodenv/bin:$PATH
 export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PYENV_ROOT/bin:$PATH
 
+fpath=(~/.zsh/completions ~/.zsh/functions ${fpath})
+
 # autoload completions
 autoload -Uz cd-gitroot
 autoload -Uz git-escape-magic
@@ -35,6 +37,7 @@ typeset -U path PATH
 source $HOME/.zsh_common
 
 # 環境変数
+export RLWRAP_HOME='/home/iriya/.rlwrap'
 export BREAK_CHARS="\"#'(),;\`\\|!?[]{}"
 export WORDCHARS="*?_-.[]~=&!#$%^(){}<>"
 
