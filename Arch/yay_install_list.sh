@@ -1,28 +1,26 @@
 #!/bin/bash
 
-yay -S awscli
-yay -S awsebcli
-yay -S colordiff
-yay -S fzf
-yay -S gauche
-yay -S ghq
-yay -S git
-yay -S git-secrets
-yay -S go
-yay -S jq
-yay -S lazydocker
-yay -S lazygit
-yay -S lv
-yay -S nkf
-yay -S nmap
-yay -S nodenv
-yay -S pyenv
-yay -S rbenv
-yay -S rbenv-gemset
-yay -S rlwrap
-yay -S the_silver_searcher
-yay -S tig
-yay -S wget
-yay -S zsh
-yay -S zsh-completions
-yay -S zsh-syntax-highlighting
+yay -S colordiff --noconfirm
+yay -S fzf --noconfirm
+yay -S gauche --noconfirm
+yay -S ghq --noconfirm
+yay -S git --noconfirm
+yay -S git-secrets --noconfirm
+yay -S go --noconfirm
+yay -S jq --noconfirm
+yay -S lazydocker --noconfirm
+yay -S lazygit --noconfirm
+yay -S lv --noconfirm
+yay -S nkf --noconfirm
+yay -S nmap --noconfirm
+yay -S nodenv --noconfirm
+yay -S pyenv --noconfirm
+yay -S rbenv --noconfirm
+yay -S rbenv-gemset --noconfirm
+yay -S rlwrap --noconfirm
+yay -S the_silver_searcher --noconfirm
+yay -S tig --noconfirm
+yay -S wget --noconfirm
+yay -S zsh --noconfirm
+yay -S zsh-completions --noconfirm
+yay -S zsh-syntax-highlighting --noconfirm
