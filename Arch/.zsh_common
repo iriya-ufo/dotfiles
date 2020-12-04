@@ -4,7 +4,7 @@
 ##==============================
 setopt prompt_subst
 setopt transient_rprompt
-PS_OK=$'%F{green}✘╹◡╹✘ ${HOST} %F{magenta}> %F{nomal}'
+PS_OK=$'%F{cyan}✘╹◡╹✘ ${HOST} %F{magenta}> %F{nomal}'
 PS_NG=$'%F{red}✘>﹏<✘ ${HOST} %F{magenta}> %F{nomal}'
 PROMPT="%0(?|${PS_OK}|${PS_NG})"
 RPROMPT='[%F{green}%~%f]'
