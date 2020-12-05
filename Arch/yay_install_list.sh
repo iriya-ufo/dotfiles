@@ -10,6 +10,7 @@ yay -S go --noconfirm
 yay -S jq --noconfirm
 yay -S lazydocker --noconfirm
 yay -S lazygit --noconfirm
+yay -S lsof --noconfirm
 yay -S lv --noconfirm
 yay -S nkf --noconfirm
 yay -S nmap --noconfirm
