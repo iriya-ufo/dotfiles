@@ -20,6 +20,7 @@ yay -S rbenv-gemset --noconfirm
 yay -S rlwrap --noconfirm
 yay -S the_silver_searcher --noconfirm
 yay -S tig --noconfirm
+yay -S tree --noconfirm
 yay -S wget --noconfirm
 yay -S zsh --noconfirm
 yay -S zsh-completions --noconfirm
