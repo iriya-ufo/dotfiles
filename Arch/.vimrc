@@ -30,6 +30,7 @@ set wrapscan
 set hlsearch
 set wildmenu
 set shiftwidth=2
+set laststatus=2
 set showmatch
 set textwidth=0
 set hidden
