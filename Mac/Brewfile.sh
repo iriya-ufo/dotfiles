@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Cask app installed into /usr/local/Caskroom
+brew install --cask authy
 brew install --cask iterm2
 brew install --cask google-chrome
 brew install --cask dropbox
