@@ -1,29 +1,29 @@
 #!/bin/bash
 
 # Cask app installed into /usr/local/Caskroom
-brew cask install iterm2
-brew cask install google-chrome
-brew cask install dropbox
-brew cask install google-japanese-ime
-brew cask install gyazo
-brew cask install slack
-brew cask install thunderbird
-brew cask install alfred
-brew cask install google-photos-backup-and-sync
-brew cask install insync
-brew cask install karabiner-elements
-brew cask install discord
-brew cask install docker
-brew cask install ngrok
-brew cask install postman
-brew cask install toggl
-brew cask install visual-studio-code
-brew cask install vlc
-brew cask install dbeaver-community
-brew cask install zoomus
+brew install --cask iterm2
+brew install --cask google-chrome
+brew install --cask dropbox
+brew install --cask google-japanese-ime
+brew install --cask gyazo
+brew install --cask slack
+brew install --cask thunderbird
+brew install --cask alfred
+brew install --cask google-photos-backup-and-sync
+brew install --cask insync
+brew install --cask karabiner-elements
+brew install --cask discord
+brew install --cask docker
+brew install --cask ngrok
+brew install --cask postman
+brew install --cask toggl
+brew install --cask visual-studio-code
+brew install --cask vlc
+brew install --cask dbeaver-community
+brew install --cask zoomus
 
 # Java
-brew cask install java
+brew install --cask java
 # If you want to use another Java Version
 # $ export JAVA_HOME=`/usr/libexec/java_home -v 14`
 # $ PATH=${JAVA_HOME}/bin:${PATH}
