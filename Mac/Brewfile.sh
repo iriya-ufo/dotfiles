@@ -19,6 +19,7 @@ brew install --cask ngrok
 brew install --cask postman
 brew install --cask toggl
 brew install --cask visual-studio-code
+brew install --cask vivaldi
 brew install --cask vlc
 brew install --cask dbeaver-community
 brew install --cask zoomus
