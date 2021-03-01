@@ -16,6 +16,7 @@ brew install --cask karabiner-elements
 brew install --cask discord
 brew install --cask docker
 brew install --cask ngrok
+brew install --cask notion
 brew install --cask postman
 brew install --cask toggl
 brew install --cask visual-studio-code
