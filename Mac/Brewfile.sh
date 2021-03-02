@@ -23,7 +23,7 @@ brew install --cask visual-studio-code
 brew install --cask vivaldi
 brew install --cask vlc
 brew install --cask dbeaver-community
-brew install --cask zoomus
+brew install --cask zoom
 
 # Java
 brew install --cask java
