@@ -3,7 +3,10 @@
 # Emacs
 Mac/.emacs.d/.mc-lists.el
 Mac/.emacs.d/ac-comphist.dat
-Mac/.emacs.d/.cask
+Mac/.emacs.d/straight/*
+!Mac/.emacs.d/straight/versions/
+Mac/.emacs.d/straight/versions/*
+!Mac/.emacs.d/straight/versions/default.el
 
 # Clojure
 Mac/.lein/repl-history
