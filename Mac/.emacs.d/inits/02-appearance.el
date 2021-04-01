@@ -34,7 +34,7 @@
 (push '(compilation-mode :noselect t) popwin:special-display-config)
 
 ;; -----------------------------------------------------------------------------------------------
-;; brief   : highlight-symbol
+;; brief   : シンボルのハイライト
 ;; note    : -
 ;; -----------------------------------------------------------------------------------------------
 (use-package highlight-symbol)
@@ -49,3 +49,25 @@
 (use-package rainbow-delimiters)
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+;; -----------------------------------------------------------------------------------------------
+;; brief   : 空白などの可視化
+;; note    : -
+;; -----------------------------------------------------------------------------------------------
+(require 'whitespace)
+(setq whitespace-style '(face
+                         trailing
+                         tabs
+                         spaces
+                         empty
+                         space-mark
+                         tab-mark
+                         ))
+
+(setq whitespace-display-mappings
+      '((space-mark ?\u3000 [?\u25a1])
+        (tab-mark ?\t [?\u00BB ?\t] [?\\ ?\t])))
+
+(setq whitespace-space-regexp "\\(\u3000+\\)")  ; show full-width space
+(setq whitespace-action '(auto-cleanup))        ; auto cleanup before save file
+(global-whitespace-mode 1)                      ; enable whitespace-mode
