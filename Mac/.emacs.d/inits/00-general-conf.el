@@ -34,6 +34,5 @@
       (concat "%b - emacs@" system-name))
 (show-paren-mode 1)                       ; 対応する括弧を光らせる
 (electric-pair-mode t)                    ; 括弧の自動入力
-(global-set-key "\C-cc" 'compile)         ; C-c c でコンパイル
 (setq-default truncate-lines t)           ; 行を折り返さない
 (mouse-avoidance-mode 'exile)             ; カーソルが近付いたとき右上隅に移動,その後復帰

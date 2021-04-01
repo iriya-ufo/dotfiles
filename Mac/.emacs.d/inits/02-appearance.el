@@ -41,9 +41,6 @@
 (require 'highlight-symbol)
 ;; 使いたい色を設定
 (setq highlight-symbol-colors '("DarkOrange" "DodgerBlue1" "DeepPink1"))
-;; キーバインドの設定
-(global-set-key (kbd "C-o") 'highlight-symbol-at-point)
-(global-set-key (kbd "M-C-o") 'highlight-symbol-remove-all)
 
 ;; -----------------------------------------------------------------------------------------------
 ;; brief   : ネストに応じて括弧の色を変える
