@@ -21,6 +21,7 @@
  ("popwin" . "1184368d3610bd0d0ca4a3db4068048c562c2b50")
  ("pos-tip" . "179cc126b363f72ca12fab1e0dc462ce0ee79742")
  ("powerline" . "cfff1cfe63793ea1a8bcfcae50c296558384cf08")
+ ("python-mode" . "906b0a107f7bcfe6e32bcfedb977e6f0f99fda59")
  ("rainbow-delimiters" . "f43d48a24602be3ec899345a3326ed0247b960c6")
  ("smartrep.el" . "f0ff5a6d7b8603603598ae3045c98b011e58d86e")
  ("straight.el" . "e1390a933b6f5a15079d6dec91eac97a17aad10c")
