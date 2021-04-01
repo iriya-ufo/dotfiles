@@ -1,4 +1,3 @@
-;; -----------------------------------------------------------------------------------------------
-;; brief   : helm configuration
-;; note    : https://github.com/emacs-helm/helm/wiki
-;; -----------------------------------------------------------------------------------------------
+;;; helm.el --- helm configuration -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; Code:

@@ -1,7 +1,7 @@
-;; -----------------------------------------------------------------------------------------------
-;; brief   : auto save configuration
-;; note    : https://github.com/kentaro/auto-save-buffers-enhanced
-;; -----------------------------------------------------------------------------------------------
+;;; auto-save-buffers-enhanced.el --- auto save configuration -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; Code:
+
 ;; バッファの内容を自動保存
 (use-package auto-save-buffers-enhanced)
 (require 'auto-save-buffers-enhanced)

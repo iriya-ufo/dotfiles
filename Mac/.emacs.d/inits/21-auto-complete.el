@@ -1,7 +1,7 @@
-;; -----------------------------------------------------------------------------------------------
-;; brief   : auto complete configuration
-;; note    : https://github.com/auto-complete/auto-complete
-;; -----------------------------------------------------------------------------------------------
+;;; auto-complete.el --- auto complete configuration -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; Code:
+
 (use-package auto-complete)
 (require 'auto-complete)
 (require 'auto-complete-config)

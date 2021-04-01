@@ -1,7 +1,11 @@
-;; -----------------------------------------------------------------------------------------------
-;; brief   : straight.el: next-generation, purely functional package manager for the Emacs hacker.
+;;; init.el --- Emacs main initialization -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; Code:
+
+;; ------------------------------------------------------------------
+;; brief   : straight.el: next-generation package manager
 ;; note    : https://github.com/raxod502/straight.el
-;; -----------------------------------------------------------------------------------------------
+;; ------------------------------------------------------------------
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -22,10 +26,10 @@
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
 
-;; -----------------------------------------------------------------------------------------------
+;; ------------------------------------------------------------------
 ;; brief   : init-loader configuration
 ;; note    : -
-;; -----------------------------------------------------------------------------------------------
+;; ------------------------------------------------------------------
 (use-package init-loader)
 (setq init-loader-show-log-after-init nil)
 (init-loader-load "~/.emacs.d/inits")

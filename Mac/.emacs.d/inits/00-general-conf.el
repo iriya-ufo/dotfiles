@@ -1,7 +1,7 @@
-;; -----------------------------------------------------------------------------------------------
-;; brief   : general configuration
-;; note    : -
-;; -----------------------------------------------------------------------------------------------
+;;; general-conf.el --- general configuration -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; Code:
+
 ;; バックアップファイルを作らない
 (setq make-backup-files nil)
 (setq auto-save-default nil)
