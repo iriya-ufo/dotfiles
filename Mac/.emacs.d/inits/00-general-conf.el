@@ -35,4 +35,5 @@
 (show-paren-mode 1)                       ; 対応する括弧を光らせる
 (electric-pair-mode t)                    ; 括弧の自動入力
 (setq-default truncate-lines t)           ; 行を折り返さない
+(setq scroll-step 1)                      ; 一行ずつスクロール
 (mouse-avoidance-mode 'exile)             ; カーソルが近付いたとき右上隅に移動,その後復帰
