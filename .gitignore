@@ -1,8 +1,7 @@
 # Ignore files
 
 # Emacs
-Mac/.emacs.d/.mc-lists.el
-Mac/.emacs.d/ac-comphist.dat
+Mac/.emacs.d/cache/*
 Mac/.emacs.d/straight/*
 !Mac/.emacs.d/straight/versions/
 Mac/.emacs.d/straight/versions/*
