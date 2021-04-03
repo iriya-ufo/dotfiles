@@ -39,5 +39,6 @@
  ("smartrep.el" . "f0ff5a6d7b8603603598ae3045c98b011e58d86e")
  ("straight.el" . "e1390a933b6f5a15079d6dec91eac97a17aad10c")
  ("use-package" . "a7422fb8ab1baee19adb2717b5b47b9c3812a84c")
+ ("web-mode" . "8ef47935d638902ba35a557cae5edd6ab6ab1346")
  ("yaml-mode" . "fc5e1c58f94472944c4aa838f00f6adcac6fa992"))
 :beta
