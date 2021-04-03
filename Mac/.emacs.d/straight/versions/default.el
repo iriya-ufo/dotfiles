@@ -1,5 +1,6 @@
 (("auto-complete" . "aafd3f566a8002a1e9b3e197721a2660c0a835ff")
  ("auto-save-buffers-enhanced" . "461e8c816c1b7c650be5f209078b381fe55da8c6")
+ ("clojure-mode" . "a14671e03c867c9d759ee9e59cdc5cecbf271245")
  ("coffee-mode" . "35a41c7d8233eac0b267d9593e67fb8b6235e134")
  ("color-theme-sanityinc-tomorrow" . "1445a556af9da3681ae0e7e7242352e9fe39fe73")
  ("dash.el" . "b9286a84975874b10493f1cb4ea051c501f51273")
