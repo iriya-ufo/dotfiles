@@ -30,6 +30,21 @@
           (isearch-repeat-forward)))
     ad-do-it))
 
+;; 最近開いたファイルの履歴
+(use-package recentf-ext)
+(when (require 'recentf-ext nil t)
+  (setq recentf-max-saved-items 1000)
+  (setq recentf-exclude '("~/.emacs.d/cache/.recentf"))
+  (setq recentf-auto-cleanup 10)
+  (setq recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
+  (recentf-mode 1))
+
+;; undo tree 導入
+(use-package undo-tree)
+(require 'undo-tree)
+(global-undo-tree-mode t)
+
+;; その他の設定
 (global-auto-revert-mode 1)               ; バッファの自動読み込み
 (cd "~/")                                 ; ホームディレクトリより開始
 (put 'narrow-to-region 'disabled nil)     ; ナローイングの有効化
