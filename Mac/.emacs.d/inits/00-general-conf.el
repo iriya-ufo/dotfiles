@@ -33,6 +33,7 @@
 ;; 最近開いたファイルの履歴
 (use-package recentf-ext)
 (when (require 'recentf-ext nil t)
+  (setq recentf-save-file "~/.emacs.d/cache/.recentf")
   (setq recentf-max-saved-items 1000)
   (setq recentf-exclude '("~/.emacs.d/cache/.recentf"))
   (setq recentf-auto-cleanup 10)
