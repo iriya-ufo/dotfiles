@@ -54,10 +54,6 @@
 (setq-default tab-width 2)                ; タブ文字の幅を設定
 (setq-default indent-tabs-mode nil)       ; インデント文字をタブではなく空白に設定
 (setq require-final-newline t)            ; 行末に改行文字を追加する
-(display-time)                            ; 時計を表示
-(global-linum-mode t)                     ; 全体の行番号を表示
-(line-number-mode t)                      ; カーソルのある行番号を表示
-(column-number-mode t)                    ; カーソルのある桁番号を表示
 (auto-compression-mode t)                 ; 日本語infoの文字化け防止
 (setq frame-title-format                  ; フレームのタイトル指定
       (concat "%b - emacs@" system-name))
