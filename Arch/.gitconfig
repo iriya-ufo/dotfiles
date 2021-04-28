@@ -39,5 +39,4 @@
 [url "git@gitlab.com:"]
 	insteadOf = https://gitlab.com/
 [ghq]
-	root = /home/iriya/.go/src
 	root = /home/iriya/.ghq
