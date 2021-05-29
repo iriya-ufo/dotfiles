@@ -92,7 +92,9 @@ eval "$(rbenv init -)"
 # nodenv
 eval "$(nodenv init -)"
 # pyenv
-eval "$(pyenv init -)"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
+fi
 
 # PostgreSQL
 export PGDATA=/usr/local/var/postgres
