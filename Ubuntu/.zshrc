@@ -21,7 +21,7 @@ alias ccl="rlwrap -b \$BREAK_CHARS /usr/local/ccl/dx86cl64"
 alias diff='colordiff -u'
 alias be='bundle exec'
 alias man='env LANG=C man'
-alias fig='docker-compose'
+alias fig='docker compose'
 
 # gem function
 function gem() {
