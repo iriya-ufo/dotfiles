@@ -62,3 +62,4 @@
 (setq-default truncate-lines t)           ; 行を折り返さない
 (setq scroll-step 1)                      ; 一行ずつスクロール
 (mouse-avoidance-mode 'exile)             ; カーソルが近付いたとき右上隅に移動,その後復帰
+(setq ring-bell-function 'ignore)         ; 警告音・フラッシュの無効化
