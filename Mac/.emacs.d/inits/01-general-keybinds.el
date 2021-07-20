@@ -17,14 +17,14 @@
 ;; note    : -
 ;; ------------------------------------------------------------------
 (global-unset-key (kbd "C-t"))
+(global-set-key (kbd "C-t v")   'split-window-below)
+(global-set-key (kbd "C-t s")   'split-window-right)
 (global-set-key (kbd "C-t C-t") 'other-window)
-(global-set-key "\C-tv" 'split-window-below)
-(global-set-key "\C-th" 'split-window-right)
-(global-set-key "\C-tb" 'windmove-left)
-(global-set-key "\C-tn" 'windmove-down)
-(global-set-key "\C-tp" 'windmove-up)
-(global-set-key "\C-tf" 'windmove-right)
-(global-set-key "\C-td" 'delete-window)
+(global-set-key (kbd "C-t C-h") 'windmove-left)
+(global-set-key (kbd "C-t C-j") 'windmove-down)
+(global-set-key (kbd "C-t C-k") 'windmove-up)
+(global-set-key (kbd "C-t C-l") 'windmove-right)
+(global-set-key (kbd "C-t C-d") 'delete-window)
 
 ;; ------------------------------------------------------------------
 ;; brief   : multiple cursors keybind
