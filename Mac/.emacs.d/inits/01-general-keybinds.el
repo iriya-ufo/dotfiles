@@ -52,6 +52,13 @@
 (global-set-key (kbd "M-C-o") 'highlight-symbol-remove-all)
 
 ;; ------------------------------------------------------------------
+;; brief   : hl-todo keybind
+;; note    : https://github.com/tarsius/hl-todo
+;; ------------------------------------------------------------------
+(global-set-key (kbd "C-c C-p") 'hl-todo-previous)
+(global-set-key (kbd "C-c C-n") 'hl-todo-next)
+
+;; ------------------------------------------------------------------
 ;; brief   : helm keybind
 ;; note    : -
 ;; ------------------------------------------------------------------

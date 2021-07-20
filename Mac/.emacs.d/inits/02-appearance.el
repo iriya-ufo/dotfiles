@@ -66,6 +66,20 @@
 (setq highlight-symbol-colors '("DarkOrange" "DodgerBlue1" "DeepPink1"))
 
 ;; ------------------------------------------------------------------
+;; brief   : Highlight TODO and similar keywords in comments and strings
+;; note    : https://github.com/tarsius/hl-todo
+;; ------------------------------------------------------------------
+(use-package hl-todo)
+(require 'hl-todo)
+(setq hl-todo-highlight-punctuation ":")
+(setq hl-todo-keyword-faces
+      '(("TODO"       . "#7FFFD4")
+        ("FIXME"      . "#F0E68C")
+        ("DEPRECATED" . "#FF1493")
+        ("DEBUG"      . "#EE82EE")))
+(global-hl-todo-mode 1)
+
+;; ------------------------------------------------------------------
 ;; brief   : ネストに応じて括弧の色を変える
 ;; note    : -
 ;; ------------------------------------------------------------------
