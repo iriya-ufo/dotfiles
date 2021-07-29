@@ -60,7 +60,7 @@
 
 ;; ------------------------------------------------------------------
 ;; brief   : helm keybind
-;; note    : -
+;; note    : Some helm keybinds are defined at helm.el
 ;; ------------------------------------------------------------------
 (define-key global-map (kbd "C-;")     'helm-mini)
 (define-key global-map (kbd "C-x ;")   'helm-projectile)
@@ -72,7 +72,3 @@
 (define-key global-map (kbd "M-y")     'helm-show-kill-ring)
 (define-key global-map (kbd "C-c i")   'helm-imenu)
 (define-key global-map (kbd "C-x b")   'helm-buffers-list)
-(define-key helm-map (kbd "C-h") 'delete-backward-char)
-(define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
-(define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
-(define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
