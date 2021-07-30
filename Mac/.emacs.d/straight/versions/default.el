@@ -24,6 +24,7 @@
  ("helm-ag" . "51e164b4bb1a9826fe8b39c0d02b4064c9352b9f")
  ("helm-projectile" . "58123f14c392021714fc5d23b9f95c7f95ce07f1")
  ("highlight-symbol.el" . "7a789c779648c55b16e43278e51be5898c121b3a")
+ ("hl-todo" . "5ac0076cfeaea57f7c7a59d9d41a34c1bdc4b22e")
  ("init-loader" . "10b8d7b12acbd1036e68dfb59f460714baedaa33")
  ("js3-mode" . "229aeb374f1b1f3ee5c59b8ba3eebb6385c232cb")
  ("let-alist" . "6708ec0b2e6dff80ff5b64698aa009d9070a2ed2")
