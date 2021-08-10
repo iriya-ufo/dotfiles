@@ -8,7 +8,6 @@ brew install --cask dropbox
 brew install --cask google-japanese-ime
 brew install --cask gyazo
 brew install --cask slack
-brew install --cask thunderbird
 brew install --cask alfred
 brew install --cask google-photos-backup-and-sync
 brew install --cask insync
@@ -16,7 +15,6 @@ brew install --cask karabiner-elements
 brew install --cask discord
 brew install --cask docker
 brew install --cask ngrok
-brew install --cask notion
 brew install --cask postman
 brew install --cask toggl
 brew install --cask visual-studio-code
@@ -73,7 +71,6 @@ brew install zsh-syntax-highlighting
 brew install go
 GOPATH=$HOME/.go go get -u github.com/motemen/gore/cmd/gore
 GOPATH=$HOME/.go go get github.com/uudashr/gopkgs/cmd/gopkgs@latest
-GOPATH=$HOME/.go go get -u golang.org/x/lint/golint
 GOPATH=$HOME/.go go get -u github.com/kisielk/errcheck
 GOPATH=$HOME/.go go get golang.org/x/tools/gopls@latest
 GOPATH=$HOME/.go go get -u github.com/spf13/cobra/cobra
