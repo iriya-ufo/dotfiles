@@ -7,5 +7,11 @@ Mac/.emacs.d/straight/*
 Mac/.emacs.d/straight/versions/*
 !Mac/.emacs.d/straight/versions/default.el
 
+Arch/.emacs.d/cache/*
+Arch/.emacs.d/straight/*
+!Arch/.emacs.d/straight/versions/
+Arch/.emacs.d/straight/versions/*
+!Arch/.emacs.d/straight/versions/default.el
+
 # Clojure
 Mac/.lein/repl-history

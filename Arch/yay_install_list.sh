@@ -1,6 +1,8 @@
 #!/bin/bash
 
 yay -S colordiff --noconfirm
+yay -S cmigemo --noconfirm
+yay -S emacs --noconfirm
 yay -S fzf --noconfirm
 yay -S gauche --noconfirm
 yay -S ghq --noconfirm
