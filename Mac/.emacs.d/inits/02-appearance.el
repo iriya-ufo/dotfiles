@@ -13,7 +13,11 @@
 (tool-bar-mode -1)         ; disable tool bar
 (menu-bar-mode -1)         ; disable menu bar
 (set-scroll-bar-mode nil)  ; disable scroll bar
-(set-frame-parameter nil 'fullscreen 'maximized)  ; start full screen
+(setq default-frame-alist
+      '(
+        (width . 320)
+        (height . 100)
+        ))
 
 ;; emacs startup buffer
 (setq inhibit-startup-screen t)
