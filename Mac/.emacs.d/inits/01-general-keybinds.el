@@ -72,3 +72,13 @@
 (define-key global-map (kbd "M-y")     'helm-show-kill-ring)
 (define-key global-map (kbd "C-c i")   'helm-imenu)
 (define-key global-map (kbd "C-x b")   'helm-buffers-list)
+
+;; ------------------------------------------------------------------
+;; brief   : lsp-mode keybinds
+;; note    : -
+;; ------------------------------------------------------------------
+(defun lsp-mode-init ()
+  (lsp)
+  (global-set-key (kbd "M-*") 'xref-pop-marker-stack)
+  (global-set-key (kbd "M-.") 'xref-find-definitions)
+  (global-set-key (kbd "M-/") 'xref-find-references))

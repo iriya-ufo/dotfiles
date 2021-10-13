@@ -3,6 +3,21 @@
 ;;; Code:
 
 ;; ------------------------------------------------------------------
+;; brief   : Language Server Protocol Support for Emacs
+;; note    : https://github.com/emacs-lsp/lsp-mode
+;; ------------------------------------------------------------------
+(use-package lsp-mode)
+(use-package company-lsp)
+(use-package lsp-ui)
+(setq lsp-ui-doc-enable t)
+(setq lsp-ui-doc-header t)
+(setq lsp-ui-doc-include-signature t)
+(setq lsp-ui-doc-max-width 150)
+(setq lsp-ui-doc-max-height 30)
+(setq lsp-ui-peek-enable t)
+(add-hook 'lsp-mode-hook 'lsp-ui-mode)
+
+;; ------------------------------------------------------------------
 ;; brief   : flycheck configuration
 ;; note    : -
 ;; ------------------------------------------------------------------
