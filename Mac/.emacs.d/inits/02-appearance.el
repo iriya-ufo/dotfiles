@@ -15,8 +15,8 @@
 (set-scroll-bar-mode nil)  ; disable scroll bar
 (setq default-frame-alist
       '(
-        (width . 320)
-        (height . 100)
+        (width . 300)
+        (height . 80)
         ))
 
 ;; emacs startup buffer
@@ -37,7 +37,7 @@
 ;; ------------------------------------------------------------------
 (set-face-attribute 'default nil
                     :family "Ricty Diminished Discord"
-                    :height 140)
+                    :height 180)
 (set-fontset-font (frame-parameter nil 'font)
                   'japanese-jisx0208
                   (cons "Ricty Diminished Discord" "iso10646-1"))
