@@ -90,6 +90,8 @@ export LV='-z -la -Ou8 -c'
 ## 補完
 ##==============================
 autoload -U compinit ; compinit -u
+# bash 用の補完スクリプトを zsh でも解釈できるようにする
+autoload -U +X bashcompinit && bashcompinit
 
 zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}

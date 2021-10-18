@@ -19,9 +19,9 @@ git-escape-magic
 
 # autoload fzf functions
 for widget_name in ~/.zsh/functions/*; do
-  local function_name="${widget_name:t}"
-  zle -N "${function_name}"
-  autoload -Uz "${function_name}"
+    local function_name="${widget_name:t}"
+    zle -N "${function_name}"
+    autoload -Uz "${function_name}"
 done
 
 bindkey -e     # emacs-like
@@ -51,8 +51,8 @@ unset DOCKER_MACHINE_NAME
 unset DOCKER_TLS_VERIFY
 
 if [[ $(uname) = "Darwin" ]]; then
-   alias ldd="echo ldd is not on OSX. use otool -L."
-   alias strace="echo strace is not on OSX. use dtruss"
+    alias ldd="echo ldd is not on OSX. use otool -L."
+    alias strace="echo strace is not on OSX. use dtruss"
 fi
 
 alias -g LC='|lv|cat'
@@ -79,12 +79,12 @@ keychain ~/.ssh/id_dsa ~/.ssh/id_rsa
 
 # gem function
 function gem() {
-   $HOME/.rbenv/shims/gem $*
-   if [ "$1" = "install" ] || [ "$1" = "i" ] || [ "$1" = "uninstall" ] || [ "$1" = "uni" ]
-   then
-      rbenv rehash
-      rehash
-   fi
+    $HOME/.rbenv/shims/gem $*
+    if [ "$1" = "install" ] || [ "$1" = "i" ] || [ "$1" = "uninstall" ] || [ "$1" = "uni" ]
+    then
+        rbenv rehash
+        rehash
+    fi
 }
 
 # rbenv
@@ -93,7 +93,7 @@ eval "$(rbenv init -)"
 eval "$(nodenv init -)"
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init --path)"
+    eval "$(pyenv init --path)"
 fi
 
 # PostgreSQL
@@ -101,6 +101,11 @@ export PGDATA=/usr/local/var/postgres
 
 # AWS CLI Completion
 source /usr/local/share/zsh/site-functions/_aws
+
+# Terraform Completion
+if type terraform &> /dev/null; then
+    complete -o nospace -C terraform terraform
+fi
 
 # zsh-syntax-highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
