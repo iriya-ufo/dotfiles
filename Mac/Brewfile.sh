@@ -44,8 +44,6 @@ brew install grip
 brew install httperf
 brew install jq
 brew install keychain
-brew tap jesseduffield/lazydocker
-brew install lazydocker
 brew install lazygit
 brew install lv
 brew install nkf
