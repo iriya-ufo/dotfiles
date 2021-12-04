@@ -37,7 +37,7 @@
 ;; ------------------------------------------------------------------
 (set-face-attribute 'default nil
                     :family "Ricty Diminished Discord"
-                    :height 180)
+                    :height 160)
 (set-fontset-font (frame-parameter nil 'font)
                   'japanese-jisx0208
                   (cons "Ricty Diminished Discord" "iso10646-1"))
