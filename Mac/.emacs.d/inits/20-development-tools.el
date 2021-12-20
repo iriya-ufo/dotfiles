@@ -30,6 +30,17 @@
 (require 'flycheck-color-mode-line)
 
 ;; ------------------------------------------------------------------
+;; brief   : yasnippet
+;; note    : Yasnippet official snippet collections
+;;         : https://github.com/AndreaCrotti/yasnippet-snippets/tree/master/snippets
+;; ------------------------------------------------------------------
+(use-package yasnippet)
+(require 'yasnippet)
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets"))
+(yas-global-mode 1)
+
+;; ------------------------------------------------------------------
 ;; brief   : ParEdit
 ;; note    : Lisp 系言語の入力支援
 ;; ------------------------------------------------------------------
