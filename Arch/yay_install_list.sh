@@ -10,7 +10,6 @@ yay -S git --noconfirm
 yay -S git-secrets --noconfirm
 yay -S go --noconfirm
 yay -S jq --noconfirm
-yay -S lazydocker --noconfirm
 yay -S lazygit --noconfirm
 yay -S lsof --noconfirm
 yay -S lv --noconfirm
