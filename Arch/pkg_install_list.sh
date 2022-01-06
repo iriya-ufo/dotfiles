@@ -1,6 +1,6 @@
 #!/bin/bash
 
-paru colordiff \
+paru --noconfirm -S colordiff \
 cmigemo \
 emacs \
 fzf \
@@ -18,7 +18,6 @@ nmap \
 nodenv \
 pyenv \
 rbenv \
-rbenv-gemset \
 rlwrap \
 the_silver_searcher \
 tig \
