@@ -1,6 +1,7 @@
 #!/bin/bash
 
-paru --noconfirm -S colordiff \
+paru --noconfirm -S bat \
+colordiff \
 cmigemo \
 emacs \
 fzf \

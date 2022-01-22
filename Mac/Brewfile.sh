@@ -33,6 +33,7 @@ brew install ansible
 brew install asciinema
 brew install awscli
 brew install awsebcli
+brew install bat
 brew install colordiff
 brew install coreutils
 brew install fzf
