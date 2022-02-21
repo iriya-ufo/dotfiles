@@ -4,6 +4,7 @@
 Mac/.emacs.d/.lsp-session-v1
 Mac/.emacs.d/cache/*
 Mac/.emacs.d/.cache/*
+Mac/.emacs.d/transient
 Mac/.emacs.d/straight/*
 !Mac/.emacs.d/straight/versions/
 Mac/.emacs.d/straight/versions/*
@@ -13,6 +14,7 @@ Mac/.emacs.d/straight/versions/*
 Arch/.emacs.d/.lsp-session-v1
 Arch/.emacs.d/cache/*
 Arch/.emacs.d/.cache/*
+Arch/.emacs.d/transient
 Arch/.emacs.d/straight/*
 !Arch/.emacs.d/straight/versions/
 Arch/.emacs.d/straight/versions/*
