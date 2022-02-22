@@ -16,7 +16,7 @@
 (setq default-frame-alist
       '(
         (width . 300)
-        (height . 80)
+        (height . 90)
         ))
 
 ;; emacs startup buffer
