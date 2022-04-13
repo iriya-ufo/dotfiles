@@ -6,8 +6,8 @@
 ;; brief   : theme and size
 ;; note    : -
 ;; ------------------------------------------------------------------
-(use-package color-theme-sanityinc-tomorrow)
-(load-theme 'sanityinc-tomorrow-night t)
+(use-package modus-themes)
+(load-theme 'modus-vivendi t)
 
 ;; frame configuration
 (tool-bar-mode -1)         ; disable tool bar
