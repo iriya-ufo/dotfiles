@@ -59,16 +59,6 @@ alias dvls='docker volume ls'
 alias dimg='docker images'
 alias drmi='docker rmi'
 
-# gem function
-function gem() {
-   $HOME/.rbenv/shims/gem $*
-   if [ "$1" = "install" ] || [ "$1" = "i" ] || [ "$1" = "uninstall" ] || [ "$1" = "uni" ]
-   then
-      rbenv rehash
-      rehash
-   fi
-}
-
 # rbenv
 eval "$(rbenv init -)"
 # nodenv

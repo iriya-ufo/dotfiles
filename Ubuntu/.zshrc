@@ -23,15 +23,5 @@ alias be='bundle exec'
 alias man='env LANG=C man'
 alias fig='docker compose'
 
-# gem function
-function gem() {
-   $HOME/.rbenv/shims/gem $*
-   if [ "$1" = "install" ] || [ "$1" = "i" ] || [ "$1" = "uninstall" ] || [ "$1" = "uni" ]
-   then
-      rbenv rehash
-      rehash
-   fi
-}
-
 # rbenv
 eval "$(rbenv init -)"
