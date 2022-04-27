@@ -53,3 +53,6 @@ alias dpsa='docker ps -a'
 alias dvls='docker volume ls'
 alias dimg='docker images'
 alias drmi='docker rmi'
+
+# asdf
+. $HOME/.asdf/asdf.sh
