@@ -3,11 +3,6 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 # GOPATH
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
-# nodenv
-export PATH=$HOME/.nodenv/bin:$PATH
-# pyenv
-export PYENV_ROOT=$HOME/.pyenv
-export PATH=$PYENV_ROOT/bin:$PATH
 
 fpath=(/usr/local/share/zsh-completions /usr/local/share/zsh/functions ${fpath})
 fpath=(~/.zsh/completions ~/.zsh/functions ${fpath})
@@ -77,15 +72,6 @@ alias drmi='docker rmi'
 keychain ~/.ssh/id_dsa ~/.ssh/id_rsa
 . $HOME/.keychain/$HOST-sh
 
-# rbenv
-eval "$(rbenv init -)"
-# nodenv
-eval "$(nodenv init -)"
-# pyenv
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init --path)"
-fi
-
 # PostgreSQL
 export PGDATA=/usr/local/var/postgres
 
@@ -99,3 +85,6 @@ fi
 
 # zsh-syntax-highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# asdf
+source /usr/local/opt/asdf/libexec/asdf.sh
