@@ -3,11 +3,6 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 # GOPATH
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
-# nodenv
-export PATH=$HOME/.nodenv/bin:$PATH
-# pyenv
-export PYENV_ROOT=$HOME/.pyenv
-export PATH=$PYENV_ROOT/bin:$PATH
 
 fpath=(~/.zsh/completions ~/.zsh/functions ${fpath})
 
@@ -58,10 +53,3 @@ alias dpsa='docker ps -a'
 alias dvls='docker volume ls'
 alias dimg='docker images'
 alias drmi='docker rmi'
-
-# rbenv
-eval "$(rbenv init -)"
-# nodenv
-eval "$(nodenv init -)"
-# pyenv
-eval "$(pyenv init -)"
