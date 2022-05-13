@@ -46,6 +46,7 @@
     ad-do-it))
 
 ;; その他の設定
+(add-to-list 'exec-path "/usr/local/bin") ; PATH に追加
 (global-auto-revert-mode 1)               ; バッファの自動読み込み
 (cd "~/")                                 ; ホームディレクトリより開始
 (put 'narrow-to-region 'disabled nil)     ; ナローイングの有効化
