@@ -1,26 +1,26 @@
 #!/bin/bash
 
 # Cask app installed into /usr/local/Caskroom
-brew install --cask authy
-brew install --cask iterm2
-brew install --cask google-chrome
-brew install --cask dropbox
-brew install --cask google-japanese-ime
-brew install --cask gyazo
-brew install --cask slack
 brew install --cask alfred
-brew install --cask google-photos-backup-and-sync
-brew install --cask insync
-brew install --cask karabiner-elements
+brew install --cask authy
+brew install --cask dbeaver-community
 brew install --cask discord
 brew install --cask docker
+brew install --cask dropbox
+brew install --cask google-chrome
+brew install --cask google-japanese-ime
+brew install --cask google-photos-backup-and-sync
+brew install --cask gyazo
+brew install --cask insync
+brew install --cask iterm2
+brew install --cask karabiner-elements
 brew install --cask ngrok
 brew install --cask postman
+brew install --cask slack
 brew install --cask toggl
 brew install --cask visual-studio-code
 brew install --cask vivaldi
 brew install --cask vlc
-brew install --cask dbeaver-community
 brew install --cask zoom
 
 # Java
