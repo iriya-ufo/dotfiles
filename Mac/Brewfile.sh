@@ -14,6 +14,7 @@ brew install --cask gyazo
 brew install --cask insync
 brew install --cask iterm2
 brew install --cask karabiner-elements
+brew install --cask min
 brew install --cask ngrok
 brew install --cask postman
 brew install --cask slack
