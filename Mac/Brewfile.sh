@@ -51,14 +51,9 @@ brew install lazygit
 brew install lv
 brew install nkf
 brew install nmap
-brew install nodenv
 brew install pstree
-brew install pyenv
-brew install rbenv
-brew install rbenv-gemset
 brew install reattach-to-user-namespace
 brew install rlwrap
-brew install tfenv
 brew install the_silver_searcher
 brew install tig
 brew install tmux
