@@ -10,6 +10,16 @@ Mac/.emacs.d/straight/*
 Mac/.emacs.d/straight/versions/*
 !Mac/.emacs.d/straight/versions/default.el
 
+# M2 Mac Emacs
+M2-Mac/.emacs.d/.lsp-session-v1
+M2-Mac/.emacs.d/cache/*
+M2-Mac/.emacs.d/.cache/*
+M2-Mac/.emacs.d/transient
+M2-Mac/.emacs.d/straight/*
+!M2-Mac/.emacs.d/straight/versions/
+M2-Mac/.emacs.d/straight/versions/*
+!M2-Mac/.emacs.d/straight/versions/default.el
+
 # Arch Emacs
 Arch/.emacs.d/.lsp-session-v1
 Arch/.emacs.d/cache/*
