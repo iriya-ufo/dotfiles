@@ -23,7 +23,6 @@ brew install git
 brew install git-secrets
 brew install go
 brew install grip
-brew install httperf
 brew install hugo
 brew install jq
 brew install keychain
