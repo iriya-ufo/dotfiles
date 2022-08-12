@@ -2,7 +2,6 @@
 
 # Cask app installed into /usr/local/Caskroom
 brew install --cask alfred
-brew install --cask authy
 brew install --cask dbeaver-community
 brew install --cask discord
 brew install --cask docker
