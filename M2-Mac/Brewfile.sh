@@ -4,7 +4,6 @@
 brew install --cask alfred
 brew install --cask dbeaver-community
 brew install --cask discord
-brew install --cask docker
 brew install --cask google-chrome
 brew install --cask google-japanese-ime
 brew install --cask insync
