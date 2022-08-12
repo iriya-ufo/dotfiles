@@ -5,7 +5,6 @@ brew install --cask alfred
 brew install --cask dbeaver-community
 brew install --cask discord
 brew install --cask google-chrome
-brew install --cask google-japanese-ime
 brew install --cask insync
 brew install --cask iterm2
 brew install --cask karabiner-elements
