@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Cask app installed into /usr/local/Caskroom
 brew install --cask alfred
 brew install --cask dbeaver-community
 brew install --cask discord

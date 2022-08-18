@@ -1,10 +1,8 @@
-# PATH ENV
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 # GOPATH
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 
-fpath=(/usr/local/share/zsh-completions /usr/local/share/zsh/functions ${fpath})
+fpath=(/opt/homebrew/share/zsh-completions /opt/homebrew/share/zsh/functions ${fpath})
 fpath=(~/.zsh/completions ~/.zsh/functions ${fpath})
 
 # autoload completions
@@ -49,7 +47,6 @@ alias -g bitread="cat <<EOF | gosh bitcode.scm | nkf -w"
 alias g="git"
 alias gosh="rlwrap -b '(){}[],#;| ' gosh"
 alias sbcl="rlwrap -b \$BREAK_CHARS sbcl"
-alias ccl="rlwrap -b \$BREAK_CHARS /usr/local/ccl/dx86cl64"
 alias updatedb='sudo /usr/libexec/locate.updatedb'
 alias diff='colordiff -u'
 alias be='bundle exec'
@@ -66,16 +63,13 @@ alias drmi='docker rmi'
 keychain ~/.ssh/id_dsa ~/.ssh/id_rsa
 . $HOME/.keychain/$HOST-sh
 
-# AWS CLI Completion
-source /usr/local/share/zsh/site-functions/_aws
-
 # Terraform Completion
 if type terraform &> /dev/null; then
     complete -o nospace -C terraform terraform
 fi
 
 # zsh-syntax-highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # asdf
-source /usr/local/opt/asdf/libexec/asdf.sh
+source /opt/homebrew/opt/asdf/libexec/asdf.sh

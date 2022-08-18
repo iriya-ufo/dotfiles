@@ -8,7 +8,7 @@
 ;;         : $ brew install gauche
 ;; ------------------------------------------------------------------
 (use-package scheme-complete)
-(setq scheme-program-name "/usr/local/bin/gosh -i")
+(setq scheme-program-name "/opt/homebrew/bin/gosh -i")
 (require 'cmuscheme)
 
 (defun scheme-other-window ()

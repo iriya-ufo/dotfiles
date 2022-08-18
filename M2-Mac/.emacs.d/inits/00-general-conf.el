@@ -46,21 +46,21 @@
     ad-do-it))
 
 ;; その他の設定
-(add-to-list 'exec-path "/usr/local/bin") ; PATH に追加
-(global-auto-revert-mode 1)               ; バッファの自動読み込み
-(cd "~/")                                 ; ホームディレクトリより開始
-(put 'narrow-to-region 'disabled nil)     ; ナローイングの有効化
-(global-font-lock-mode t)                 ; 文字の色付け
-(setq-default show-trailing-whitespace t) ; 行末の空白を表示
-(setq-default tab-width 2)                ; タブ文字の幅を設定
-(setq-default indent-tabs-mode nil)       ; インデント文字をタブではなく空白に設定
-(setq require-final-newline t)            ; 行末に改行文字を追加する
-(auto-compression-mode t)                 ; 日本語infoの文字化け防止
-(setq frame-title-format                  ; フレームのタイトル指定
+(add-to-list 'exec-path "/opt/homebrew/bin") ; PATH に追加
+(global-auto-revert-mode 1)                  ; バッファの自動読み込み
+(cd "~/")                                    ; ホームディレクトリより開始
+(put 'narrow-to-region 'disabled nil)        ; ナローイングの有効化
+(global-font-lock-mode t)                    ; 文字の色付け
+(setq-default show-trailing-whitespace t)    ; 行末の空白を表示
+(setq-default tab-width 2)                   ; タブ文字の幅を設定
+(setq-default indent-tabs-mode nil)          ; インデント文字をタブではなく空白に設定
+(setq require-final-newline t)               ; 行末に改行文字を追加する
+(auto-compression-mode t)                    ; 日本語infoの文字化け防止
+(setq frame-title-format                     ; フレームのタイトル指定
       (concat "%b - emacs@" system-name))
-(show-paren-mode 1)                       ; 対応する括弧を光らせる
-(electric-pair-mode t)                    ; 括弧の自動入力
-(setq-default truncate-lines t)           ; 行を折り返さない
-(setq scroll-step 1)                      ; 一行ずつスクロール
-(mouse-avoidance-mode 'exile)             ; カーソルが近付いたとき右上隅に移動,その後復帰
-(setq ring-bell-function 'ignore)         ; 警告音・フラッシュの無効化
+(show-paren-mode 1)                          ; 対応する括弧を光らせる
+(electric-pair-mode t)                       ; 括弧の自動入力
+(setq-default truncate-lines t)              ; 行を折り返さない
+(setq scroll-step 1)                         ; 一行ずつスクロール
+(mouse-avoidance-mode 'exile)                ; カーソルが近付いたとき右上隅に移動,その後復帰
+(setq ring-bell-function 'ignore)            ; 警告音・フラッシュの無効化
