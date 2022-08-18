@@ -12,6 +12,7 @@ brew install --cask visual-studio-code
 brew install --cask vlc
 brew install --cask zoom
 
+brew install asdf
 brew install bat
 brew install colordiff
 brew install coreutils
