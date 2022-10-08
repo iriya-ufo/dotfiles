@@ -10,7 +10,6 @@ brew install --cask dropbox
 brew install --cask google-chrome
 brew install --cask google-japanese-ime
 brew install --cask google-photos-backup-and-sync
-brew install --cask gyazo
 brew install --cask insync
 brew install --cask iterm2
 brew install --cask karabiner-elements
