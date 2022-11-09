@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Cask app installed into /usr/local/Caskroom
+brew install --cask alacritty
 brew install --cask alfred
 brew install --cask authy
 brew install --cask dbeaver-community
@@ -11,7 +12,6 @@ brew install --cask google-chrome
 brew install --cask google-japanese-ime
 brew install --cask google-photos-backup-and-sync
 brew install --cask insync
-brew install --cask alacritty
 brew install --cask karabiner-elements
 brew install --cask min
 brew install --cask ngrok
