@@ -11,7 +11,6 @@ brew install --cask dropbox
 brew install --cask google-chrome
 brew install --cask google-japanese-ime
 brew install --cask google-photos-backup-and-sync
-brew install --cask insync
 brew install --cask karabiner-elements
 brew install --cask min
 brew install --cask ngrok
