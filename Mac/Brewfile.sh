@@ -30,6 +30,7 @@ brew install --cask java
 
 brew install ansible
 brew install asciinema
+brew install asdf
 brew install awscli
 brew install awsebcli
 brew install bat
