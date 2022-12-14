@@ -49,6 +49,7 @@ alias gosh="rlwrap -b '(){}[],#;| ' gosh"
 alias sbcl="rlwrap -b \$BREAK_CHARS sbcl"
 alias updatedb='sudo /usr/libexec/locate.updatedb'
 alias diff='colordiff -u'
+alias dig='dig +noedns'
 alias be='bundle exec'
 alias man='env LANG=C man'
 alias top='htop'
