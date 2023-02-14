@@ -33,20 +33,11 @@
 ;; brief   : フォント設定
 ;; note    : 事前にフォントのインストールが必要
 ;;         : $ brew tap homebrew/cask-fonts
-;;         : $ brew install --cask font-ricty-diminished
+;;         : $ brew install font-hackgen font-hackgen-nerd
 ;; ------------------------------------------------------------------
 (set-face-attribute 'default nil
-                    :family "Ricty Diminished Discord"
+                    :family "HackGen"
                     :height 160)
-(set-fontset-font (frame-parameter nil 'font)
-                  'japanese-jisx0208
-                  (cons "Ricty Diminished Discord" "iso10646-1"))
-(set-fontset-font (frame-parameter nil 'font)
-                  'japanese-jisx0212
-                  (cons "Ricty Diminished Discord" "iso10646-1"))
-(set-fontset-font (frame-parameter nil 'font)
-                  'katakana-jisx0201
-                  (cons "Ricty Diminished Discord" "iso10646-1"))
 
 ;; ------------------------------------------------------------------
 ;; brief   : Neotree
