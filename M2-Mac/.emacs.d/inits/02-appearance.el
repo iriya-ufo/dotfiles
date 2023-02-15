@@ -33,10 +33,10 @@
 ;; brief   : フォント設定
 ;; note    : 事前にフォントのインストールが必要
 ;;         : $ brew tap homebrew/cask-fonts
-;;         : $ brew install font-hackgen font-hackgen-nerd
+;;         : $ brew install font-cica
 ;; ------------------------------------------------------------------
 (set-face-attribute 'default nil
-                    :family "HackGen"
+                    :family "Cica"
                     :height 160)
 
 ;; ------------------------------------------------------------------
