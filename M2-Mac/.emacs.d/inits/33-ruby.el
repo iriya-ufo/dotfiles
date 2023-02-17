@@ -31,8 +31,8 @@
 
 ;; auto indent with newline
 (add-hook 'ruby-mode-hook
-         '(lambda ()
-            (define-key ruby-mode-map "\C-m" 'reindent-then-newline-and-indent)))
+          #'(lambda ()
+              (define-key ruby-mode-map "\C-m" 'reindent-then-newline-and-indent)))
 
 ;; off the magic comment
 (setq ruby-insert-encoding-magic-comment nil)
@@ -45,7 +45,7 @@
 (when (require 'rhtml-mode nil t)
   (add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
   (add-hook 'rhtml-mode-hook
-           (lambda () (rinari-launch))))
+            (lambda () (rinari-launch))))
 
 ;; yaml-mode
 (when (require 'yaml-mode nil t)
@@ -60,7 +60,7 @@
   (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
   (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
   (add-hook 'coffee-mode-hook
-           '(lambda () (setq tab-width 2))))
+            #'(lambda () (setq tab-width 2))))
 
 ;; haml-mode
 (require 'haml-mode)
@@ -79,4 +79,4 @@
    )
   )
 (add-hook 'scss-mode-hook
-  '(lambda() (scss-custom)))
+          #'(lambda() (scss-custom)))

@@ -11,5 +11,5 @@
 (use-package typescript-mode)
 (require 'typescript-mode)
 (add-to-list 'auto-mode-alist '("\.ts$" . typescript-mode))
-(add-hook 'typescript-mode-hook '(lambda () (setq typescript-indent-level 2)))
+(add-hook 'typescript-mode-hook #'(lambda () (setq typescript-indent-level 2)))
 (add-hook 'typescript-mode-hook #'lsp)
