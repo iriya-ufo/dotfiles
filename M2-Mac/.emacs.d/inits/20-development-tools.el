@@ -18,6 +18,13 @@
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 
 ;; ------------------------------------------------------------------
+;; brief   : quickrun
+;; note    : https://github.com/emacsorphanage/quickrun
+;; ------------------------------------------------------------------
+(use-package quickrun)
+(require 'quickrun)
+
+;; ------------------------------------------------------------------
 ;; brief   : flycheck configuration
 ;; note    : -
 ;; ------------------------------------------------------------------
