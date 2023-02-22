@@ -20,5 +20,6 @@
              (tide-hl-identifier-mode +1)
              (company-mode +1)
              (eldoc-mode +1)
+             (setq typescript-indent-level 2)
              ))
 (add-hook 'typescript-mode-hook #'lsp)
