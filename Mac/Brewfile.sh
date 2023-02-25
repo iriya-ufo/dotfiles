@@ -12,7 +12,6 @@ brew install --cask google-chrome
 brew install --cask google-japanese-ime
 brew install --cask karabiner-elements
 brew install --cask ngrok
-brew install --cask postman
 brew install --cask slack
 brew install --cask toggl
 brew install --cask visual-studio-code
