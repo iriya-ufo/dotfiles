@@ -10,6 +10,7 @@ brew install --cask docker
 brew install --cask dropbox
 brew install --cask google-chrome
 brew install --cask google-japanese-ime
+brew install --cask insomnia
 brew install --cask karabiner-elements
 brew install --cask ngrok
 brew install --cask slack
