@@ -9,5 +9,4 @@
 ;; usage   : https://iriya-ufo.net/blog/2023/02/18/rust-setup-on-emacs/
 ;; ------------------------------------------------------------------
 (use-package rustic)
-(setq-default rustic-format-trigger 'on-save)
 (add-hook 'rustic-mode-hook #'lsp)
