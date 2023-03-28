@@ -6,7 +6,6 @@ brew install --cask dbeaver-community
 brew install --cask discord
 brew install --cask google-chrome
 brew install --cask karabiner-elements
-brew install --cask obsidian
 brew install --cask slack
 brew install --cask visual-studio-code
 brew install --cask vlc

@@ -13,7 +13,6 @@ brew install --cask google-japanese-ime
 brew install --cask insomnia
 brew install --cask karabiner-elements
 brew install --cask ngrok
-brew install --cask obsidian
 brew install --cask slack
 brew install --cask toggl
 brew install --cask visual-studio-code
