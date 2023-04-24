@@ -51,8 +51,8 @@ brew install nkf
 brew install nmap
 brew install pstree
 brew install reattach-to-user-namespace
+brew install ripgrep
 brew install rlwrap
-brew install the_silver_searcher
 brew install tig
 brew install tmux
 brew install tree
