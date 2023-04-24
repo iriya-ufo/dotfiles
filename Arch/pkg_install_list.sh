@@ -19,8 +19,8 @@ nmap \
 nodenv \
 pyenv \
 rbenv \
+ripgrep \
 rlwrap \
-the_silver_searcher \
 tig \
 tree \
 wget \
