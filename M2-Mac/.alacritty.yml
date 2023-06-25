@@ -53,3 +53,11 @@ colors:
     magenta: '#dcbdfb'
     cyan:    '#96d0ff'
     white:   '#adbac7'
+
+# Shell
+shell:
+  program: /opt/homebrew/bin/zsh
+  args:
+   - -l
+   - -c
+   - 'tmux a -t default || tmux new -s default\; source ~/.tmux.conf'
