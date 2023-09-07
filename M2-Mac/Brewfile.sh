@@ -32,6 +32,7 @@ brew install lv
 brew install nkf
 brew install nmap
 brew install orbstack
+brew install pandoc
 brew install pstree
 brew install reattach-to-user-namespace
 brew install ripgrep
