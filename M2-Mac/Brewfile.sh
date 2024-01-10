@@ -16,6 +16,7 @@ brew install asdf
 brew install bat
 brew install colordiff
 brew install coreutils
+brew install eza
 brew install fzf
 brew install gauche
 brew install gh
