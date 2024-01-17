@@ -22,6 +22,7 @@ brew install gauche
 brew install gh
 brew install ghq
 brew install git
+brew install git-delta
 brew install git-secrets
 brew install go
 brew install grip
