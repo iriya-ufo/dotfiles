@@ -10,7 +10,7 @@ PROMPT="%0(?|${PS_OK}|${PS_NG})"
 RPROMPT='[%F{green}%~%f]'
 
 ##==============================
-## 履歴の設定 
+## 履歴の設定
 ##==============================
 HISTFILE=$HOME/.zsh_history # 履歴をファイルに保存する
 HISTSIZE=100000             # メモリ内の履歴の数
@@ -49,42 +49,6 @@ preexec() {
         ;;
     esac
 }
-
-##==============================
-## alias 
-##==============================
-# ls settings
-eval `gdircolors -b $HOME/.dir_colors`
-LS_OPTIONS='-v --show-control-chars -h --color=auto'
-alias ls="gls $LS_OPTIONS"
-alias ll="gls -l $LS_OPTIONS"
-alias la="gls -A $LS_OPTIONS"
-alias lla="gls -lA $LS_OPTIONS"
-alias lal='lla'
-
-alias grep='grep --color=auto'
-alias df='df -h'
-alias du='du -h'
-alias pd=popd
-alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
-
-alias -g L="| lv"
-alias -g G="| grep"
-alias -g W='| wc'
-alias -g H='| head'
-alias -g T='| tail'
-alias -g N='| nkf'
-alias -g S='| sort'
-
-alias -s ps=gv
-alias -s eps=gv
-alias -s dvi=dvipdfmx
-alias -s tex=platex
-alias -s pdf=gv
-
-alias lv='lv -z -la -Ou8 -c'
-export PAGER=lv
-export LV='-z -la -Ou8 -c'
 
 ##==============================
 ## 補完
