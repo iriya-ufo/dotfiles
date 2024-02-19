@@ -6,7 +6,6 @@ brew install --cask alfred
 brew install --cask authy
 brew install --cask dbeaver-community
 brew install --cask discord
-brew install --cask docker
 brew install --cask dropbox
 brew install --cask google-chrome
 brew install --cask insomnia
