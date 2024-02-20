@@ -2,10 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
-;; バックアップファイルを作らない
-(setq make-backup-files nil)
-(setq auto-save-default nil)
-(setq auto-save-list-file-prefix nil)
+;; undo tree 導入
+(use-package undo-tree)
+(require 'undo-tree)
+(global-undo-tree-mode t)
 
 ;; 履歴の設定
 (setq history-length t)         ; set mini-buffer history length to infinity
@@ -23,27 +23,14 @@
   (setq recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
   (recentf-mode 1))
 
-;; undo tree 導入
-(use-package undo-tree)
-(require 'undo-tree)
-(global-undo-tree-mode t)
+;; バックアップファイルを作らない
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+(setq auto-save-list-file-prefix nil)
 
 ;; バッファの同一ファイル名を区別する
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
-
-;; 選択範囲で isearch
-(defadvice isearch-mode (around isearch-mode-default-string (forward &optional regexp op-fun recursive-edit word-p) activate)
-  (if (and transient-mark-mode mark-active (not (eq (mark) (point))))
-      (progn
-        (isearch-update-ring (buffer-substring-no-properties (mark) (point)))
-        (deactivate-mark)
-        ad-do-it
-        (if (not forward)
-            (isearch-repeat-backward)
-          (goto-char (mark))
-          (isearch-repeat-forward)))
-    ad-do-it))
 
 ;; その他の設定
 (add-to-list 'exec-path "/usr/local/bin") ; PATH に追加
