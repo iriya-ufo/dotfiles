@@ -38,6 +38,7 @@ export BREAK_CHARS="\"#'(),;\`\\|!?[]{}"
 export WORDCHARS="*?_-.[]~=&!#$%^(){}<>"
 export HOMEBREW_EDITOR='vim'
 export HOMEBREW_CASK_OPTS='--appdir=/Applications'
+export BAT_PAGER='less'
 
 # Docker for Mac
 unset DOCKER_CERT_PATH
