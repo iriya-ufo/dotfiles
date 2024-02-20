@@ -56,6 +56,7 @@ brew install tig
 brew install tmux
 brew install tree
 brew install wget
+brew install xh
 brew install zsh
 brew install zsh-completions
 brew install zsh-syntax-highlighting
