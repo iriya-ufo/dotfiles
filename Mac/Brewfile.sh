@@ -13,7 +13,6 @@ brew install --cask karabiner-elements
 brew install --cask ngrok
 brew install --cask notion
 brew install --cask slack
-brew install --cask toggl
 brew install --cask visual-studio-code
 brew install --cask vivaldi
 brew install --cask vlc
