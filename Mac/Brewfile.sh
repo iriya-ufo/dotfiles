@@ -41,6 +41,7 @@ brew install git-delta
 brew install git-secrets
 brew install grip
 brew install httperf
+brew install ynqa/tap/jnv
 brew install jq
 brew install keychain
 brew install lazygit
