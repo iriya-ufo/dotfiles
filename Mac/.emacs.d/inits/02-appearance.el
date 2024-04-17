@@ -15,8 +15,8 @@
 (set-scroll-bar-mode nil)  ; disable scroll bar
 (setq default-frame-alist
       '(
-        (width . 300)
-        (height . 90)
+        (width . 280)
+        (height . 80)
         ))
 
 ;; emacs startup buffer
@@ -37,7 +37,7 @@
 ;; ------------------------------------------------------------------
 (set-face-attribute 'default nil
                     :family "Cica"
-                    :height 160)
+                    :height 180)
 
 ;; ------------------------------------------------------------------
 ;; brief   : Neotree
