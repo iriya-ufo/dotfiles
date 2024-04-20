@@ -2,11 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-;; undo tree 導入
-(use-package undo-tree)
-(require 'undo-tree)
-(global-undo-tree-mode t)
-
 ;; 履歴の設定
 (setq history-length t)         ; set mini-buffer history length to infinity
 (setq undo-no-redo t)           ; set undo no redo
