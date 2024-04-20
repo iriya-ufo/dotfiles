@@ -15,8 +15,8 @@
 (set-scroll-bar-mode nil)  ; disable scroll bar
 (setq default-frame-alist
       '(
-        (width . 300)
-        (height . 90)
+        (width . 140)
+        (height . 80)
         ))
 
 ;; emacs startup buffer
