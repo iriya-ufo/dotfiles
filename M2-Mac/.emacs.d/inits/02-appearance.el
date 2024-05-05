@@ -7,7 +7,7 @@
 ;; note    : -
 ;; ------------------------------------------------------------------
 (use-package modus-themes)
-(load-theme 'modus-vivendi t)
+(load-theme 'modus-vivendi-tinted t)
 
 ;; frame configuration
 (tool-bar-mode -1)         ; disable tool bar
