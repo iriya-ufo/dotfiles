@@ -16,6 +16,7 @@ brew install --cask slack
 brew install --cask visual-studio-code
 brew install --cask vivaldi
 brew install --cask vlc
+brew install --cask zed
 brew install --cask zoom
 
 # Java
