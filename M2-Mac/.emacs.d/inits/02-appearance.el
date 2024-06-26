@@ -6,8 +6,8 @@
 ;; brief   : theme and size
 ;; note    : -
 ;; ------------------------------------------------------------------
-(use-package modus-themes)
-(load-theme 'modus-vivendi-tinted t)
+(use-package ample-theme)
+(load-theme 'ample-flat t)
 
 ;; frame configuration
 (tool-bar-mode -1)         ; disable tool bar
