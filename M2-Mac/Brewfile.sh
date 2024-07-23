@@ -7,6 +7,7 @@ brew install --cask discord
 brew install --cask google-chrome
 brew install --cask karabiner-elements
 brew install --cask notion
+brew install --cask rectangle
 brew install --cask slack
 brew install --cask visual-studio-code
 brew install --cask vivaldi
