@@ -50,3 +50,5 @@
 	insteadOf = https://gitlab.com/
 [ghq]
 	root = /Users/iriya/.ghq
+[init]
+	defaultBranch = main
