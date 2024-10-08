@@ -34,6 +34,7 @@ brew install jq
 brew install keychain
 brew install lazygit
 brew install lv
+brew install neovim
 brew install nkf
 brew install nmap
 brew install orbstack
