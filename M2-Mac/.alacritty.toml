@@ -48,7 +48,7 @@ style = "Bold Italic"
 history = 10000
 multiplier = 3
 
-[shell]
+[terminal.shell]
 args = ["-l", "-c", 'tmux a -t default || tmux new -s default\; source ~/.tmux.conf']
 program = "/opt/homebrew/bin/zsh"
 
@@ -63,3 +63,5 @@ lines = 84
 [window.padding]
 x = 4
 y = 4
+
+[terminal]
