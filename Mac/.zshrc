@@ -122,8 +122,8 @@ fi
 # zsh-syntax-highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# asdf
-source /usr/local/opt/asdf/libexec/asdf.sh
-
 # Added by OrbStack: command-line tools and integration
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+# mise
+eval "$(mise activate zsh)"
