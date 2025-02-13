@@ -14,7 +14,6 @@ brew install --cask vivaldi
 brew install --cask vlc
 brew install --cask zoom
 
-brew install asdf
 brew install bat
 brew install colordiff
 brew install coreutils
@@ -34,6 +33,7 @@ brew install jq
 brew install keychain
 brew install lazygit
 brew install lv
+brew install mise
 brew install neovim
 brew install nkf
 brew install nmap

@@ -27,7 +27,6 @@ brew install --cask java
 
 brew install ansible
 brew install asciinema
-brew install asdf
 brew install awscli
 brew install awsebcli
 brew install bat
@@ -47,6 +46,7 @@ brew install jq
 brew install keychain
 brew install lazygit
 brew install lv
+brew install mise
 brew install neovim
 brew install nkf
 brew install nmap
