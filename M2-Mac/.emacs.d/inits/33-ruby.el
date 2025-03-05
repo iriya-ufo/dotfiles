@@ -15,7 +15,6 @@
 (use-package rhtml-mode)
 (use-package haml-mode)
 (use-package slim-mode)
-(use-package scss-mode)
 (use-package sass-mode)
 
 ;; ------------------------------------------------------------------
@@ -67,16 +66,3 @@
 
 ;; slim-mode
 (require 'slim-mode)
-
-;; scss-mode
-(autoload 'scss-mode "scss-mode")
-(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
-(defun scss-custom ()
-  "scss-mode-hook"
-  (and
-   (set (make-local-variable 'css-indent-offset) 2)
-   (set (make-local-variable 'scss-compile-at-save) nil)
-   )
-  )
-(add-hook 'scss-mode-hook
-          #'(lambda() (scss-custom)))
