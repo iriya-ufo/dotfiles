@@ -108,7 +108,7 @@ alias drmi='docker rmi'
 ## Tools Setting
 ##==============================
 # keychain
-keychain ~/.ssh/id_dsa ~/.ssh/id_rsa
+keychain ~/.ssh/id_rsa
 . $HOME/.keychain/$HOST-sh
 
 # AWS CLI Completion
