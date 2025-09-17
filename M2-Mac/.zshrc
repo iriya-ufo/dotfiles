@@ -125,4 +125,6 @@ source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 eval "$(mise activate zsh)"
 
 # kiro
-[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+if [[ "$TERM_PROGRAM" == "kiro" ]]; then
+    . "$(kiro --locate-shell-integration-path zsh)"
+fi
