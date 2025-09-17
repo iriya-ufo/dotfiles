@@ -123,3 +123,6 @@ source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 
 # mise
 eval "$(mise activate zsh)"
+
+# kiro
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
