@@ -5,6 +5,7 @@ brew install --cask alfred
 brew install --cask dbeaver-community
 brew install --cask discord
 brew install --cask google-chrome
+brew install --cask insomnia
 brew install --cask karabiner-elements
 brew install --cask notion
 brew install --cask rectangle
