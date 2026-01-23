@@ -4,6 +4,7 @@ brew install --cask alacritty
 brew install --cask alfred
 brew install --cask dbeaver-community
 brew install --cask discord
+brew install --cask ghostty
 brew install --cask google-chrome
 brew install --cask insomnia
 brew install --cask karabiner-elements
