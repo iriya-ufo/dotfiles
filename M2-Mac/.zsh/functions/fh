@@ -8,6 +8,6 @@ fh() {
     tac="tail -r"
   fi
 
-  BUFFER=$(fc -l -n 1 | eval $tac | fzf-tmux --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  BUFFER=$(fc -l -n 1 | eval $tac | fzf-tmux --no-sort +m --query "$LBUFFER" --prompt="History > " -p 80%)
   CURSOR=$#BUFFER
 }

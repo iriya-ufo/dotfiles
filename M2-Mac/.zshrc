@@ -39,11 +39,7 @@ source $HOME/.zsh_common
 ##==============================
 bindkey -e     # emacs-like
 bindkey '^r'   fh
-bindkey '^xf'  cdf
-bindkey '^xd'  fd
-bindkey '^xk'  fkill
 bindkey '^xp'  frepo
-bindkey '^xgs' fshow
 bindkey '^xs'  fssh
 
 ##==============================

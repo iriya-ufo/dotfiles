@@ -1,7 +1,0 @@
-# fkill
-fkill() {
-  local process
-  process=$(ps auxww | fzf-tmux | awk '{print $2}')
-  [ -n "$process" ] && kill -9 $process
-  zle accept-line
-}
