@@ -51,12 +51,12 @@ if [[ $(uname) = "Darwin" ]]; then
 fi
 
 eval `gdircolors -b $HOME/.dir_colors`
-alias ls='eza --icons'
-alias ll='eza -l --git --icons'
-alias la='eza -a --icons'
-alias lla='eza -la --git --icons'
+alias ls='eza --icons=auto'
+alias ll='eza -l --git --icons=auto'
+alias la='eza -a --icons=auto'
+alias lla='eza -la --git --icons=auto'
 alias lal='lla'
-alias lt='eza --tree --level=2 --icons'
+alias lt='eza --tree --level=2 --icons=auto'
 
 alias grep='grep --color=auto'
 alias df='df -h'
