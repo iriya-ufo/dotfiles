@@ -1,6 +1,8 @@
 ##==============================
 ## PATHと環境変数
 ##==============================
+export PATH=$HOME/.local/bin:$PATH
+
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 
