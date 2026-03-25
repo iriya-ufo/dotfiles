@@ -1,21 +1,9 @@
 ##==============================
-## PATHと環境変数
+## 補完パス (fpath)
+## PATH・環境変数は .zprofile に記載
 ##==============================
-export PATH=$HOME/.local/bin:$PATH
-
-export GOPATH=$HOME/.go
-export PATH=$PATH:$GOPATH/bin
-
 fpath=(/opt/homebrew/share/zsh-completions /opt/homebrew/share/zsh/functions ${fpath})
 fpath=(~/.zsh/completions ~/.zsh/functions ${fpath})
-
-export RLWRAP_HOME='/Users/iriya/.rlwrap'
-export BREAK_CHARS="\"#'(),;\`\\|!?[]{}"
-export WORDCHARS="*?_-.[]~=&!#$%^(){}<>"
-export HOMEBREW_EDITOR='vim'
-export HOMEBREW_CASK_OPTS='--appdir=/Applications'
-export PAGER='lv'
-export BAT_PAGER='less'
 
 ##==============================
 ## autoload
@@ -104,10 +92,6 @@ alias drmi='docker rmi'
 ##==============================
 ## Tools Setting
 ##==============================
-# keychain
-keychain ~/.ssh/id_rsa
-. $HOME/.keychain/$HOST-sh
-
 # Terraform Completion
 if type terraform &> /dev/null; then
     complete -o nospace -C terraform terraform
@@ -125,9 +109,4 @@ eval "$(mise activate zsh)"
 # kiro
 if [[ "$TERM_PROGRAM" == "kiro" ]]; then
     . "$(kiro --locate-shell-integration-path zsh)"
-fi
-
-# tmux: すでに tmux の中にいないときだけ実行
-if [ -z "$TMUX" ]; then
-  tmux attach -t default || tmux new -s default
 fi
