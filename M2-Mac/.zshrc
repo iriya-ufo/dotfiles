@@ -126,3 +126,8 @@ eval "$(mise activate zsh)"
 if [[ "$TERM_PROGRAM" == "kiro" ]]; then
     . "$(kiro --locate-shell-integration-path zsh)"
 fi
+
+# tmux: すでに tmux の中にいないときだけ実行
+if [ -z "$TMUX" ]; then
+  tmux attach -t default || tmux new -s default
+fi
