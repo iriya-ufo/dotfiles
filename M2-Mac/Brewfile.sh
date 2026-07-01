@@ -32,6 +32,7 @@ brew install go
 brew install grip
 brew install hugo
 brew install ynqa/tap/jnv
+brew install jj
 brew install jq
 brew install keychain
 brew install lazygit
