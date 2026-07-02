@@ -38,3 +38,6 @@ Arch/.emacs.d/straight/versions/*
 
 # Clojure
 Mac/.lein/repl-history
+
+# jj: リポジトリごとの自動生成キャッシュ(絶対パス依存のため環境間で共有しない)
+*/jj/repos/
