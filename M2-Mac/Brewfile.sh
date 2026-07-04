@@ -19,6 +19,7 @@ brew install --cask zoom
 brew install bat
 brew install colordiff
 brew install coreutils
+brew install crit
 brew install eza
 brew install fzf
 brew install gauche
