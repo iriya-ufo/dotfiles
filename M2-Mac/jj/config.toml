@@ -3,3 +3,6 @@
 [user]
 name = "Naoto Inoue"
 email = "dorapocket22@gmail.com"
+
+[ui]
+editor = "nvim"
