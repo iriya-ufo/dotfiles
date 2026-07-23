@@ -73,6 +73,7 @@ alias -g bitread="cat <<EOF | gosh bitcode.scm | nkf -w"
 alias lv='lv -z -la -Ou8 -c'
 alias nv="nvim"
 alias g="git"
+alias j="jj"
 alias gosh="rlwrap -b '(){}[],#;| ' gosh"
 alias sbcl="rlwrap -b \$BREAK_CHARS sbcl"
 alias updatedb='sudo /usr/libexec/locate.updatedb'
