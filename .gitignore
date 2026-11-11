@@ -41,3 +41,51 @@ Mac/.lein/repl-history
 
 # jj: リポジトリごとの自動生成キャッシュ(絶対パス依存のため環境間で共有しない)
 */jj/repos/
+
+# herdr-app: Herdr が起動ごとに書き換える同梱物と実行時の状態（自分で編集する設定だけを追跡する）
+# 同梱物（起動のたびに丸ごと置き換えられる。カスタマイズは clone して別名で行う）
+M2-Mac/herdr-app/AGENTS.md
+M2-Mac/herdr-app/**/*.d.ts
+M2-Mac/herdr-app/**/jsconfig.json
+M2-Mac/herdr-app/frame/
+M2-Mac/herdr-app/icons/
+M2-Mac/herdr-app/layouts/main.json
+M2-Mac/herdr-app/layouts/terminals.json
+M2-Mac/herdr-app/layouts/win98.json
+M2-Mac/herdr-app/layouts/win98.svg
+M2-Mac/herdr-app/mods/agents/
+M2-Mac/herdr-app/mods/changes/
+M2-Mac/herdr-app/mods/confirm/
+M2-Mac/herdr-app/mods/files/
+M2-Mac/herdr-app/mods/help/
+M2-Mac/herdr-app/mods/machine-add/
+M2-Mac/herdr-app/mods/menu/
+M2-Mac/herdr-app/mods/new-menu/
+M2-Mac/herdr-app/mods/pane/
+M2-Mac/herdr-app/mods/peek/
+M2-Mac/herdr-app/mods/picker/
+M2-Mac/herdr-app/mods/prompt/
+M2-Mac/herdr-app/mods/spaces/
+M2-Mac/herdr-app/mods/tabs/
+M2-Mac/herdr-app/mods/terminals-bar/
+M2-Mac/herdr-app/mods/terminals-pane/
+M2-Mac/herdr-app/mods/toast/
+M2-Mac/herdr-app/mods/win98/
+M2-Mac/herdr-app/mods/workspace-chrome/
+M2-Mac/herdr-app/mods/workspace-status/
+M2-Mac/herdr-app/mods/worktree/
+# 実行時の状態・キャッシュ・テレメトリ
+M2-Mac/herdr-app/*.sock
+M2-Mac/herdr-app/data/
+M2-Mac/herdr-app/telemetry/
+M2-Mac/herdr-app/layouts/.state/
+M2-Mac/herdr-app/update-notes*
+M2-Mac/herdr-app/view.json
+M2-Mac/herdr-app/shared.json
+M2-Mac/herdr-app/shared.json.corrupt-*
+M2-Mac/herdr-app/seen.json
+M2-Mac/herdr-app/installed.json
+M2-Mac/herdr-app/window.json
+M2-Mac/herdr-app/windows.json
+M2-Mac/herdr-app/**/*.reset-*
+M2-Mac/herdr-app/**/*.old-*
